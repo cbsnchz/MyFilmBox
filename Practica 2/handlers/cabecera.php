@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" type="text/css" href="estilo.css" />
+<link rel="stylesheet" type="text/css" href="css/cabeceracss.css" />
 <div id="cabecera">
 		<h1>MyFilmBox</h1>
 		<body>

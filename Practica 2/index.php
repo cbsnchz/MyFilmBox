@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="estilo.css" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	<meta charset="utf-8">
 	<title>Portada</title>
 </head>
@@ -10,8 +10,8 @@
 
 <div id="contenedor">
 	<?php
-		include('cabecera.php');		
-		include('sbIzq.php');		
+		include('handlers/cabecera.php');		
+		include('handlers/sbIzq.php');		
 	?>
 	
 	<div id="contenido">
@@ -21,8 +21,8 @@
 	</div>	
 
 	<?php		
-		include('sbDer.php');	
-		include('pie.php');
+		include('handlers/sbDer.php');	
+		include('handlers/pie.php');
 	?>
 </div>
 

@@ -1,0 +1,43 @@
+
+div#cabecera {
+	padding: 30px;
+	height: 100px;
+	background-color: #303030;
+	color: white;
+}
+
+div#cabecera a, div#cabecera a:visited {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+} 
+
+div#cabecera a:hover {
+	color: tomato;
+	font-weight: bold;
+	text-decoration: underline;
+} 
+
+div#cabecera ul {
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+} 
+
+div#cabecera li {
+    float: left;
+}
+
+div#cabecera li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+div#cabecera li a:hover {
+    background-color: #111;
+}
