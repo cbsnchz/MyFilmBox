@@ -31,12 +31,21 @@ body{
      margin-bottom: 15px; 
      border: 1px solid #aaa; 
  }
-
+ .input-contenedor-err{
+    margin-bottom: 15px; 
+    border: 1px solid rgb(223, 88, 88); 
+}
  .icon{
      min-width: 50px;  
      text-align: center;
      color: #999;
  }
+ 
+ .icon-err{
+    min-width: 50px;  
+    text-align: center;
+    color: rgb(223, 88, 88);
+}
  .button{
      border:none; 
      width: 100%;
@@ -52,6 +61,12 @@ body{
  }
  p{
      text-align:center; 
+ }
+
+ .text_err{
+     text-align: left;
+     color: rgb(223, 88, 88);
+     size: 8px;
  }
  .link{
      text-decoration:none; 

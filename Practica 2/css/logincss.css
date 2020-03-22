@@ -10,7 +10,7 @@ body{
     padding: 35px; 
     
 }
-.formulario{
+.panel{
     background:#fff;
     margin-top: 150 px;
     padding: 3px; 
@@ -20,23 +20,45 @@ body{
      color: #4c2b2c; 
      font: 40px; 
  }
- input[type="text"], 
- input[type="password"]{
+ input{
      font-size:20px; 
      width:82%;
      padding:10px; 
      border:none; 
  }
+
+ .pswdReq{
+    font-size:18px; 
+    width:82%;
+    padding:10px; 
+    border:none; 
+    
+}
  .input-contenedor{
      margin-bottom: 15px; 
      border: 1px solid #aaa; 
  }
+
+ .input-contenedor-err{
+    margin-bottom: 15px; 
+    border: 1px solid rgb(223, 88, 88); 
+}
+
 
  .icon{
      min-width: 50px;  
      text-align: center;
      color: #999;
  }
+
+ .icon-err{
+    min-width: 50px;  
+    text-align: center;
+    color: rgb(223, 88, 88);
+}
+
+
+
  .button{
      border:none; 
      width: 100%;
@@ -63,7 +85,7 @@ body{
  }
 
  @media(min-width:758px){
-     .formulario{
+     .panel{
          margin:auto; 
          width:500px; 
          margin-top:150px;
