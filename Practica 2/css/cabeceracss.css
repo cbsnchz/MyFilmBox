@@ -1,6 +1,5 @@
-
 div#cabecera {
-	padding: 30px;
+	padding: 0px;
 	height: 100px;
 	background-color: #303030;
 	color: white;
@@ -13,7 +12,7 @@ div#cabecera a, div#cabecera a:visited {
 } 
 
 div#cabecera a:hover {
-	color: tomato;
+	color: white;
 	font-weight: bold;
 	text-decoration: underline;
 } 
@@ -34,10 +33,12 @@ div#cabecera li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 10px 16px;
+    padding: 6px 16px;
     text-decoration: none;
 }
 
 div#cabecera li a:hover {
     background-color: #111;
 }
+
+
