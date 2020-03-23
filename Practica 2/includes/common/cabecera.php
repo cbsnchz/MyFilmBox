@@ -8,8 +8,19 @@
 			<li><a class="active" href="index.php">Home</a></li>
 			<li><a href="catalogo.php">Catálogo</a></li>
 			<li><a href="buscar.php">Buscar</a></li>
-			<li><a href="cuenta.html">Mi cuenta</a></li>
 			<li><a href="tienda.php">Tienda</a></li>
+			
+			<?php
+		
+			if(!isset($_SESSION["login"])){
+				echo "<li id=\"boton\" style=\"float: right\"><a href=\"login.php\">Login</a></li>";
+			}
+			else{
+				echo "<li id=\"boton\"><a href=\"cuenta.php\">". $_SESSION["nombre"] ."</li>";
+			}
+			?>		
+			
+			</a></li>
 		</ul>
 		</body>
 </div>
