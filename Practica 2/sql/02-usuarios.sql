@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-03-2020 a las 13:27:26
+-- Tiempo de generación: 24-03-2020 a las 13:43:31
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.2.26
 
@@ -29,18 +29,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `usuarios` (
-  `nombreUsuario` varchar(40) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `password` varchar(128) NOT NULL,
+  `id` int(11) NOT NULL,
+  `nombreUsuario` varchar(15) NOT NULL,
+  `nombre` varchar(40) NOT NULL,
+  `password` varchar(80) NOT NULL,
   `rol` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`nombreUsuario`, `nombre`, `password`, `rol`) VALUES
-('chbalbas@ucm.es', 'Christian Balbás', '$2y$10$4qFYSZf7SmNmwjXYhezZNuUT4F4JSytLZd9eUOZOahwiok5Gbk3CW', 'user');
+INSERT INTO `usuarios` (`id`, `nombreUsuario`, `nombre`, `password`, `rol`) VALUES
+(1, 'chbalbas@ucm.es', 'Christian Balbás', '$2y$10$TV5rVVtg8MbtSnKnEm6/wuueUv09jiddeRl0zLT6L6QBt6cPNgVaS', 'user');
 
 --
 -- Índices para tablas volcadas
@@ -50,7 +51,17 @@ INSERT INTO `usuarios` (`nombreUsuario`, `nombre`, `password`, `rol`) VALUES
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`nombreUsuario`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
