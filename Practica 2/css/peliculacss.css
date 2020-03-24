@@ -8,10 +8,14 @@ body{
 
 .formulario{
 background:#fff;
-    margin-top: 150 px;
+    margin-top: 1500 px;
     padding: 3px;
 }
-
+p{
+	text-align:left;
+     color: #000000; 
+     font-size: 10px; 
+}
  h1{
      text-align:left;
      color: #4c2b2c; 
@@ -22,18 +26,25 @@ background:#fff;
     padding: 35px; 
 	margin-top: 10px;
     margin-left: 50px;
+	overflow: auto;
 }
 
  @media(min-width:758px){
      .formulario{
          margin:auto; 
-         width:1400px; 
+         width:90%; 
          margin-top:50px;
          border-radius:10px;
      }
  }
- 
-  .img_peli{
+
+
+ .img_peli{
 	width: 20%;
 	height: 20%;
+	border:3px solid #4c2b2c;
+	border-radius:10px;
+	float: left;
+	margin-right: 20px;
+	
 }
