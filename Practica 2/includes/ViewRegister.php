@@ -105,7 +105,7 @@ class ViewRegister
                 
                       $html.='<input type="submit" value="Sing Up" class="button">';
           
-                      $html.='<p> Ya tienes una cuenta? <a class="link" href="login.php"> Log In</a></p>  </div></html>';
+                      $html.='<p> ¿Ya tienes una cuenta? <a class="link" href="login.php"> Log In</a></p>  </div></html>';
 
                       return $html;
     }

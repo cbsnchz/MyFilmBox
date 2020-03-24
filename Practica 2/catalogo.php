@@ -96,5 +96,5 @@
 	</div> <!-- Fin del contenedor -->
 
 </body>
-<script type="text/javascript" src="catalogo.js"></script>
+<script type="text/javascript" src="js/catalogo.js"></script>
 </html>

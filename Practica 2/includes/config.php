@@ -7,7 +7,7 @@ require_once __DIR__.'/Aplicacion.php';
  */
 define('BD_HOST', 'localhost');
 define('BD_NAME', 'usuarios');
-define('BD_USER', 'administrador');
+define('BD_USER', 'admin');
 define('BD_PASS', 'molamaswordpress');
 
 /**
@@ -51,8 +51,8 @@ spl_autoload_register(function ($class) {
 });
 
 // Inicializa la aplicación
-//$app = es\ucm\fdi\aw\Aplicacion::getSingleton();
-//$app->init(array('host'=>BD_HOST, 'bd'=>BD_NAME, 'user'=>BD_USER, 'pass'=>BD_PASS));
+$app = es\ucm\fdi\aw\Aplicacion::getSingleton();
+$app->init(array('host'=>BD_HOST, 'bd'=>BD_NAME, 'user'=>BD_USER, 'pass'=>BD_PASS));
 
 /**
  * @see http://php.net/manual/en/function.register-shutdown-function.php
