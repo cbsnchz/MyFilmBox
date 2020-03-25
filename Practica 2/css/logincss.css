@@ -34,10 +34,17 @@ body{
     border:none; 
     
 }
+
  .input-contenedor{
      margin-bottom: 15px; 
      border: 1px solid #aaa; 
  }
+
+ .text_err{
+    text-align: left;
+    color: rgb(223, 88, 88);
+    size: 8px;
+}
 
  .input-contenedor-err{
     margin-bottom: 15px; 

@@ -16,7 +16,9 @@
 				echo "<li id=\"boton\" style=\"float: right\"><a href=\"login.php\">Login</a></li>";
 			}
 			else{
-				echo "<li id=\"boton\"><a href=\"cuenta.php\">". $_SESSION["nombre"] ."</li>";
+				//echo "<li id=\"boton\" style=\"float: right\"><a href=\"cuenta.php\">". $_SESSION["nombre"] ."</li>";
+				$html = '<li id="boton" style="float:right"><a href="logout.php">' . $_SESSION["nombre"] . '</a></li>';
+				echo $html; 
 			}
 			?>		
 			

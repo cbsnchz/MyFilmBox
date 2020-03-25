@@ -60,8 +60,9 @@ class FormularioRegistro extends Form
         if (count($result) === 0) {
             $user = Usuario::crea($nombreUsuario, $nombre, $password, 'user');
             if ( ! $user ) {
-                $result[] = "El usuario ya existe";
+                $_SESSION['userExist'] = true;
             } else {
+                $_SESSION['userExist'] = false;
                 $_SESSION['login'] = true;
                 $_SESSION['nombre'] = $nombreUsuario;
                 $result = 'index.php';

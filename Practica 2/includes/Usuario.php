@@ -127,7 +127,7 @@ class Usuario
         return $this->rol;
     }
 
-    public function nombreUsuario()
+    public function nombreUsuario() //nick - correo
     {
         return $this->nombreUsuario;
     }
@@ -140,5 +140,8 @@ class Usuario
     public function cambiaPassword($nuevoPassword)
     {
         $this->password = self::hashPassword($nuevoPassword);
+    }
+    public function nombre(){
+        return $this->nombre;
     }
 }

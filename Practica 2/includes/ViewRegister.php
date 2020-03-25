@@ -41,13 +41,21 @@ class ViewRegister
                         </div>';
 
                     }
-                    if (isset($_SESSION["mailValid"]) and !$_SESSION["mailValid"] ){	
+
+                    //Mail no váildo o usuario ya existe
+                    if ((isset($_SESSION["mailValid"]) and !$_SESSION["mailValid"]) or (isset($_SESSION['userExist']) and ($_SESSION['userExist']))){	
                         $html.= 
-                        '<div class ="input-contenedor-err">
-                            <i class="fas fa-at icon-err"></i>
-                            <input type="text" name="nombreUsuario" placeholder="Introduzca e-mail">
-                            <p class="text_err">Campo de correo electrónico erróneo</p>
-                        </div>';
+                            '<div class ="input-contenedor-err">
+                                <i class="fas fa-at icon-err"></i>
+                                <input type="text" name="nombreUsuario" placeholder="Introduzca e-mail">';
+
+                        if(!$_SESSION["mailValid"])
+                            $html.='<p class="text_err">Campo de correo electrónico erróneo</p>
+                                    </div>';
+                        else if ($_SESSION["userExist"]){
+                            $html.='<p class="text_err">El usuario ya existe</p>
+                                    </div>';
+                        }
 
                     }
                     else{
