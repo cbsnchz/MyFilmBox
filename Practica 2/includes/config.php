@@ -7,6 +7,7 @@ require_once __DIR__.'/Aplicacion.php';
  */
 define('BD_HOST', 'localhost');
 define('BD_NAME', 'usuarios');
+define('BD_NAME_PELI', 'peliculas');
 define('BD_USER', 'admin');
 define('BD_PASS', 'molamaswordpress');
 

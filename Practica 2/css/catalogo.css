@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  margin-bottom: 6px;
 }
 
 body {
@@ -12,16 +13,19 @@ body {
 .main {
   max-width: 1000px;
   margin: auto;
+  
 }
 
 .row {
   margin: 8px -16px;
+  
 }
 
 /* Add padding BETWEEN each column (if you want) */
 .row,
 .row > .column {
   padding: 8px;
+ 
 }
 
 /* Create three equal columns that floats next to each other */
@@ -29,6 +33,7 @@ body {
   float: left;
   width: 33.33%;
   display: none; /* Hide columns by default */
+  
 }
 
 /* Clear floats after rows */
@@ -47,6 +52,7 @@ body {
 /* The "show" class is added to the filtered elements */
 .show {
   display: block;
+  
 }
 
 /* Style the buttons */
@@ -56,11 +62,13 @@ body {
   padding: 12px 16px;
   background-color: white;
   cursor: pointer;
+   
 }
 
 /* Add a grey background color on mouse-over */
 .btn:hover {
   background-color: #ddd;
+  
 }
 
 /* Add a dark background color to the active button */
