@@ -16,25 +16,36 @@
 	?>
 	
 	<div id="contenido">
-		
-		<h1>Página principal</h1>
-		<p> Aquí está el contenido público, visible para todos los usuarios. </p>
+		<?php
+		$conn = new mysqli(BD_HOST, BD_USER, BD_PASS, BD_NAME_PELI);
+		if ($conn->connect_error) {
+           die("Fallo de conexion con la base de datos: " . $conn->connect_error);
+        }
+		else{
+            $conn->set_charset("utf8");
+			$sql = "SELECT id, nombre FROM pelicula";
+			$result = $conn->query($sql)
+				   or die ($conn->error. " en la línea ".(LINE-1));
 
+			if($result->num_rows > 0){
+				while($fila = $result->fetch_assoc()){
+					echo "<a href=\"pelicula.php?id=".$fila["id"]."\">".$fila["nombre"]."</a>";
+					echo "<br>";
+					
+				}
+			}
+		}
+		$conn -> close(); 
+		
+		?>
+		
+		
 	</div>	
 
 	<?php		
 		include('includes/common/sbDer.php');	
 		include('includes/common/pie.php');
 	?>
-</div>
-
-	
-
-	
-
-	
-
 </div> <!-- Fin del contenedor -->
-
 </body>
 </html>
