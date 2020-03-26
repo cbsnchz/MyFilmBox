@@ -32,7 +32,7 @@
 					echo "<h2>".$fila["nombre"]."<h2>";
 					echo '<img class = "img_peli" src="'.$fila["imagen"].'">';
 					echo "<p> Año: ".$fila["anyo"]."<p>";
-					echo "<p> Duración: ".$fila["duracion"]."<p>";
+					echo "<p> Duración: ".$fila["duracion"]." min <p>";
 					echo "<p> Director: ".$fila["director"]."<p>";
 					echo "<p> Reparto: ".$fila["reparto"]."<p>";
 					echo "<p> Productora: ".$fila["productora"]."<p>";

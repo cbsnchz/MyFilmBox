@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html>
+<?php include_once('includes/config.php'); ?>
 <head>
 		<link rel="stylesheet" type="text/css" href="css/catalogo.css" />
 </head>
@@ -16,69 +17,49 @@
 
 		<div id="myBtnContainer">
 		  <button class="btn active" onclick="filterSelection('all')"> Todos</button>
-		  <button class="btn" onclick="filterSelection('Paisajes')"> Paisajes</button>
-		  <button class="btn" onclick="filterSelection('Barcos')"> Barcos</button>
-		  <button class="btn" onclick="filterSelection('Animales')"> Animales</button>
+		  <button class="btn" onclick="filterSelection('Accion')"> Accion</button>
+		  <button class="btn" onclick="filterSelection('Adultas')"> Adultas</button>
+		  <button class="btn" onclick="filterSelection('Aventuras')"> Aveturas</button>
+		  <button class="btn" onclick="filterSelection('Belica')"> Bélica</button>
+		  <button class="btn" onclick="filterSelection('Ciencia Ficcion')"> Ciencia Ficcion</button>
+		  <button class="btn" onclick="filterSelection('Comedia')"> Comedia</button>
+		  <button class="btn" onclick="filterSelection('Drama')"> Drama</button>
+		  <button class="btn" onclick="filterSelection('Infantiles')"> Infantiles</button>
+		  <button class="btn" onclick="filterSelection('Musical')"> Musical</button>
+		  <button class="btn" onclick="filterSelection('Musical')"> Oeste</button>
+		  <button class="btn" onclick="filterSelection('Romance')"> Romance</button>
+		  <button class="btn" onclick="filterSelection('Terror')"> Terror</button>
+		  <button class="btn" onclick="filterSelection('Thiller')"> Thiller</button>
+		  
+		  
 		</div>
 
 		<!-- Portfolio Gallery Grid -->
 		<div class="row">
-		  <div class="column Paisajes">
-			<div class="content">
-			  <img src="img/paisajes1.jpg" alt="Montaña" style="width:100%">
-			  <h4>Montañas</h4>
-			</div>
-		  </div>
-		  <div class="column Paisajes">
-			<div class="content">
-			  <img src="img/paisajes3.jpg" alt="Lago" style="width:100%">
-			  <h4>Lagos</h4>
-			</div>
-		  </div>
-		  <div class="column Paisajes">
-			<div class="content">
-			  <img src="img/paisajes4.jpg" alt="Cascada" style="width:100%">
-			  <h4>Cascada</h4>
-			</div>
-		  </div>
+			<?php
+			$conn = new mysqli(BD_HOST, BD_USER, BD_PASS, BD_NAME_PELI);
+			if ($conn->connect_error) {
+			   die("Fallo de conexion con la base de datos: " . $conn->connect_error);
+			}
+			else{
+				$conn->set_charset("utf8");
+				$sql = "SELECT id, nombre, imagen, genero FROM pelicula";
+				$result = $conn->query($sql)
+					   or die ($conn->error. " en la línea ".(LINE-1));
 
-		  <div class="column Barcos">
-			<div class="content">
-			  <img src="img/barcos1.jpg" alt="Velero" style="width:100%">
-			  <h4>Velero</h4>
-			</div>
-		  </div>
-		  <div class="column Barcos">
-			<div class="content">
-			  <img src="img/barcos2.jpg" alt="Lancha" style="width:100%">
-			  <h4>Lancha</h4>
-			</div>
-		  </div>
-		  <div class="column Barcos">
-			<div class="content">
-			  <img src="img/barcos3.jpg" alt="Crucero" style="width:100%">
-			  <h4>Crucero</h4>
-			</div>
-		  </div>
-
-		  <div class="column Animales">
-			<div class="content">
-			  <img src="img/animales1.jpg" alt="Salvajes" style="width:100%">
-			  <h4>Salvajes</h4>
-			</div>
-		  </div>
-		  <div class="column Animales">
-			<div class="content">
-			  <img src="img/animales2.jpg" alt="Vacas" style="width:100%">
-			  <h4>Vacas</h4>
-			</div>
-		  </div>
-		  <div class="column Animales">
-			<div class="content">
-			  <img src="img/animales3.jpg" alt="Elefantes" style="width:100%">
-			  <h4>Elefantes</h4>
-			</div>
-		  </div>
+				if($result->num_rows > 0){
+					while($fila = $result->fetch_assoc()){
+						echo '<div class="column '.$fila["genero"].'">';
+							echo '<div class="content">';
+								echo '<img src="'.$fila["imagen"].'"style="width:20%">';
+								echo "<h4> <a href=\"pelicula.php?id=".$fila["id"]."\">".$fila["nombre"]."</a> </h4>";
+							echo '</div>';
+						echo '</div>';
+					}
+				}
+			}
+			$conn -> close();
+			?>
 		<!-- END GRID -->
 		</div>
 		</div>					
