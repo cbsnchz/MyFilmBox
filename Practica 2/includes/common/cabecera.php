@@ -9,7 +9,7 @@
 			<li><a href="catalogo.php">Catálogo</a></li>
 			<li><a href="tienda.php">Tienda</a></li>
 			<div class="search-container">
-				<form action="/buscar.php">
+				<form action="buscar.php" method="post">
 				  <input type="text" placeholder="Search.." name="search">
 				  <button type="submit">Submit</button>
 				</form>

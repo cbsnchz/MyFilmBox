@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+		<?php include_once('includes/config.php'); ?>
 		<link rel="stylesheet" type="text/css" href="css/catalogo.css" />
 </head>
 <body>
