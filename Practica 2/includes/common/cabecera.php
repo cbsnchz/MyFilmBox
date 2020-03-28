@@ -7,8 +7,13 @@
 		<ul>
 			<li><a class="active" href="index.php">Home</a></li>
 			<li><a href="catalogo.php">Catálogo</a></li>
-			<li><a href="buscar.php">Buscar</a></li>
 			<li><a href="tienda.php">Tienda</a></li>
+			<div class="search-container">
+				<form action="/buscar.php">
+				  <input type="text" placeholder="Search.." name="search">
+				  <button type="submit">Submit</button>
+				</form>
+			 </div>
 			
 			<?php
 		
@@ -22,7 +27,6 @@
 			}
 			?>		
 			
-			</a></li>
 		</ul>
 		</body>
 </div>
