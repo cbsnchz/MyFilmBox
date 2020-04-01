@@ -63,6 +63,7 @@
 		<!-- END GRID -->
 		</div>
 		</div>					
+		<?php	
 			include('includes/common/sbDer.php');	
 			include('includes/common/pie.php');
 		?>

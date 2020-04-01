@@ -31,7 +31,7 @@
 		<div  class="container-3">
 				<form action="buscar.php" method="post">
 				 <span class="icon"><i class="fa fa-search"></i></span>
-				  <input type="search" id="search" placeholder="Search.." name="search">
+				  <input type="search" id="search" placeholder="Buscar..." name="search">
 				  
 				</form>
 			 </div>
