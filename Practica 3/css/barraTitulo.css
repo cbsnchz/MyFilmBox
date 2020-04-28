@@ -1,0 +1,61 @@
+div#titlebar {
+	height: 70px;
+	background-color: #3f3f3f;
+    color: white;
+    padding: 1.4%;
+    width: 100%;
+    display: flex;
+   
+
+}
+
+div#tittle {
+    
+    font-style: arial;
+    margin-left:20%;
+
+    color: #f19532;
+    font-family: Verdana, Geneva, sans-serif;
+	font-size: 36px;
+	letter-spacing: 4.2px;
+	word-spacing: 3.6px;
+	font-weight: 300;
+	text-decoration: none solid rgb(68, 68, 68);
+	font-style: normal;
+	font-variant: small-caps;
+    text-transform: none;
+    float:left;
+    display: flex;
+    align-items: center;
+}
+
+
+div#access{
+    display: flex;
+    align-items: center;
+    margin-left:30%;
+
+    font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif; 
+    font-size: 20px;
+	letter-spacing: 0.4px;
+	word-spacing: 3px;
+	color: #fff;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+    text-transform: none;
+    
+    
+}
+
+a{
+    font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif; 
+    font-size: 20px;
+	letter-spacing: 0.4px;
+	word-spacing: 3px;
+	color: #fff;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+    text-transform: none;
+}

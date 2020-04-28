@@ -1,0 +1,87 @@
+body{
+    font-family: Arial, Helvetica, sans-serif; 
+    margin:0; 
+    background: url(../img/login-wallpaper.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+.contenedor {
+    width: 84%;
+    padding: 35px; 
+    
+}
+.formulario{
+    background:#fff;
+    margin-top: 150px;
+    padding: 3px; 
+}
+ h1{
+     text-align:center;
+     color: #4c2b2c; 
+     font: 40px; 
+ }
+ input[type="text"], 
+ input[type="password"]{
+     font-size:20px; 
+     width:82%;
+     padding:10px; 
+     border:none; 
+ }
+ .input-contenedor{
+     margin-bottom: 15px; 
+     border: 1px solid #aaa; 
+ }
+ .input-contenedor-err{
+    margin-bottom: 15px; 
+    border: 1px solid rgb(223, 88, 88); 
+}
+ .icon{
+     min-width: 50px;  
+     text-align: center;
+     color: #999;
+ }
+ 
+ .icon-err{
+    min-width: 50px;  
+    text-align: center;
+    color: rgb(223, 88, 88);
+}
+ .button{
+     border:none; 
+     width: 100%;
+     color: white; 
+     font-size:20px; 
+     background: #4c2b2c;
+     padding: 15px 20px;
+     border-radius: 5px;
+     cursor:pointer;  
+ }
+ .button:hover{
+     background: #995536;
+ }
+ p{
+     text-align:center; 
+ }
+
+ .text_err{
+     text-align: left;
+     color: rgb(223, 88, 88);
+     size: 8px;
+ }
+ .link{
+     text-decoration:none; 
+     color:#4c2b2c; 
+     font-weight:600; 
+ }
+ .link:hover{
+  color:#995536;
+ }
+
+ @media(min-width:758px){
+     .formulario{
+         margin:auto; 
+         width:500px; 
+         margin-top:150px;
+         border-radius:2%;
+     }
+ }

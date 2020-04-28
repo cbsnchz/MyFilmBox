@@ -1,0 +1,1 @@
+Creo que los pasos 0 y 1 solo hay que hacerlos la primera vez
