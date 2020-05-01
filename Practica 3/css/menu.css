@@ -11,7 +11,7 @@ div#menu a, div#menu a:visited {
 div#menu a:hover {
 	color: white;
 	font-weight: bold;
-	text-decoration: underline;
+	text-decoration: none;
 } 
 
 div#menu ul {
