@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-04-2020 a las 21:22:45
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Tiempo de generación: 01-05-2020 a las 19:58:34
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `peliculas`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id_post` int(11) NOT NULL,
+  `usuario` varchar(20) NOT NULL,
+  `titulo` varchar(50) NOT NULL,
+  `Fecha` date NOT NULL DEFAULT current_timestamp(),
+  `texto` text NOT NULL,
+  `id_pelicula` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id_post`, `usuario`, `titulo`, `Fecha`, `texto`, `id_pelicula`) VALUES
+(1, 'Eva Verdú', 'Me encanta', '2020-04-22', 'Esta película es muy entretenida e interesante, las canciones son preciosas.\r\nDisney siempre trae lo mejor. ', 4),
+(2, 'Christian', 'Horrenda', '2020-05-01', 'No me gusta nada, la vi muy aburrida.', 4);
 
 -- --------------------------------------------------------
 
@@ -53,7 +76,7 @@ INSERT INTO `pelicula` (`id`, `nombre`, `anyo`, `duracion`, `director`, `origen`
 (3, 'Sinister', 2012, 110, 'Scott Derrickson', 'Estados Unidos', '+18', 'Ethan Hawke, James Ransone, Juliet Rylance, Vincent D\'Onofrio, Fred Dalton Thompson, Clare Foley, Michael Hall D\'Addario, Victoria Leigh', 'img/sinister.jpg', 'Automatik Entertainment / Blumhouse Productions / ', 'Terror', 'Un periodista viaja con su familia a lo largo y ancho del país para investigar terribles asesinatos que luego convierte en libros. Cuando llega a una casa donde ha tenido lugar el asesinato de una familia, encuentra una cinta que desvela horribles pistas que van más allá del esclarecimiento de la tragedia. (FILMAFFINITY)'),
 (4, 'Pocahontas', 1995, 78, 'Mike Gabriel, Eric Goldberg', 'Estados Unidos', 'Todas las edades', 'Animacion', 'img/pocahontas.jpg', 'Walt Disney Pictures', 'Infantiles', 'Pocahontas, la hija del Jefe Powhatan, vigila la llegada de un gran grupo de colonos ingleses, guiados por el ambicioso gobernador Radcliff y el valiente capitán John Smith. Con su juguetón compañero Meeko, un travieso mapache, y con Flit, un alegre pájaro, Pocahontas entabla una fuerte amistad con el Capitán Smith. Pero cuando empiezan a surgir tensiones entre las dos culturas, Pocahontas recurre a la sabiduría de la Abuela Sauce para encontrar una manera de lograr la paz entre su pueblo y los conquistadores.'),
 (5, 'John Wick', 2014, 101, 'Chad Stahelski, David Leitch', 'Estados Unidos', '+12', 'Keanu Reeves, Michael Nyqvist, Alfie Allen, Willem Dafoe, Dean Winters, Adrianne Palicki, Omer Barnea, Toby Leonard Moore, Daniel Bernhardt, Bridget Moynahan, John Leguizamo, Ian McShane, Bridget Regan, Lance Reddick, Keith Jardine, Thomas Sadoski, Clarke Peters, Kevin Nash, Randall Duk Kim, David Patrick Kelly', 'img/jonhwick.jpg', '87Eleven/Company Films/DefyNite Films/Thunder Road Pictures', 'Accion', 'En Nueva York, John Wick, un asesino a sueldo retirado, vuelve otra vez a la acción para vengarse de los gángsters que le quitaron todo.'),
-(6, 'Saving Private Ryan', 1998, 170, 'Steven Spielberg', 'Estados Unidos', '+7', 'Tom Hanks, Tom Sizemore, Edward Burns, Matt Damon, Barry Pepper, Giovanni Ribisi, Adam Goldberg, Jeremy Davies, Vin Diesel, Ted Danson, Paul Giamatti, Max Martini, Dennis Farina, Harrison Young, Kathleen Byron, Harve Presnell, Dale Dye, Leland Orser, Bryan Cranston, Nathan Fillion, Ryan Hurst, Corey Johnson, Andrew Scott, Joerg Stadler, Dylan Bruno', 'img/saving_private_ryan.jpg', 'DreamWorks SKG / Paramount Pictures / Amblin Entertainment', 'Belica', 'Segunda Guerra Mundial (1939-1945). Tras el desembarco de los Aliados en Normandía, a un grupo de soldados americanos se le encomienda una peligrosa misión: poner a salvo al soldado James Ryan. Los hombres de la patrulla del capitán John Miller deben arriesgar sus vidas para encontrar a este soldado, cuyos tres hermanos han muerto en la guerra. Lo único que se sabe del soldado Ryan es que se lanzó con su escuadrón de paracaidistas detrás de las líneas enemigas.'),
+(6, 'Saving Private Ryan', 1998, 170, 'Steven Spielberg', 'Estados Unidos', '+7', 'Tom Hanks, Tom Sizemore, Edward Burns, Matt Damon, Barry Pepper, Giovanni Ribisi, Adam Goldberg, Jeremy Davies, Vin Diesel, Ted Danson, Paul Giamatti, Max Martini, Dennis Farina, Harrison Young, Kathleen Byron, Harve Presnell, Dale Dye, Leland Orser, Bryan Cranston, Nathan Fillion, Ryan Hurst, Corey Johnson, Andrew Scott, Joerg Stadler, Dylan Bruno', 'img/saving_private_ryan.jpg', 'DreamWorks SKG / Paramount Pictures / Amblin Entertainment', 'Belica', 'Segunda Guerra Mundial (1939-1945). Tras el desembarco de los Aliados en Normandía, a un grupo de soldados americanos se le encomienda una peligrosa misión: poner a salvo al soldado James Ryan. Los hombres de la patrulla del capitán John Miller deben arriesgar sus vidas para encontrar a este soldado, cuyos tres hermanos han muerto en la guerra. Lo único que se sabe del soldado Ryan es que se lanzó con su escuadrón de paracaidistas detrás de las líneas enemigas.');
 (7, 'La La Land', 2016, 128, 'Damien Chazelle', 'Hong Kong', 'Todas las edades', 'Ryan Gosling - Sebastian\r\nEmma Stone - Mia', 'img/lalaland.jpg', 'Summit Entertainment', 'Musical', 'La película cuenta la historia de Mia, una barista de una cafetería que aspira a ser una gran actriz y Sebastian, un pianista de jazz desempleado con grandes ambiciones.​ A pesar de sus diferencias y sus distintas personalidades, gracias a una serie de acontecimientos harán que sus caminos acaben cruzándose.'),
 (8, 'Aladdin', 2019, 128, 'Guy Ritchie', 'Estados Unidos', 'Todas las edades', 'Mena Massoud\r\nNaomi Scott\r\nWill Smith\r\nMarwan Kenzari\r\nNavid Negahban\r\nNasim Pedrad\r\nAlan Tudyk\r\nFrank Welker\r\nBilly Magnussen\r\nNuman Acar', 'img/aladdin.jpg', 'Walt Disney Pictures', 'Musical', 'Aladdín (Mena Massoud) es un joven ladrón de buen corazón que vive en la ciudad árabe de Agrabah junto a su mono mascota Abu. Un día rescata y se hace amigo de la princesa Jasmín (Naomi Scott), quien se escabulló del palacio para explorar la ciudad, cansada de su vida sobre-protegida. Mientras tanto, el Gran Visir, Jafar (Marwan Kenzari), planea derrocar al padre de Jasmín (Navid Negahban) como el Sultán. El y su loro mascota, Iago, buscan una lámpara de aceite mágica escondida en la Cueva de las Maravillas que le concederá sus deseos. Sin embargo, solo una persona es digna de entrar: \"el diamante en bruto\", y Jafar decide que éste es Aladdín. Al caer la noche mientras intentaba devolverle a Jasmín un brazalete de oro que perteneció a la madre de ésta, Aladdín rápidamente es capturado por los guardias y enviado al calabozo, y posteriormente Jafar lo convence para que recupere la lámpara. Dentro de la cueva, Aladdín encuentra una alfombra mágica y obtiene la lámpara. Se la entrega a Jafar, quien lo traiciona y lo arroja de nuevo a la cueva, aunque Abu se las arregla para robarle la lámpara justo a tiempo.'),
 (9, 'Dios mío, ¿pero qué te hemos hecho?', 2014, 93, 'Philippe de Chauveron', 'Francia', '+7', 'Christian Clavier, Chantal Lauby, Ary Abittan, Medi Sadoun, Frédéric Chau, Noom Diawara, Frédérique Bel, Julia Piaton, Émilie Caen, Élodie Fontan, Pascal Nzonzi', 'img/diosmioperoquetehemoshecho.jpg', 'Les films du 24 / TF1 Droits Audiovisuels / TF1 Films Production', 'Comedia', 'Claude y Marie Verneuil, un matrimonio católico y muy conservador, tienen cuatro hijas, a las que han tratado de inculcar sus valores y principios. Sin embargo, las chicas sólo les han dado disgustos: la mayor se casó con un musulmán; la segunda, con un judío, y la tercera, con un chino. El matrimonio deposita todas sus esperanzas en la hija menor, esperando que, al menos ella, se case por la iglesia.'),
@@ -98,6 +121,13 @@ INSERT INTO `pelicula` (`id`, `nombre`, `anyo`, `duracion`, `director`, `origen`
 --
 
 --
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id_post`),
+  ADD KEY `id_pelicula` (`id_pelicula`);
+
+--
 -- Indices de la tabla `pelicula`
 --
 ALTER TABLE `pelicula`
@@ -108,10 +138,26 @@ ALTER TABLE `pelicula`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `pelicula`
 --
 ALTER TABLE `pelicula`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`id_pelicula`) REFERENCES `pelicula` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

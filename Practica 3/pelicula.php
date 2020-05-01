@@ -47,7 +47,27 @@
 <div class = "formulario">
 		<div class = "contenedor">
 		<h2> Comentarios </h2>
-		<p> esta muy chachi</p>
+		<?php
+			$id = $_GET["id"];
+			$conn = new mysqli(BD_HOST, BD_USER, BD_PASS, BD_NAME_PELI);
+			if ($conn->connect_error) {
+				die("Fallo de conexion con la base de datos: " . $conn->connect_error);
+			}
+			else{
+				$conn->set_charset("utf8");
+				$sql = "SELECT * FROM comentarios WHERE id_pelicula = '$id'";
+				$result = $conn->query($sql)
+					   or die ($conn->error. " en la línea ".(LINE-1));
+
+				if($result->num_rows > 0){
+					while($fila = $result->fetch_assoc()){
+						echo "<h3>".$fila["titulo"]." por: ".$fila["usuario"]." fecha: ".$fila["Fecha"]."<h3>";
+						echo "<p>".$fila["texto"]."<p>";
+					}
+				}
+			}
+		$conn -> close();
+		?>
 		</div>
 </div>
 
