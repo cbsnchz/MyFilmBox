@@ -1,83 +1,39 @@
-<?php
+<html>
+    <head>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+        <link rel="stylesheet" type="text/css" href="css/logincss.css" />
+        <meta charset="utf-8">
+        <title>Log In</title>
+    </head>
+    <body>
 
-namespace es\ucm\fdi\aw;
-    if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    } 
+        <div class="container">
+            
+		<div class="panel">
 
+            <h1> Iniciar sesión </h1>
+            
+            <div class ="contenedor">
+				<div class ="input-contenedor">	
+					<i class="fas fa-user-alt icon"></i>
+                    <input type="text" id="userName_login" placeholder="Introduzca e-mail">
+                    <small>Mensaje de error </small>
+                </div>
+                      
+                <div class ="input-contenedor">
+					<i class="fas fa-key icon"></i>
+                    <input type="password" id="password_login" placeholder="********">
+                    <small>Mensaje de error </small>
+                </div>
 
-
-class ViewLogin
-{
-
-    public static function getViewLogin()
-    {
-        $html = '<html>
-                    <head>
-                        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-                        <link rel="stylesheet" type="text/css" href="css/logincss.css" />
-                        <meta charset="utf-8">
-                        <title>Portada</title>
-                    </head>
-    
-                    <div class="panel">
-                    <h1> Iniciar sesión </h1>
-                    <div class ="contenedor">';
-
-                    if(isset($_SESSION["novalidUP"]) and $_SESSION["novalidUP"]){
-                        $html.= 
-                            '<div class ="input-contenedor-err">
-                                 <i class="fas fa-user-alt icon-err"></i>
-                                 <input type="text" name="userName" placeholder="Introduzca e-mail">
-                            </div>';
-                        $html.= 
-                            '<div class ="input-contenedor-err">
-                                 <i class="fas fa-key icon-err"></i>
-                                 <input class="pswdReq" type="password" name="password" placeholder="Introduzca contraseña">
-                            </div>';
-                        $html.= '<div> <p class="text_err"> Usuario o contraseña incorrectos</p></div>'; 
-
-                    }
-                    
-                    else{
-                            if (!isset($_SESSION["emptyUser"]) or !$_SESSION["emptyUser"] ){	
-                                $html.= 
-                                '<div class ="input-contenedor">
-                                    <i class="fas fa-user-alt icon"></i>
-                                    <input type="text" name="userName" placeholder="Introduzca e-mail">
-                                </div>';
-                            }
-                            else{
-                                $html.= 
-                                '<div class ="input-contenedor-err">
-                                    <i class="fas fa-user-alt icon-err"></i>
-                                    <input type="text" name="userName" placeholder="Introduzca e-mail">
-                                    <p class="text_err">Campo obligatorio</p>
-                                </div>';
-                            }
+                <input type="submit" onclick="validaLogin()" value="Log In" class="button">
                 
-                            if (!isset($_SESSION["emptyPassword"]) or !$_SESSION["emptyPassword"] ){	
-                                $html.= '<div class ="input-contenedor">
-                                            <i class="fas fa-key icon"></i>
-                                            <input type="password" name="password" placeholder="********">
-                                        </div>';
-                            }
-                            else {
-                                $html.= '<div class ="input-contenedor-err">
-                                            <i class="fas fa-key icon-err"></i>
-                                            <input class="pswdReq" type="password" name="password" placeholder="Introduzca contraseña">
-                                            <p class="text_err">Campo obligatorio</p>
-                                        </div>';
-                            }
-                    }
+                <p> ¿No tienes una cuenta? <a class="link" href="registro.php"> Regístrate</a></p> 
+            </div>      
+            
+        </div>   
+	</body>
+</html>
 
-                    $html.='<input type="submit" value="Log In" class="button">';
-          
-                    $html.='<p> ¿No tienes una cuenta? <a class="link" href="registro.php"> Regístrate</a></p>   </div></html>';
 
-                    return $html;
-    }
-}
-    
-    ?>
+

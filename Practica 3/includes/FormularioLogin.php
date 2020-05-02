@@ -13,7 +13,9 @@ class FormularioLogin extends Form
         if ($datos) {
             $nombreUsuario = isset($datos['nombreUsuario']) ? $datos['nombreUsuario'] : $nombreUsuario;
         }
-        return ViewLogin::getViewLogin();
+
+        $html2 = file_get_contents("includes/ViewLogin.php");
+        return $html2;
     }
 
      

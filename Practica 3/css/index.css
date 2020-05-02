@@ -13,9 +13,22 @@ div#contenido {
 	min-height: 4000px;
 	width: 100%;
 	background-color: white;
+	
 }
 
-
+div#contenido a {
+    font-family: OpenSans; 
+    font-size: 20px;
+    font-weight: 400;
+	letter-spacing: 0.4px;
+	word-spacing: 3px;
+	color: blue;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+    text-transform: none;
+    text-decoration: none;
+}
 
 legend {
 	color: #fff;
@@ -49,7 +62,10 @@ body {
 
 
 
+
+
 * {
 	margin: 0px;
 	padding: 0px;
+	box-sizing: border-box;
  }
