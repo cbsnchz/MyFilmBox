@@ -16,7 +16,8 @@ class FormularioRegistro extends Form
             $nombre = isset($datos['nombre']) ? $datos['nombre'] : $nombre;
         }
     
-        return ViewRegister::getViewRegister();
+        $html = file_get_contents("includes/ViewRegister.php");
+        return $html;
     }
     
 
@@ -49,10 +50,12 @@ class FormularioRegistro extends Form
         else{
             $_SESSION["lengthPswdValid"] = true;
         }
+        
         $password2 = isset($datos['password2']) ? $datos['password2'] : null;
         if ( empty($password2) || strcmp($password, $password2) !== 0 ) {
             $_SESSION["pswdMatch"] = false;
         }
+
         else{
             $_SESSION["pswdMatch"] = true;
         }
@@ -68,6 +71,7 @@ class FormularioRegistro extends Form
                 $result = 'index.php';
             }
         }
+        echo console.log("Prueba");
         return $result;
     }
 }

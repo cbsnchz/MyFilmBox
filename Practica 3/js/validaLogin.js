@@ -1,37 +1,45 @@
 
-var user = document.getElementById('userName_login');
-var password = documentdocument.getElementById('password_login');
+        
+   
+const user = document.getElementById('userName_login');
+const password = document.getElementById('password_login');
+
+
 
 function validaLogin(){
-    console.log("Eiii");
-    const usernameValue = user.value.trim();
-    const usernameValue = password.value.trim();
+   
+    var valid = true; 
+    if(user.value.trim()==""){
+        setErrorFor(user, "E-mail no válido.")
+        valid= false; 
+    }
 
-    if(user=""){
-        setErrorFor(userName_login, 'Campo usuario no puede estar vacío.');
-        return false; 
+    else if(isEmail(user.value.trim())){
+        setErrorFor(user, "E-mail no válido.")
+        valid= false; 
     }
-    else if(!isEmail(user)){
-        setErrorFor(userName_login, 'Campo usuario no cumple con el formato.');
-        return false; 
+    
+    if(password.value.trim()==""){
+        setErrorFor(password, "Debes rellenar el campo contraseña")
+        valid= false; 
     }
-    if(password=""){
-        setErrorFor(userName_login, 'Campo contraseña no puede estar vacío.');
-        return false; 
-    }
-    return true; 
+    return valid; 
 }
+
 function setErrorFor(input, message){
     const formControl = input.parentElement; 
-    const small = formControl.querySelector("small");
+    const small = formControl.querySelector('small');
 
     small.innerText =message;
 
     formControl.className = 'input-contenedor-err';
-
 }
 
 function isEmail(email){ 
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
+
+        
+        
+        

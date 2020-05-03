@@ -137,6 +137,7 @@ abstract class Form
         $html .= $this->generaCamposFormulario($datos);
         $html .= '<input type="hidden" name="action" value="'.$this->formId.'" />';
         $html .= '</form>';
+      
         return $html;
     }
 
