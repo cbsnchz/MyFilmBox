@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-03-2020 a las 13:43:31
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.2.26
+-- Tiempo de generación: 03-05-2020 a las 13:55:15
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -41,7 +41,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombreUsuario`, `nombre`, `password`, `rol`) VALUES
-(1, 'chbalbas@ucm.es', 'Christian Balbás', '$2y$10$TV5rVVtg8MbtSnKnEm6/wuueUv09jiddeRl0zLT6L6QBt6cPNgVaS', 'user');
+(1, 'chbalbas@ucm.es', 'Christian Balbás', '$2y$10$TV5rVVtg8MbtSnKnEm6/wuueUv09jiddeRl0zLT6L6QBt6cPNgVaS', 'user'),
+(2, 'terfer02@ucm.es', 'teresa fernandez merino', '$2y$10$9Ybw1l5TMgy/ba5UL4/Dpukjc59/UimBP3Yv./me7dt7gDCjR7sl6', 'user');
 
 --
 -- Índices para tablas volcadas
@@ -61,7 +62,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
