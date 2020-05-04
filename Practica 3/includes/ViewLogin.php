@@ -20,15 +20,14 @@
                     <small>Mensaje de error </small>
                 </div>
                       
-                <div class ="input-contenedor">
-					<i class="fas fa-key icon"></i>
-                    <input type="password" name="password" id="password_login" placeholder="********">
-                    <small>Mensaje de error </small>
-                </div>
+			<div class ="input-contenedor">
+				<i class="fas fa-key icon"></i>
+				<input type="password" name="password" id="password_login" placeholder="********">
+				<small>Mensaje de error </small>
+			</div>
 
-                <input type="submit" onclick="return validaLogin()" value="Log In" class="button">
+			<input type="submit" onclick="return validaLogin()" value="Log In" class="button">
                 
-                <p> ¿No tienes una cuenta? <a class="link" href="registro.php"> Regístrate</a></p> 
             </div>      
         
         </div>
