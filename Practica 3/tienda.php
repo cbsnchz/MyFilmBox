@@ -7,23 +7,24 @@
 </head>
 <body>
 
-	<div id="contenedoor">
+	<div id="contenedor">
 	<?php
 		include('includes/common/cabecera.php');			
 	?>
 	
-	<div id="contenidoo" class="maiin">
+	<div id="contenido" class="main">
 		
-		<div class="btn-group">
-		  <button  class="button" onclick="filterSelection('all')"> Todos</button>
-		  <button  class="button"onclick="filterSelection('pelicula')"> Peliculas</button>
-		  <button  class="button" onclick="filterSelection('accesorio')"> Accesorios</button>
-		  <button  class="button" onclick="filterSelection('merchandicing')"> Merchandising</button> 
+		<div class="myBtnContainer">
+		  <button  class="btn" onclick="filterSelection('all')"> Todos</button>
+		  <button  class="btn"onclick="filterSelection('pelicula')"> Peliculas</button>
+		  <button  class="btn"onclick="filterSelection('serie')"> Serie</button>
+		  <button  class="btn" onclick="filterSelection('accesorio')"> Accesorios</button>
+		  <button  class="btn" onclick="filterSelection('merchandicing')"> Merchandising</button> 
 		  
 		</div>
 
 		<!-- Portfolio Gallery Grid -->
-		<div class="roow">
+		<div class="row">
 			<?php
 			$conne = new mysqli(BD_HOST, BD_USER, BD_PASS, BD_NAME_PRODUCTO);
 			if ($conne->connect_error) {

@@ -32,7 +32,7 @@
 					echo "<p class=\"tituloo\">".$fila["nombre"]."<p>";
 					echo '<img class = "img_producto" src="'.$fila["imagen"].'">';
 					echo "<p> Precio: ".$fila["precio"]."<p>";
-					echo "<p> Descripcion: ".$fila["descripcion"]." min <p>";
+					echo "<p> Descripcion: ".$fila["descripcion"]." <p>";
 				}
 			}
 		$conn -> close();
