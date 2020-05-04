@@ -16,7 +16,7 @@
 <form class="formularioo">	
 	<div class ="contenedor">
 		<?php
-			$id = $_GET["id"];
+			$id = $_GET["Id"];
 			$conn = new mysqli(BD_HOST, BD_USER, BD_PASS, BD_NAME_PRODUCTO);
 			if ($conn->connect_error) {
 				die("Fallo de conexion con la base de datos: " . $conn->connect_error);
@@ -37,7 +37,7 @@
 			}
 		$conn -> close();
 		?>
-		 <button  class="button" onclick=""> Añadir al carrito</button>
+		 <button  class="button" onclick=""> <a href="pago.php">Comprar</a></button>
 	</div>
 </form>	
 
