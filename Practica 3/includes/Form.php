@@ -131,8 +131,7 @@ abstract class Form
     private function generaFormulario($errores = array(), &$datos = array())
     {
 
-       
-        $html ='';
+        $html = '';
         $html .= '<form class="form" method="POST" action="'.$this->action.'" id="'.$this->formId.'" >';
         $html .= $this->generaCamposFormulario($datos);
         $html .= '<input type="hidden" name="action" value="'.$this->formId.'" />';
