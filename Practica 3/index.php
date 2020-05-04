@@ -21,16 +21,19 @@
            die("Fallo de conexion con la base de datos: " . $conn->connect_error);
         }
 		else{
+			echo "<h3> Nuestras últimas películas añadidas: </h3>";
             $conn->set_charset("utf8");
-			$sql = "SELECT id, nombre FROM pelicula";
+			$sql = "SELECT id, nombre, genero, imagen FROM pelicula WHERE id >= (SELECT MAX(id) FROM pelicula) - 2";
 			$result = $conn->query($sql)
 				   or die ($conn->error. " en la línea ".(LINE-1));
 
 			if($result->num_rows > 0){
-				while($fila = $result->fetch_assoc()){
-					echo "<a href=\"pelicula.php?id=".$fila["id"]."\">".$fila["nombre"]."</a>";
-					echo "<br>";
-					
+				while($fila = $result->fetch_assoc()){						
+					echo '<div>';
+						echo '<img src="'.$fila["imagen"].'"style="width:15%">';
+						echo "<h5> <a href=\"pelicula.php?id=".$fila["id"]."\">".$fila["nombre"]."</a> </h5>";
+					echo '</div>';
+						
 				}
 			}
 		}
