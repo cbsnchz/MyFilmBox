@@ -41,7 +41,7 @@
 						echo '<div class="column '.$fila["categoria"].'">';
 							echo '<div class="content">';
 								echo '<img src="'.$fila["imagen"].'"style="width:20%">';
-								echo "<h4> <a href=\"producto.php?id=".$fila["Id"]."\">".$fila["nombre"]."</a> </h4>";
+								echo "<h4> <a href=\"producto.php?Id=".$fila["Id"]."\">".$fila["nombre"]."</a> </h4>";
 							echo '</div>';
 						echo '</div>';
 					}
