@@ -14,8 +14,8 @@
 		
 			if(isset($_SESSION["login"])){
 				$html = '<li class="boton" style="float:right"><a href="login.php"><i class="far fa-user icon-login"></i></a></li>';
+				echo $html; 
 			}
-			echo $html; 
 			?>	
 
 		</ul>

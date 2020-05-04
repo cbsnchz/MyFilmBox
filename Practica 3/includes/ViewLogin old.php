@@ -1,11 +1,7 @@
 <?php
 
 namespace es\ucm\fdi\aw;
-    if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    } 
-
+   
 
 
 class ViewLogin

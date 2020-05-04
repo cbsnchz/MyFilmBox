@@ -117,10 +117,10 @@ class Usuario
         $this->rol = $rol;
     }
 
-    /*public function id()
+    public function id()
     {
         return $this->id;
-    }*/
+    }
 
     public function rol()
     {

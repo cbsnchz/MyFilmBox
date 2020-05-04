@@ -2,6 +2,12 @@
 
 require_once __DIR__.'/Aplicacion.php';
 
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
+
+
 /**
  * Parámetros de conexión a la BD
  */

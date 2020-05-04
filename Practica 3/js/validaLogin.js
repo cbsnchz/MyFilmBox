@@ -1,8 +1,8 @@
 
-        
-   
+          
 const user = document.getElementById('userName_login');
 const password = document.getElementById('password_login');
+var match; 
 
 
 
@@ -14,15 +14,17 @@ function validaLogin(){
         valid= false; 
     }
 
-    else if(isEmail(user.value.trim())){
+    else if(!isEmail(user.value.trim())){
         setErrorFor(user, "E-mail no válido.")
         valid= false; 
     }
+    
     
     if(password.value.trim()==""){
         setErrorFor(password, "Debes rellenar el campo contraseña")
         valid= false; 
     }
+
     return valid; 
 }
 
@@ -33,6 +35,11 @@ function setErrorFor(input, message){
     small.innerText =message;
 
     formControl.className = 'input-contenedor-err';
+}
+
+function setSuccessFor(input){
+    const formControl = input.parentElement; 
+    formControl.className = 'input-contenedor-ok';
 }
 
 function isEmail(email){ 
