@@ -16,6 +16,7 @@ define('BD_NAME', 'usuarios');
 define('BD_NAME_PELI', 'peliculas');
 define('BD_USER', 'admin');
 define('BD_PASS', 'molamaswordpress');
+define('BD_NAME_PRODUCTO', 'productos');
 
 /**
  * Configuración del soporte de UTF-8, localización (idioma y país) y zona horaria
