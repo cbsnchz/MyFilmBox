@@ -13,7 +13,7 @@
 	include('includes/common/cabecera.php');
  ?>
 
-<form class="formularioo">	
+<form class="formulario">	
 	<div class ="contenedor">
 		<?php
 			$id = $_GET["id"];
@@ -37,7 +37,7 @@
 			}
 		$conn -> close();
 		?>
-		 <button  class="button" onclick=""> Añadir al carrito</button>
+		 <button  class="button"> <a href="pago.php">Comprar</a></button>
 	</div>
 </form>	
 
