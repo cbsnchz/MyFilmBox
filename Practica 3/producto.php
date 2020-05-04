@@ -36,8 +36,9 @@
 				}
 			}
 		$conn -> close();
+		echo '<button  class="button" onclick=""> <a href="pago.php?precio='.$fila["precio"].'">Comprar</a></button>';
 		?>
-		 <button  class="button" onclick=""> <a href="pago.php">Comprar</a></button>
+		 
 	</div>
 </form>	
 

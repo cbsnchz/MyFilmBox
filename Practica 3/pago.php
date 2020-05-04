@@ -12,13 +12,16 @@ require_once __DIR__.'/includes/config.php';
 
 	<body>
 		<div id="contenedor">
-
+			
 			<?php
+				$precio = $_GET["precio"];
 				require("includes/common/cabecera.php");
 			?>
 
 			<div id="contenido">
+				
 				<?php 
+					echo '<p> Precio total: '.$precio.'</p>';
 					$form = new es\ucm\fdi\aw\FormularioPago(); $form->gestiona();
 				?>
 			</div>
