@@ -41,7 +41,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombreUsuario`, `nombre`, `password`, `rol`) VALUES
-(1, 'chbalbas@ucm.es', 'Christian Balbás', '$2y$10$TV5rVVtg8MbtSnKnEm6/wuueUv09jiddeRl0zLT6L6QBt6cPNgVaS', 'user');
+(1, 'chbalbas@ucm.es', 'Christian Balbás', '$2y$10$TV5rVVtg8MbtSnKnEm6/wuueUv09jiddeRl0zLT6L6QBt6cPNgVaS', 'user'),
+(2, 'terfer02@ucm.es', 'teresa fernandez merino', '$2y$10$9Ybw1l5TMgy/ba5UL4/Dpukjc59/UimBP3Yv./me7dt7gDCjR7sl6', 'user');
 
 --
 -- Índices para tablas volcadas
@@ -61,7 +62,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
