@@ -1,4 +1,4 @@
-.btn-group-vertical .button {
+.btn-group .button {
   background-color: #4CAF50; /* Green */
   border: 1px solid green;
   color: white;
@@ -11,10 +11,14 @@
   display: block;
 }
 
-.btn-group-vertical .button:not(:last-child) {
+.btn-group .button:not(:last-child) {
   border-bottom: none; /* Prevent double borders */
 }
 
-.btn-group-vertical .button:hover {
-  background-color: #3e8e41;
+.btn-group .button:hover {
+  background-color: black;
+}
+.maiin {
+	
+	background: url(../img/login-wallpaper.jpg);
 }

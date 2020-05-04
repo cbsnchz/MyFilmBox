@@ -1,29 +1,29 @@
-+<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <?php include_once('includes/config.php'); ?>
 <head>
 		<link rel="stylesheet" type="text/css" href="css/catalogo.css" />
+		
 </head>
 <body>
 
-	<div id="contenedor">
+	<div id="contenedoor">
 	<?php
 		include('includes/common/cabecera.php');			
 	?>
 	
-	<div id="contenido" class="main">
-
-		<div id="myBtnContainer">
-		  <button class="btn active" onclick="filterSelection('all')"> Todos</button>
-		  <button class="btn" onclick="filterSelection('pelicula')"> Peliculas</button>
-		  <button class="btn" onclick="filterSelection('accesorio')"> Accesorios</button>
-		  <button class="btn" onclick="filterSelection('merchandicing')"> Merchandising</button>
-  
+	<div id="contenidoo" class="maiin">
+		
+		<div class="btn-group">
+		  <button  class="button" onclick="filterSelection('all')"> Todos</button>
+		  <button  class="button"onclick="filterSelection('pelicula')"> Peliculas</button>
+		  <button  class="button" onclick="filterSelection('accesorio')"> Accesorios</button>
+		  <button  class="button" onclick="filterSelection('merchandicing')"> Merchandising</button> 
 		  
 		</div>
 
 		<!-- Portfolio Gallery Grid -->
-		<div class="row">
+		<div class="roow">
 			<?php
 			$conne = new mysqli(BD_HOST, BD_USER, BD_PASS, BD_NAME_PRODUCTO);
 			if ($conne->connect_error) {
@@ -55,10 +55,6 @@
 			include('includes/common/pie.php');
 		?>
 	</div>
-
-		
-
-		
 
 		
 

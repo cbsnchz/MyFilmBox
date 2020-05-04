@@ -13,7 +13,7 @@
 	include('includes/common/cabecera.php');
  ?>
 
-<form class="formulario">	
+<form class="formularioo">	
 	<div class ="contenedor">
 		<?php
 			$id = $_GET["id"];
@@ -29,14 +29,15 @@
 
 				if($result->num_rows > 0){
 					$fila = $result->fetch_assoc();
-					echo "<h2>".$fila["nombre"]."<h2>";
-					echo '<img class = "img_peli" src="'.$fila["imagen"].'">';
+					echo "<p class=\"tituloo\">".$fila["nombre"]."<p>";
+					echo '<img class = "img_producto" src="'.$fila["imagen"].'">';
 					echo "<p> Precio: ".$fila["precio"]."<p>";
 					echo "<p> Descripcion: ".$fila["descripcion"]." min <p>";
 				}
 			}
 		$conn -> close();
 		?>
+		 <button  class="button" onclick=""> Añadir al carrito</button>
 	</div>
 </form>	
 
