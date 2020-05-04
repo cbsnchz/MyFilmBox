@@ -36,10 +36,30 @@
 						
 				}
 			}
+			echo "<h3> Las últimas opiniones de nuestros usuarios: </h3>";
+            $conn->set_charset("utf8");
+			$sql = "SELECT id_post, usuario, titulo, Fecha, texto, id_pelicula FROM comentarios WHERE id_post >= (SELECT MAX(id_post) FROM comentarios) - 2";
+			$result = $conn->query($sql)
+				   or die ($conn->error. " en la línea ".(LINE-1));
+
+			if($result->num_rows > 0){
+				while($fila = $result->fetch_assoc()){		
+					$sql0 = "SELECT id, nombre, imagen FROM pelicula WHERE id = ".$fila["id_pelicula"];
+					$resultado = $conn->query($sql0)
+								or die ($conn->error. " en la línea ".(LINE-1));
+					echo '<div>';
+						echo $fila["usuario"].' - '.$resultado->fetch_assoc()["nombre"];
+						echo '<br>';
+						echo $fila["texto"];
+					echo '</div>';
+						
+				}
+			}
 		}
 		$conn -> close(); 
 		
 		?>
+		
 		
 		
 	</div>	
