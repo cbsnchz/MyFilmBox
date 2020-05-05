@@ -6,21 +6,21 @@ class Usuario
 
     private function getButton($rol){
         $html ='<div class="data3">';
-        $html .='<div> <h4> Cambiar rol</h4>';
+        $html .='<div><h4 class="header_button"> Cambiar rol</h4>';
         switch($rol){
 
             case "user":
-                $html.= '<input type="submit" value="admin" class="button_users"><br><br> ';
+                $html.= '<input type="submit" value="admin" class="button_users">';
                 $html.= '<input type="submit" value="critico" class="button_users"></div>';
                 break;
             
             case "admin":
-                $html.= '<input type="submit" value="user" class="button_users"> <br><br>';
+                $html.= '<input type="submit" value="user" class="button_users">';
                 $html.= '<input type="submit" value="critico" class="button_users"></div>';
                 break;
 
             case "critico":
-                $html.= '<input type="submit" value="admin" class="button_users"><br><br>';
+                $html.= '<input type="submit" value="admin" class="button_users">';
                 $html.= '<input type="submit" value="user" class="button_users"></div>';
                 break;
         }
@@ -59,10 +59,10 @@ class Usuario
                                 </div>
                                 <div class="container_user">   
                                     <div class="data">
-                                        <h4><b>Usuario: </br> '.$fila["nombreUsuario"].'</b></h4>
+                                        <h4 class="header_user"><b>'.$fila["nombreUsuario"].'</b></h4>
                                     </div>
                                     <div class="data2">
-                                        <p>Nombre: '.$fila["nombre"].'</p>
+                                        <p>'.$fila["nombre"].'</p>
                                         <p>Rol: '.$fila["rol"].'</p>
                                     </div>
                                 ';

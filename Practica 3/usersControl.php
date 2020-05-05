@@ -5,7 +5,7 @@
             session_start(); 
         } 
 
-    if(!isset($_SESSION['esAdmin']) || $_SESSION['esAdmin'] ){
+    if(!isset($_SESSION['esAdmin']) || !$_SESSION['esAdmin'] ){
         echo "No tienes permisos para acceder a esta página";
         exit;
     }
@@ -20,7 +20,7 @@
 	</head>
 
 	<body>
-		<div id="contenedor">
+		<div class="contenedor">
 
 			<?php require("includes/common/cabecera.php");?>
 

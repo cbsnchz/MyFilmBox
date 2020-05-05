@@ -51,7 +51,7 @@
 						echo '<div class="column '.$fila["genero"].'">';
 							echo '<div class="content">';
 								echo '<img src="'.$fila["imagen"].'"style="width:20%">';
-								echo "<h4> <a href=\"pelicula.php?id=".$fila["id"]."\">".$fila["nombre"]."</a> </h4>";
+								echo "<h4> <a href=\"Mostrarpelicula.php?id=".$fila["id"]."\">".$fila["nombre"]."</a> </h4>";
 							echo '</div>';
 						echo '</div>';
 					}

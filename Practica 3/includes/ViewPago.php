@@ -9,7 +9,7 @@
     </head>
     
     <body>
-			<script language="JavaScript" type="text/javascript">
+		<script language="JavaScript" type="text/javascript">
 		alert("Esta página web es un proyecto universitario, por favor, no introduzca datos reales");
 		</script>
                     
@@ -21,28 +21,28 @@
 				<div class ="input-contenedor">	
 					<i class="fas fa-user-alt icon"></i>
                     <input type="text" name="nombreTitular" id="nombreTitular_pago" placeholder="Introduzca titular de la tarjeta">
-                    
+                    <small>Mensaje de error </small>
                 </div>
 				
 				<div class ="input-contenedor">	
 					<i class="fas fa-angle-double-right icon"></i>
                     <input type="text" name="numero" id="numero_pago" placeholder="Introduzca el número de tarjeta">
-                    
+                    <small>Mensaje de error </small>
                 </div>
 				
 				<div class ="input-contenedor">	
 					<i class="far fa-address-card icon"></i>
                     <input type="text" name="app" id="app_pago" placeholder="Introduzca aplicación de pago">
-                    
+                    <small>Mensaje de error </small>
                 </div>
                       
                 <div class ="input-contenedor">
 					<i class="fas fa-key icon"></i>
                     <input type="text" name="cvv" id="cvv_pago" placeholder="Introduzca cvv de la tarjeta">
-                    
+                    <small>Mensaje de error </small>
                 </div>
-
-               <button  class="button" onclick=""> <a href="catalogo.php">Terminar compra</a></button>
+				  <input type="submit" onclick="return validaPago()" value="Pago" class="button">
+         
                 
 
             </div>      
@@ -51,7 +51,7 @@
         </div>  
 	</body>
     
-    <script src="js/validaLogin.js"> </script>
+    <script src="js/validaPago.js"> </script>
     
    
 </html>
