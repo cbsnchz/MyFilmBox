@@ -29,8 +29,7 @@
                     <i class="fas fa-exclamation-circle"></i>
                     <small>Mensaje de error </small>
                 </div>
-
-                
+              
                 <input type="submit" onclick="return validaLogin()" value="Log In" class="button">
                 <p> ¿No tienes una cuenta? <a class="link" href="registro.php"> Regístrate</a></p> 
             </div>      

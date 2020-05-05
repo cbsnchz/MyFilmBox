@@ -1,0 +1,38 @@
+.card_user {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 10%;
+    border-radius: 5px;
+    margin-top: 3%;
+     margin-left: 4%;
+     float:left;
+  }
+  
+  .card_user:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  }
+  
+  img {
+    border-radius: 5px 5px 0 0;
+  }
+
+ 
+  
+  .container_user {
+    padding: 2px 16px;
+  }
+  
+  .userControl_panel{
+
+    margin-left: 15%;
+    width: 70%;
+    margin-top: 2%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+
+  
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+ }

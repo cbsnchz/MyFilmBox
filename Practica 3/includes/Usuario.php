@@ -4,6 +4,84 @@ namespace es\ucm\fdi\aw;
 class Usuario
 {
 
+    private function getButton($rol){
+        $html ='';
+        switch($rol){
+
+            case "user":
+                $html.= '<input type="submit" value="Hacer admin" class="button_users">';
+                $html.= '<input type="submit" value="Hacer critico" class="button_users">';
+                break;
+            
+            case "admin":
+                $html.= '<input type="submit" value="Hacer user" class="button_users">';
+                $html.= '<input type="submit" value="Hacer critico" class="button_users">';
+                break;
+
+            case "critico":
+                $html.= '<input type="submit" value="Hacer admin" class="button_users">';
+                $html.= '<input type="submit" value="Hacer user" class="button_users">';
+                break;
+        }
+        return $html;
+    }
+
+    public static function imprimelistaUsuarios()
+    {
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $sql = "SELECT * FROM Usuarios U";
+        $result = $conn->query($sql);
+        if ($result) {
+            if ( $result->num_rows > 0) {
+                $html = '
+                    <html>
+                        <head>
+                            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+                            <link rel="stylesheet" type="text/css" href="css/usersControlcss.css" />
+                            <meta charset="utf-8">
+                            <title>Producto</title>
+                        </head>
+        
+                        <body>
+                            <?php
+                                include("includes/common/cabecera.php");
+                            ?>
+                        <div class="usersControl_panel">';
+
+                while($fila = $result->fetch_assoc()){
+                   $html .= '<div class="card_user">
+                                
+                               
+                                <img src="img/img_avatar.png" alt="Avatar" style="width:100%">
+                                <div class="container_user">
+                                    <h4><b>'.$fila["nombreUsuario"].'</b></h4>
+                                    <p>'.$fila["nombre"].'</p>
+                                    <p>'.$fila["rol"].'</p>
+                                ';
+                                $html .= self::getButton($fila["rol"]); 
+                                $html .=
+                                '
+                                </div>
+                            </div>';
+                }
+                $html.= '
+                    </div>
+                    </body>
+                    <?php	
+                        include("includes/common/pie.php");
+                    ?>
+                    </html>';
+
+            }
+            $result->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        echo $html;
+    }
+
     public static function login($nombreUsuario, $password)
     {
         $user = self::buscaUsuario($nombreUsuario);
