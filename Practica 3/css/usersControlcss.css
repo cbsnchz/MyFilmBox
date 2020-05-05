@@ -55,6 +55,7 @@ body {
 	margin-top: 5%;
 	max-width:30%;
 	margin-left:5%;
+	min-width: 25%;
 }
 .data2{
 	float:left;
@@ -96,7 +97,7 @@ body {
 
 .button_users .header_user{
 	font-size: 15px;
-	font-family: 'Roboto';
+	font-family: OpenSansLight;
 }
 
 img {
