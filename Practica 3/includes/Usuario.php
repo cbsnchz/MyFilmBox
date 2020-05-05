@@ -5,24 +5,26 @@ class Usuario
 {
 
     private function getButton($rol){
-        $html ='';
+        $html ='<div class="data3">';
+        $html .='<div> <h4> Cambiar rol</h4>';
         switch($rol){
 
             case "user":
-                $html.= '<input type="submit" value="Hacer admin" class="button_users">';
-                $html.= '<input type="submit" value="Hacer critico" class="button_users">';
+                $html.= '<input type="submit" value="admin" class="button_users"><br><br> ';
+                $html.= '<input type="submit" value="critico" class="button_users"></div>';
                 break;
             
             case "admin":
-                $html.= '<input type="submit" value="Hacer user" class="button_users">';
-                $html.= '<input type="submit" value="Hacer critico" class="button_users">';
+                $html.= '<input type="submit" value="user" class="button_users"> <br><br>';
+                $html.= '<input type="submit" value="critico" class="button_users"></div>';
                 break;
 
             case "critico":
-                $html.= '<input type="submit" value="Hacer admin" class="button_users">';
-                $html.= '<input type="submit" value="Hacer user" class="button_users">';
+                $html.= '<input type="submit" value="admin" class="button_users"><br><br>';
+                $html.= '<input type="submit" value="user" class="button_users"></div>';
                 break;
         }
+        $html .='</div>';
         return $html;
     }
 
@@ -52,12 +54,17 @@ class Usuario
                 while($fila = $result->fetch_assoc()){
                    $html .= '<div class="card_user">
                                 
-                               
-                                <img src="img/img_avatar.png" alt="Avatar" style="width:100%">
-                                <div class="container_user">
-                                    <h4><b>'.$fila["nombreUsuario"].'</b></h4>
-                                    <p>'.$fila["nombre"].'</p>
-                                    <p>'.$fila["rol"].'</p>
+                                <div class="container_user_img">
+                                 <img src="img/img_avatar.png" alt="Avatar">
+                                </div>
+                                <div class="container_user">   
+                                    <div class="data">
+                                        <h4><b>Usuario: </br> '.$fila["nombreUsuario"].'</b></h4>
+                                    </div>
+                                    <div class="data2">
+                                        <p>Nombre: '.$fila["nombre"].'</p>
+                                        <p>Rol: '.$fila["rol"].'</p>
+                                    </div>
                                 ';
                                 $html .= self::getButton($fila["rol"]); 
                                 $html .=

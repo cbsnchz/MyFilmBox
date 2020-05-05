@@ -33,6 +33,7 @@ class FormularioLogin extends Form
                 $_SESSION['login'] = true;
                 $_SESSION['nombre'] = $usuario->nombre();
                 $_SESSION['esAdmin'] = strcmp($usuario->rol(), 'admin') == 0 ? true : false;
+                $_SESSION['esCritico'] = strcmp($usuario->rol(), 'critico') == 0 ? true : false;
                 $result = 'index.php';
             } 
         }
