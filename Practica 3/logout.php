@@ -13,6 +13,7 @@ unset($_SESSION["login"]);
 unset($_SESSION["esAdmin"]);
 unset($_SESSION["nombre"]);
 unset($_SESSION["nick"]);
+unset($_SESSION["badLogin"]);
 session_destroy();
 require("index.php");
 ?>

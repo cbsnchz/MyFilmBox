@@ -15,13 +15,19 @@ class FormularioLogin extends Form
         }
 
         $html = file_get_contents("includes/ViewLogin.php");
-        return $html;
+        $htmlFailed = file_get_contents("includes/ViewLoginFailed.php");
+
+        if( !isset($_SESSION['badLogin']) or !$_SESSION['badLogin'])
+            return $html;
+        else
+            return $htmlFailed;
     }
 
      
 
     protected function procesaFormulario($datos)
     {
+        $_SESSION['badLogin'] = false;
         $result = array();
         
         $nombreUsuario = isset($datos['userName']) ? $datos['userName'] : null;
@@ -36,6 +42,9 @@ class FormularioLogin extends Form
                 $_SESSION['esCritico'] = strcmp($usuario->rol(), 'critico') == 0 ? true : false;
                 $result = 'index.php';
             } 
+            else{
+                $_SESSION['badLogin'] = true;
+            }
         }
         return $result;
     }
