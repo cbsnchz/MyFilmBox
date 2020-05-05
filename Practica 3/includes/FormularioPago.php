@@ -22,32 +22,15 @@ class FormularioPago extends Form
 
     protected function procesaFormulario($datos)
     {
-        $result = array();
-        
+        $result = array();        
         $nombreTitular = isset($datos['nombreTitular']) ? $datos['nombreTitular'] : null;
-                
-        if ( empty($nombreUsuario) ) {
-            $_SESSION["emptyTitular"] = true; 
-        }
-        else{
-            $_SESSION["emptyTitular"] = false; 
-        }
+        $numero = isset($datos['numero']) ? $datos['numero'] : null;
+		$app = isset($datos['app']) ? $datos['app'] : null;
+		$cvv = isset($datos['cvv']) ? $datos['cvv'] : null;       
         
-        $app = isset($datos['app']) ? $datos['app'] : null;
-        if ( empty($app) ) {
-            $_SESSION["emptyApp"] = true; 
-        }
-        else{
-            $_SESSION["emptyApp"] = false; 
-        }
+        $result = 'index.php';
+            	
 		
-        $cvv = isset($datos['cvv']) ? $datos['cvv'] : null;
-        if ( empty($cvv) ) {
-            $_SESSION["emptyCvv"] = true; 
-        }
-        else{
-            $_SESSION["emptyCvv"] = false; 
-        }
         return $result;
     }
 }
