@@ -29,6 +29,14 @@ include_once('includes/Comentarios.php');
 <div class = "formulario">
 		<div class = "contenedor">
 		<h2> Comentarios </h2>
+		<div class = "textarea">
+			<form method="post">
+			<p class="msg"> Añade un nuevo comentario: <br/>
+			<input type="varchar" name="titulo_com" placeholder="Titulo"> </br>
+			<textarea name="comentario_com" placeholder="Escriba aqui su comentario" autofocus ></textarea></p>
+			<input class="button" type="submit" value="Publicar" style = "margin-top: 5px">
+			</form>
+		</div>
 		<div class="comments-container">
 		<ul id="comments-list" class="comments-list">
 		<?php
