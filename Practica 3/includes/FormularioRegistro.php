@@ -17,8 +17,14 @@ class FormularioRegistro extends Form
             $password = isset($datos['password']) ? $datos['password'] : null;
             $password2 = isset($datos['password2']) ? $datos['password2'] : null;
         }
-    
-        $html = file_get_contents("includes/ViewRegister.php");
+        
+        if(!isset($_SESSION['userExist']) or !$_SESSION['userExist'] ){
+            $html = file_get_contents("includes/ViewRegister.php");  
+        }
+        else{
+            $html = file_get_contents("includes/ViewRegisterFailed.php");
+            unset($_SESSION['userExist']);
+        }
         return $html;
     }
     
@@ -32,20 +38,21 @@ class FormularioRegistro extends Form
         
 
         $nombre = isset($datos['nombre']) ? $datos['nombre'] : null;
-      
-        
         $password = isset($datos['password']) ? $datos['password'] : null;
        
         $password2 = isset($datos['password2']) ? $datos['password2'] : null;
-       
-        
-        
+           
             $user = Usuario::crea($nombreUsuario, $nombre, $password, 'user');
-            if ($user ) {
+            if ($user) {
                 $_SESSION['login'] = true;
                 $_SESSION['nombre'] = $nombreUsuario;
+                $result = 'index.php';
             } 
+            else{
+                $_SESSION['userExist'] = true;
+                $result ='registro.php';
+            }
+        return $result;
         
-        return 'index.php';
     }
 }
