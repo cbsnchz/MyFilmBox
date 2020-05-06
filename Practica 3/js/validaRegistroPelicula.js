@@ -1,5 +1,3 @@
-
-        
 const titulo = document.getElementById('titulo_pelicula');
 const duracion = document.getElementById('duracion_pelicula');
 const director = document.getElementById('director_pelicula');
@@ -11,56 +9,55 @@ const genero = document.getElementById('genero_pelicula');
 const calificacion = document.getElementById('calificacion_pelicula');
 const origen = document.getElementById('origen_pelicula');
 
-function validaRegister(){
-   
+function validaRegistroPelicula(){
    var valid = true; 
-    if( titulo.value.trim() == ""){
+    if( titulo.value.trim() === ""){
         setErrorFor(titulo, "Introduzca el titulo de la pelicula.")
         valid= false; 
     }else setSuccessFor(titulo);
 	
-    if( duracion.value.trim() == ""){
+    if( duracion.value.trim() === ""){
         setErrorFor(duracion, "Introduzca la duracion de la pelicula.")
         valid= false; 
     }else setSuccessFor(duracion);
     
     
-    if( director.value.trim() == ""){
+    if( director.value.trim() === ""){
         setErrorFor(director, "Introduzca el director de la pelicula")
         valid= false; 
     }else setSuccessFor(director);
 	
-	if( anyo.value.trim() == ""){
+	if( anyo.value.trim() === ""){
         setErrorFor(anyo, "Introduzca el año de la pelicula")
         valid= false; 
     }else setSuccessFor(anyo);
 	
-	if( reparto.value.trim() == ""){
+	if( reparto.value.trim() === ""){
         setErrorFor(reparto, "Introduzca el reparto de la pelicula")
         valid= false; 
     }else setSuccessFor(reparto);
 	
-	if( sinopsis.value.trim() == ""){
+	if( sinopsis.value.trim() === ""){
         setErrorFor(sinopsis, "Introduzca la sinopsis de la pelicula")
         valid= false; 
     }else setSuccessFor(sinopsis);
 	
-	if( productora.value.trim() == ""){
+	if( productora.value.trim() === ""){
         setErrorFor(productora, "Introduzca la productora de la pelicula")
         valid= false; 
     }else setSuccessFor(productora);
 	
-	if( genero.value.trim() == ""){
+	if( genero.value.trim() === ""){
         setErrorFor(genero, "Seleccione el genero de la pelicula")
         valid= false; 
     }else setSuccessFor(genero);
 	
-	if( calificacion.value.trim() == ""){
+	if( calificacion.value.trim() === ""){
         setErrorFor(calificacion, "Introduzca la calificacion de la pelicula")
         valid= false; 
     }else setSuccessFor(calificacion);
 	
-	if( origen.value.trim() == ""){
+	if( origen.value.trim() === ""){
         setErrorFor(origen, "Seleccione el origen de la pelicula")
         valid= false; 
     }else setSuccessFor(origen);
