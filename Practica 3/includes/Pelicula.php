@@ -158,4 +158,81 @@ class Pelicula{
     {
         return $this->origen;
     }
+	
+	 public static function imprimeListaPeliculas()
+    {
+        $app = AplicacionPeliculas::getSingleton();
+        $conn = $app->conexionBd();
+        $sql = "SELECT * FROM Pelicula p";
+        $result = $conn->query($sql);
+        if ($result) {
+            if ( $result->num_rows > 0) {
+                $html = '
+                    <html>
+                        <head>
+                            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+							<link rel="stylesheet" type="text/css" href="css/catalogo.css" />                            <meta charset="utf-8">
+                            
+                        </head>
+						
+						<div class = "contenedor">
+                        <body>
+                            <?php
+                                include("includes/common/cabecera.php");
+                            ?>
+                        <div class="contenido" class="main">
+							<div id="myBtnContainer">
+							 <button class="btn active" onclick="filterSelection(\'all \')"> Todos</button>
+							  <button class="btn" onclick="filterSelection(\'Accion \')"> Accion</button>
+							  <button class="btn" onclick="filterSelection(\'Adultas \')"> Adultas</button>
+							  <button class="btn" onclick="filterSelection(\'Aventuras \')"> Aveturas</button>
+							  <button class="btn" onclick="filterSelection(\'Belica \')"> Bélica</button>
+							  <button class="btn" onclick="filterSelection(\'Ciencia Ficcion \')"> Ciencia Ficcion</button>
+							  <button class="btn" onclick="filterSelection(\'Comedia \')"> Comedia</button>
+							  <button class="btn" onclick="filterSelection(\'Drama \')"> Drama</button>
+							  <button class="btn" onclick="filterSelection(\'Infantiles \')"> Infantiles</button>
+							  <button class="btn" onclick="filterSelection(\'Musical \')"> Musical</button>
+							  <button class="btn" onclick="filterSelection(\'Musical \')"> Oeste</button>
+							  <button class="btn" onclick="filterSelection(\'Romance \')"> Romance</button>
+							  <button class="btn" onclick="filterSelection(\'Terror \')"> Terror</button>
+							  <button class="btn" onclick="filterSelection(\'Thiller \')"> Thiller</button>
+		  
+							</div>
+							
+							';
+
+                while($fila = $result->fetch_assoc()){
+                   $html .= '
+				   <div class="column '.$fila["genero"].'">
+								<div class="content">
+									<div class = "card-peli">
+										<img src="'.$fila["imagen"].'"style="width:100%">
+										<div class = "container-card">
+											<h4> <a href="Mostrarpelicula.php?id="'.$fila["id"].'">"'.$fila["nombre"].'"</a> </h4>
+											<h5> '.$fila["director"].'</h5>
+										</div>
+									</div>
+								</div>
+							</div>';
+                                 
+                                
+                }
+                $html.= '
+                    </div>
+                    </body>
+                    <?php	
+                        include("includes/common/pie.php");
+                    ?>
+					</div>
+					<script type="text/javascript" src="js/catalogo.js"></script>
+                    </html>';
+
+            }
+            $result->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        echo $html;
+    }
 }
