@@ -11,7 +11,7 @@
     <body>
         <div class="container">    
 		<div class="panel">
-            <h1> Iniciar sesión </h1>
+            <div class="tittleForm"><p> Iniciar sesión con tu cuenta FilmBox </p></div>
             
             <div class ="contenedor">
 				<div class ="input-contenedor">	
@@ -32,12 +32,14 @@
               
                 <input type="submit" onclick="return validaLogin()" value="Log In" class="button">
                 
-                <p> ¿No tienes una cuenta? <a class="link" href="registro.php"> Regístrate</a></p> 
+                <div class="alternative">
+                    <p> ¿No tienes una cuenta? <a class="link" href="registro.php"> Regístrate</a></p>
+                </div> 
             </div>      
-        
+            
         </div>
-        </div>  
-	</body>
+    </div>  
+</body>
     
     <script src="js/validaLogin.js"> </script>
     

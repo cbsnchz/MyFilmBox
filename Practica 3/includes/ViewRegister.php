@@ -8,7 +8,7 @@
     <body>
         <div class="container">
         <div class ="panel">
-            <h1> Registrarse </h1>
+        <div class="tittleForm"><p> Únete a nuestra comunidad </p></div>
 
             <div class ="contenedor">
                     
@@ -46,7 +46,9 @@
                 </div>
                <!-- <button class="button"> Registrarse </button>-->
                 <input type="submit" onclick="return validaRegister()" value="Sing Up" class="button">
-                <p> ¿Ya tienes una cuenta? <a class="link" href="login.php"> Log In</a></p>  
+                <div class="alternative">
+                    <p> ¿Ya tienes una cuenta? <a class="link" href="login.php"> Log In</a></p>  
+                </div>
             </div>
             
 
