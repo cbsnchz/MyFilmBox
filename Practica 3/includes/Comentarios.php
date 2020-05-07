@@ -28,7 +28,7 @@ class Comentarios{
 		if($result->num_rows > 0){
 			$i = 0;
 			while($fila = $result->fetch_assoc()){
-				$comentarios[$i] = new Comentarios($fila["titulo"],$fila["usuario"],$fila["Fecha"],$fila["texto"],$fila["id_pelicula"]);
+				$comentarios[$i] = new Comentarios($fila["titulo"],$fila["usuario"],$fila["Fecha"],$fila["texto"], $fila["id_pelicula"]);
 				$i = $i+1;
 			}
 		}
@@ -46,8 +46,8 @@ class Comentarios{
         $app = AplicacionPeliculas::getSingleton();
         $conn = $app->conexionBd();
         $query=sprintf("INSERT INTO comentarios(usuario, titulo, texto, id_pelicula) VALUES('%s', '%s', '%s','%s')"
-            , $conn->real_escape_string($Comentarios->titulo)
             , $conn->real_escape_string($Comentarios->usuario)
+            , $conn->real_escape_string($Comentarios->titulo)
             , $conn->real_escape_string($Comentarios->texto)
 			, $conn->real_escape_string($Comentarios->id_pelicula));        
         if ( $conn->query($query) ) {
@@ -63,12 +63,12 @@ class Comentarios{
 		return $this->titulo;
 	}
 	
-	public function id_pelicula(){
-		return $this->id_pelicula;
-	}
-	
 	public function usuario(){
 		return $this->usuario;
+	}
+	
+	public function id_pelicula(){
+		return $this->id_pelicula;
 	}
 	
 	public function fecha(){
