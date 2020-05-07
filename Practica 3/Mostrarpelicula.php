@@ -29,18 +29,14 @@ include_once('includes/Comentarios.php');
 <div class = "formulario">
 		<div class = "contenedor">
 		<h2> Comentarios </h2>
-		<div class = "textarea">
-			<form method="post">
-			<p class="msg"> Añade un nuevo comentario: <br/>
-			<input type="varchar" name="titulo_com" placeholder="Titulo"> </br>
-			<textarea name="comentario_com" placeholder="Escriba aqui su comentario" autofocus ></textarea></p>
-			<input class="button" type="submit" value="Publicar" style = "margin-top: 5px">
-			</form>
-		</div>
+		
+		<?php 	
+			$form = new es\ucm\fdi\aw\FormularioRegistroComentarios($id); $form->gestiona();
+		?>
+		
 		<div class="comments-container">
 		<ul id="comments-list" class="comments-list">
 		<?php
-			$id = $_GET["id"];
 			$c = new es\ucm\fdi\aw\Comentarios(null,null,null,null);
 			$comentarios = $c->imprimeComentarios($id);
 			foreach ($comentarios as &$value) {
@@ -70,8 +66,7 @@ include_once('includes/Comentarios.php');
 				</body>
 				</html>';
 				echo $html;
-				/**echo "<h3>".$value->getTitulo()." por: ".$value->getUsuario()." fecha: ".$value->getFecha()."<h3>";
-				echo "<p>".$value->getTexto()."<p>";*/
+				
 			}
     
 		?>
