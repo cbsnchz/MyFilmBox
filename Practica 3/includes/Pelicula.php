@@ -208,7 +208,7 @@ class Pelicula{
 									<div class = "card-peli">
 										<img src="'.$fila["imagen"].'"style="width:100%">
 										<div class = "container-card">
-											<h4> <a href="Mostrarpelicula.php?id="'.$fila["id"].'">"'.$fila["nombre"].'"</a> </h4>
+											<h4> <a href="Mostrarpelicula.php?id='.$fila["id"].'">"'.$fila["nombre"].'"</a> </h4>
 											<h5> '.$fila["director"].'</h5>
 										</div>
 									</div>
