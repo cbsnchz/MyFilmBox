@@ -9,26 +9,7 @@
 		<ul>
 			<li><a class="active" href="index.php">Home</a></li>
 			<li><a href="catalogo.php">Catálogo</a></li>
-			<li><a href="tienda.php">Tienda</a></li>
-			
-			<?php
-		
-				if(isset($_SESSION["login"])){
-				$html = '
-				<li style="float:right">
-					<div class="dropdown">
-					<button class="dropbtn">Perfil</button>
-					<div class="dropdown-content">
-						<a href="#">Logout</a>
-					</div>
-					</div>
-				</li>
-				';
-				echo $html; 
-			}
-			?>	
-
-			
+			<li><a href="tienda.php">Tienda</a></li>			
 		</ul>
 	</div>
 

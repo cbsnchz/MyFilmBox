@@ -19,9 +19,20 @@
                        <p> <a class="l+r" href="login.php"> Login </a> <a class="l+r" href="registro.php"> Registrarse </a></p>
                     </div>';
 			echo $html; 
-		}
+        }
+        else{
+            $html = '<div id="user">
+                        <div id="dropdown">
+                            <button onclick="myFunction()" class="dropbtn"><i class="far fa-user-circle"></i></button>
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="logout.php">Logout</a>
+                            </div>    
+                        </div>
+                    </div>';
+            echo $html;         
+        }
 	?>	
      
-		
+<script src="js/perfil.js"></script>		
 </div>
 </html>
