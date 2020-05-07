@@ -9,6 +9,7 @@ const genero = document.getElementById('genero_pelicula');
 const calificacion = document.getElementById('calificacion_pelicula');
 const origen = document.getElementById('origen_pelicula');
 
+
 function validaRegistroPelicula(){
    var valid = true; 
     if( titulo.value.trim() === ""){
@@ -61,6 +62,8 @@ function validaRegistroPelicula(){
         setErrorFor(origen, "Seleccione el origen de la pelicula")
         valid= false; 
     }else setSuccessFor(origen);
+	
+
 	
     return valid; 
 }
