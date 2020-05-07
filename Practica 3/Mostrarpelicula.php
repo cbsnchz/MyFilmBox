@@ -54,7 +54,7 @@ include_once('includes/Comentarios.php');
 		<div class="comments-container">
 		<ul id="comments-list" class="comments-list">
 		<?php
-			$c = new es\ucm\fdi\aw\Comentarios(null,null,null,null, null);
+			$c = new es\ucm\fdi\aw\Comentarios(null,null,null,null,null);
 			$comentarios = $c->imprimeComentarios($id);
 			foreach ($comentarios as &$value) {
 				$html = '
