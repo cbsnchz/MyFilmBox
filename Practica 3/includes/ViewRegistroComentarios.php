@@ -1,25 +1,47 @@
-<!DOCTYPE html>
+
+
 <html>
-<?php 
-include_once('includes/config.php');
-include_once('includes/Comentarios.php');
- ?>
-<head>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-	<link rel="stylesheet" type="text/css" href="css/peliculacss.css" />
-	<meta charset="utf-8">
-	<title>Peliculas</title>
-</head>
-<body>
-	<div class = "textarea">
-			<form method="post">
-				<p class="msg"> Añade un nuevo comentario: <br/>
-				<input type="varchar" name="usuario_com" placeholder="Usuario"> </br>
-				<input type="varchar" name="titulo_com" placeholder="Titulo"> </br>
-				<textarea name="comentario_com" placeholder="Escriba aqui su comentario" autofocus ></textarea></p>
-				<input class="button" onclick="return validaComentario()" type="submit" value="Publicar" style = "margin-top: 5px">
-			</form>
-	</div>
-</body>
-<script src="js/validaComentario.js"> </script>
+    <head> 
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+        <link rel="stylesheet" type="text/css" href="css/peliculacss.css" />
+        <title>Comentarios</title>
+    </head>
+
+    <body>
+        <div class="container">
+        <div class ="panel">
+            <h1> Añade un nuevo comentario </h1>
+
+            <div class ="contenedor">
+                    
+                <div class ="input-contenedor">
+                    
+                    <input type="text" id="usuario_com" name="usuario" placeholder="Usuario">
+                    <small> text-here </small>
+                </div>
+                                            
+                            
+                <div class ="input-contenedor">
+                    
+                    <input type="text" id="titulo_com" name="titulo" placeholder="Titulo ">
+                    <small> text-here </small>
+                </div>
+            
+                <div class ="input-contenedor">
+                    
+                    <input type="text" id="comentario_com" name="comentario" placeholder="Comentario">                   
+                    <small> text-here </small>
+                </div>
+
+               
+                <input type="submit" onclick="return validaComentario()" value="Registrar comentario" class="button" name="subir">
+               
+            </div>
+            
+
+        </div>
+        </div>
+    </body>
+    <script src="js/validaComentario.js"> </script>
+       
 </html>

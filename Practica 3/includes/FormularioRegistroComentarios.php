@@ -14,12 +14,12 @@ class FormularioRegistroComentarios extends Form
     {
        $titulo = '';
 	   $usuario = '';
-	   $texto = '';
+	   $comentario = '';
 	   
         if ($datos) {
             $titulo = isset($datos['titulo']) ? $datos['titulo'] : $titulo;
             $usuario = isset($datos['usuario']) ? $datos['usuario'] : $usuario;
-			$texto = isset($datos['texto']) ? $datos['texto'] : $texto;
+			$comentario = isset($datos['comentario']) ? $datos['comentario'] : $comentario;
            
         }
     
@@ -32,10 +32,10 @@ class FormularioRegistroComentarios extends Form
     {
 		$titulo = isset($datos['titulo']) ? $datos['titulo'] : null;
 		$usuario = isset($datos['usuario']) ? $datos['usuario'] : null;
-		$texto = isset($datos['texto']) ? $datos['texto'] : null;
+		$comentario = isset($datos['comentario']) ? $datos['comentario'] : null;
 		
         
-		$Comentarios = Comentarios::crea($titulo, $usuario, $texto, $this->id);
+		$Comentarios = Comentarios::crea($titulo, $usuario, $comentario, $this->id);
         if(!$Comentarios) echo 'No se ha podido crear el comentario';
         return 'index.php';
     }

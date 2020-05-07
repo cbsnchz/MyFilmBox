@@ -35,7 +35,7 @@ class Pelicula{
         if ($rs) {
             if ( $rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
-                $Pelicula = new Pelicula($fila['nombre'], $fila['anyo'], $fila['duracion'], $fila['director'], $fila['origen'], $fila['calificacion'], $fila['reparto'], $fila['imagen'], $fila['productora'], $fila['genero'], $fila['sinopsis'], $fila['imagen']);
+                $Pelicula = new Pelicula($fila['nombre'], $fila['anyo'], $fila['duracion'], $fila['director'], $fila['origen'], $fila['calificacion'], $fila['reparto'], $fila['productora'], $fila['genero'], $fila['sinopsis'], $fila['imagen']);
                 $Pelicula->id = $fila['id'];
                 $result = $Pelicula;
             }
