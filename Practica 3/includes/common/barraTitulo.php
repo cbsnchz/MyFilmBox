@@ -24,8 +24,20 @@
             $html = '<div id="user">
                         <div id="dropdown">
                             <button onclick="myFunction()" class="dropbtn"><i class="far fa-user-circle"></i></button>
-                            <div id="myDropdown" class="dropdown-content">
-                                <a href="logout.php">Logout</a>
+                            <div id="myDropdown" class="dropdown-content">';
+                                
+
+            if (isset($_SESSION["esAdmin"]) and $_SESSION["esAdmin"]){
+                $html .=  '<a href="usersControl.php">Administrar usuarios</a>';
+                $html .=  '<a href="añadirPelicula.php">Añadir pelicula</a>';
+                $html .=  '<a href="logout.php">Añadir producto</a>';              
+
+            }
+            
+            
+            
+            
+            $html.='    <a href="logout.php">Logout</a>
                             </div>    
                         </div>
                     </div>';

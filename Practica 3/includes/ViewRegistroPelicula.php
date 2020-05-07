@@ -8,8 +8,8 @@
     <body>
         <div class="container">
         <div class ="panel">
-            <h1> Registra una película </h1>
-
+            
+            <div class="tittleForm"><p> Registra una película </p></div>
             <div class ="contenedor">
                     
                 <div class ="input-contenedor">
@@ -103,7 +103,7 @@
 				-->
 				
                <!-- <button class="button"> Registrarse </button>-->
-                <input type="submit" onclick="return validaRegistroPelicula()" value="Registrar la pelicula" class="button" name="subir">
+                <input type="submit" onclick="return validaRegistroPelicula()" value="Enviar" class="button" name="subir">
                
             </div>
             
