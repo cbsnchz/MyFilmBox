@@ -57,7 +57,8 @@
                 </div>
 				 <div class ="input-contenedor">                 
                     
-					<select name="genero" id="genero_pelicula" placeholder="Genero: ">
+					<select name="genero" id="genero_pelicula">
+				      <option selected="true" disabled="disabled">Seleccione el género: </option>
 					  <option value="Accion">Accion</option>
 					  <option value="Ciencia Ficcion">Ciencia Ficcion</option>
 					  <option value="Drama">Drama</option>
@@ -76,6 +77,7 @@
 				<div class ="input-contenedor">                 
                     
 					<select name="calificacion" id="calificacion_pelicula" placeholder="Calificacion: ">
+					 <option selected="true" disabled="disabled">Seleccione la calificación: </option>
 					  <option value="Todas las edades">Todas las edades</option>
 					  <option value="+7">+7</option>
 					  <option value="+12">+12</option>
@@ -91,9 +93,17 @@
                     
                     <small> text-here </small>
                 </div>
+				<!--
+				  <div class ="input-contenedor">
+                   
+                    <input type="file" id="imagen_pelicula" name="imagen" accept=".jpg" placeholder="Seleccione la imagen: ">
+                    
+                    <small> text-here </small>
+                </div>
+				-->
 				
                <!-- <button class="button"> Registrarse </button>-->
-                <input type="submit" onclick="return validaRegistroPelicula()" value="Registrar la pelicula" class="button">
+                <input type="submit" onclick="return validaRegistroPelicula()" value="Registrar la pelicula" class="button" name="subir">
                
             </div>
             

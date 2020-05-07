@@ -21,27 +21,40 @@ include_once('includes/Comentarios.php');
 	<div class ="contenedor">
 		<?php
 			$id = $_GET["id"];
-			$p = new es\ucm\fdi\aw\Pelicula();
-			$p->imprimePelicula($id);
+			$app = es\ucm\fdi\aw\AplicacionPeliculas::getSingleton();
+			$conn = $app->conexionBd();
+			$sql = "SELECT * FROM pelicula WHERE id = '$id'";
+			$result = $conn->query($sql)
+			   or die ($conn->error. " en la línea ".(__LINE__-1));
+
+		if($result->num_rows > 0){
+			$fila = $result->fetch_assoc();
+			echo "<h2>".$fila["nombre"]."<h2>";
+			echo '<img class = "img_peli" src="'.$fila["imagen"].'">';
+			echo "<p> Año: ".$fila["anyo"]."<p>";
+			echo "<p> Duración: ".$fila["duracion"]." min <p>";
+			echo "<p> Director: ".$fila["director"]."<p>";
+			echo "<p> Reparto: ".$fila["reparto"]."<p>";
+			echo "<p> Productora: ".$fila["productora"]."<p>";
+			echo "<p> Genero: ".$fila["genero"]."<p>";
+			echo "<p> Sinopsis: ".$fila["sinopsis"]."<p>";
+			
+		}
 		?>
 	</div>
 </form>	
 <div class = "formulario">
 		<div class = "contenedor">
 		<h2> Comentarios </h2>
-		<div class = "textarea">
-			<form method="post">
-			<p class="msg"> Añade un nuevo comentario: <br/>
-			<input type="varchar" name="titulo_com" placeholder="Titulo"> </br>
-			<textarea name="comentario_com" placeholder="Escriba aqui su comentario" autofocus ></textarea></p>
-			<input class="button" type="submit" value="Publicar" style = "margin-top: 5px">
-			</form>
-		</div>
+		
+		<?php 	
+			$form = new es\ucm\fdi\aw\FormularioRegistroComentarios($id); $form->gestiona();
+		?>
+		
 		<div class="comments-container">
 		<ul id="comments-list" class="comments-list">
 		<?php
-			$id = $_GET["id"];
-			$c = new es\ucm\fdi\aw\Comentarios(null,null,null,null);
+			$c = new es\ucm\fdi\aw\Comentarios(null,null,null,null, null);
 			$comentarios = $c->imprimeComentarios($id);
 			foreach ($comentarios as &$value) {
 				$html = '
@@ -58,20 +71,19 @@ include_once('includes/Comentarios.php');
 							<div class="comment-avatar"><img src="img/img_avatar.png" alt=""></div>
 							<div class="comment-box">
 						<div class="comment-head">
-							<h6 class="comment-name"><a href="http://creaticode.com/blog">'.$value->getUsuario().'</a></h6>
+							<h6 class="comment-name"><a href="http://creaticode.com/blog">'.$value->usuario().'</a></h6>
 							<span>
-							"'.$value->getTitulo().'"</span>
+							"'.$value->titulo().'"</span>
 							<i class="fa fa-reply"></i>
 							<i class="fa fa-heart"></i>
 						</div>
-						<div class="comment-content">'.$value->getTexto().'</div>
+						<div class="comment-content">'.$value->texto().'</div>
 					</div>
 				</div>
 				</body>
 				</html>';
 				echo $html;
-				/**echo "<h3>".$value->getTitulo()." por: ".$value->getUsuario()." fecha: ".$value->getFecha()."<h3>";
-				echo "<p>".$value->getTexto()."<p>";*/
+				
 			}
     
 		?>
