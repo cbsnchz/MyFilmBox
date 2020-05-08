@@ -163,7 +163,7 @@ class Pelicula{
     {
         $app = AplicacionPeliculas::getSingleton();
         $conn = $app->conexionBd();
-        $sql = "SELECT * FROM Pelicula p";
+        $sql = "SELECT * FROM pelicula";
         $result = $conn->query($sql);
         if ($result) {
             if ( $result->num_rows > 0) {
@@ -182,20 +182,20 @@ class Pelicula{
                             ?>
                         <div class="contenido" class="main">
 							<div id="myBtnContainer">
-							 <button class="btn active" onclick="filterSelection(\'all \')"> Todos</button>
-							  <button class="btn" onclick="filterSelection(\'Accion \')"> Accion</button>
-							  <button class="btn" onclick="filterSelection(\'Adultas \')"> Adultas</button>
-							  <button class="btn" onclick="filterSelection(\'Aventuras \')"> Aveturas</button>
-							  <button class="btn" onclick="filterSelection(\'Belica \')"> Bélica</button>
-							  <button class="btn" onclick="filterSelection(\'Ciencia Ficcion \')"> Ciencia Ficcion</button>
-							  <button class="btn" onclick="filterSelection(\'Comedia \')"> Comedia</button>
-							  <button class="btn" onclick="filterSelection(\'Drama \')"> Drama</button>
-							  <button class="btn" onclick="filterSelection(\'Infantiles \')"> Infantiles</button>
-							  <button class="btn" onclick="filterSelection(\'Musical \')"> Musical</button>
-							  <button class="btn" onclick="filterSelection(\'Musical \')"> Oeste</button>
-							  <button class="btn" onclick="filterSelection(\'Romance \')"> Romance</button>
-							  <button class="btn" onclick="filterSelection(\'Terror \')"> Terror</button>
-							  <button class="btn" onclick="filterSelection(\'Thiller \')"> Thiller</button>
+							 <button class="btn active" onclick="filterSelection(\'all\')"> Todos</button>
+							  <button class="btn" onclick="filterSelection(\'Accion\')"> Accion</button>
+							  <button class="btn" onclick="filterSelection(\'Adultas\')"> Adultas</button>
+							  <button class="btn" onclick="filterSelection(\'Aventuras\')"> Aveturas</button>
+							  <button class="btn" onclick="filterSelection(\'Belica\')"> Bélica</button>
+							  <button class="btn" onclick="filterSelection(\'Ciencia Ficcion\')"> Ciencia Ficcion</button>
+							  <button class="btn" onclick="filterSelection(\'Comedia\')"> Comedia</button>
+							  <button class="btn" onclick="filterSelection(\'Drama\')"> Drama</button>
+							  <button class="btn" onclick="filterSelection(\'Infantiles\')"> Infantiles</button>
+							  <button class="btn" onclick="filterSelection(\'Musical\')"> Musical</button>
+							  <button class="btn" onclick="filterSelection(\'Musical\')"> Oeste</button>
+							  <button class="btn" onclick="filterSelection(\'Romance\')"> Romance</button>
+							  <button class="btn" onclick="filterSelection(\'Terror\')"> Terror</button>
+							  <button class="btn" onclick="filterSelection(\'Thiller\')"> Thiller</button>
 		  
 							</div>
 							
