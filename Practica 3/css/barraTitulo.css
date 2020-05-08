@@ -4,8 +4,8 @@
 }
 
 *{
-	margin-left:0px;
-	margin-top:0px;
+    margin-top: 0px;
+    margin-left: 0px;
 }
 
 div#titlebar {
@@ -192,7 +192,6 @@ a:hover{
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     transform-origin: top center;
-
 }
 
 
@@ -206,7 +205,7 @@ a:hover{
     text-decoration: none;
     display: block;
     font-weight: bold;
-    font-size:18px; 
+    font-size:15px; 
 }
 
 /* Change color of dropdown links on hover */
