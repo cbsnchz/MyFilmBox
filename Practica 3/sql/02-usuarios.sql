@@ -49,6 +49,7 @@ INSERT INTO `usuarios` (`id`, `nombreUsuario`, `nombre`, `password`, `rol`) VALU
 (7, 'profeadmin@gmail.com', 'Profe Admin', '$2y$10$ts4PkT3MF/0E/WON3vwbkO.TnilH0VClR3.SSloPIV/A/9/kooW6O', 'admin'),
 (8, 'profecritico@gmail.com', 'Profe Critico', '$2y$10$RvTS.X7.1Ym/6TEYerWTg.QwD74N7E62r3e1mx6dKtYW7DRAqgnje', 'critico'),
 (9, 'cinefilo1@gmail.com', 'Cinéfilo1', '$2y$10$a5KeNwoc70aloaU3mpX1nuKALnTUsR28ZsQK2eE6INRLexySRIFQi', 'user');
+(10, 'everdu@ucm.es', 'Eva Verdu', '$2y$10$XYImANoYLziecBWfnExDduqvH7BipteRX3PtCOoyxAB3uB8TLq.Hq', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -68,7 +69,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
