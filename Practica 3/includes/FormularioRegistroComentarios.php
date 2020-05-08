@@ -4,12 +4,13 @@ namespace es\ucm\fdi\aw;
 class FormularioRegistroComentarios extends Form
 {
 	private $num = 0;
-	
-    public function __construct($_id) {
+	private $usu;
+    public function __construct($_id, $_usu) {
 		$head = "MostrarPelicula.php?id=".$_id;
 		$opcionesPorDefecto = array( 'action' => $head );
         parent::__construct('formRegistroComentarios', $opcionesPorDefecto);
 		$this->num = $_id;
+		$this->usu = $_usu;
     }
     
     protected function generaCamposFormulario($datos)
@@ -36,7 +37,7 @@ class FormularioRegistroComentarios extends Form
 		$usuario = isset($datos['usuario']) ? $datos['usuario'] : null;
 		$comentario = isset($datos['comentario']) ? $datos['comentario'] : null;
         if($this->num != 0){
-			$Comentarios = Comentarios::crea($titulo, $usuario, $comentario, $this->num);
+			$Comentarios = Comentarios::crea($titulo, $this->usu, $comentario, $this->num);
 			if(!$Comentarios) echo 'No se ha podido crear el comentario';
 			return "MostrarPelicula.php?id=".$this->num;
 		}

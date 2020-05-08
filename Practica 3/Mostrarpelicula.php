@@ -52,9 +52,14 @@ include_once('includes/Comentarios.php');
 <div class = "formulario">
 		<div class = "contenedor">
 		<h2> Comentarios </h2>
-		
+		 
 		<?php 
-			$form = new es\ucm\fdi\aw\FormularioRegistroComentarios($id = $_GET["id"]); $form->gestiona();
+			if(!isset($_SESSION["login"])){
+				echo 'Logeate para escribir nuevos comentarios';
+			}
+			else{
+			$form = new es\ucm\fdi\aw\FormularioRegistroComentarios($id = $_GET["id"],$_SESSION['nombre']); $form->gestiona();
+			}
 		?>
 		
 		<div class="comments-container">
