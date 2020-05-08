@@ -184,6 +184,15 @@ ul {
 	color: #f49434;
 }
 
+.comment-box .comment-head fecha {
+	color: #595959;
+	font-size: 15px;
+	float: right;
+	margin-left: 14px;
+	margin-TOP: 5px;
+	justify-content:center
+}
+
 .comment-box .comment-name {
 	color: #283035;
 	font-size: 14px;
@@ -203,6 +212,7 @@ ul {
 	text-decoration: none;
 	justify-content:center
 }
+
 
 .comment-box .comment-content {
 	background: #FFF;
