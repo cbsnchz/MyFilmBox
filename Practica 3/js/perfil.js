@@ -1,5 +1,3 @@
-console.log("Pareser ser que funciona");
-
 document.getElementById("far fa-user-circle").addEventListener("click", myFunction);
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
