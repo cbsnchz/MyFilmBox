@@ -3,6 +3,11 @@
     font-family: OpenSans;
 }
 
+*{
+	margin-left:0px;
+	margin-top:0px;
+}
+
 div#titlebar {
 	height: 70px;
 	background-color: #3f3f3f;
