@@ -1,5 +1,4 @@
-
-
+<!DOCTYPE html>
 <html>
     <head> 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
@@ -10,38 +9,33 @@
     <body>
         <div class="container">
         <div class ="panel">
-            <h1> Añade un nuevo comentario </h1>
 
-            <div class ="contenedor">
-                    
+            <div class ="textarea">
+                <p class="msg"> Añade un nuevo comentario: <br/>   
                 <div class ="input-contenedor">
                     
-                    <input type="text" id="usuario_com" name="usuario" placeholder="Usuario">
-                    <small> text-here </small>
+                    <input type="varchar" id="usuario_com" name="usuario" placeholder="Usuario"> </br>
                 </div>
                                             
                             
                 <div class ="input-contenedor">
                     
-                    <input type="text" id="titulo_com" name="titulo" placeholder="Titulo ">
-                    <small> text-here </small>
+                    <input type="varchar" id="titulo_com" name="titulo" placeholder="Titulo"> </br>
                 </div>
             
                 <div class ="input-contenedor">
-                    
-                    <input type="text" id="comentario_com" name="comentario" placeholder="Comentario">                   
-                    <small> text-here </small>
+                    <textarea id="comentario_com" name="comentario" placeholder="Escriba aqui su comentario" autofocus ></textarea></p>
+				
                 </div>
 
                
-                <input type="submit" onclick="return validaComentario()" value="Registrar comentario" class="button" name="subir">
+                <input type="submit" onclick="return validaComentario()" value="Publicar" class="button" name="subir">
                
             </div>
             
 
         </div>
-        </div>
-    </body>
-    <script src="js/validaComentario.js"> </script>
-       
+		</div>
+	</body>
+<script src="js/validaComentario.js"> </script>
 </html>

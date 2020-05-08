@@ -4,27 +4,37 @@ namespace es\ucm\fdi\aw;
 class Usuario
 {
 
-    private function getButton($rol){
+    private function getButton($rol,$id){
         $html ='<div class="data3">';
         $html .='<div><h4 class="header_button"> Cambiar rol</h4>';
+        $botonUser = '<a href="actualizarRol.php?id='.$id.'&rol=user">
+                        <input type="submit" value="Usuario" class="button_users"></a>';
+
+        $botonCritico = '<a href="actualizarRol.php?id='.$id.'&rol=critico">
+                      <input type="submit" value="Critico" class="button_users"></a>';
+
+        $botonAdmin= '<a href="actualizarRol.php?id='.$id.'&rol=admin">
+                      <input type="submit" value="Admin" class="button_users"></a>';
+
+
         switch($rol){
 
             case "user":
-                $html.= '<input type="submit" value="admin" class="button_users">';
-                $html.= '<input type="submit" value="critico" class="button_users"></div>';
+                $html.= $botonCritico;
+                $html.= $botonAdmin;
                 break;
-            
+
             case "admin":
-                $html.= '<input type="submit" value="user" class="button_users">';
-                $html.= '<input type="submit" value="critico" class="button_users"></div>';
+                $html.= $botonCritico;
+                $html.= $botonUser;
                 break;
 
             case "critico":
-                $html.= '<input type="submit" value="admin" class="button_users">';
-                $html.= '<input type="submit" value="user" class="button_users"></div>';
+                $html.= $botonAdmin;
+                $html.= $botonUser;
                 break;
         }
-        $html .='</div>';
+        $html .='</div></div>';
         return $html;
     }
 
@@ -44,7 +54,7 @@ class Usuario
                             <meta charset="utf-8">
                             <title>Producto</title>
                         </head>
-        
+
                         <body>
                             <?php
                                 include("includes/common/cabecera.php");
@@ -53,11 +63,11 @@ class Usuario
 
                 while($fila = $result->fetch_assoc()){
                    $html .= '<div class="card_user">
-                                
+
                                 <div class="container_user_img">
                                  <img src="img/img_avatar.png" alt="Avatar">
                                 </div>
-                                <div class="container_user">   
+                                <div class="container_user">
                                     <div class="data">
                                         <h4 class="header_user"><b>'.$fila["nombreUsuario"].'</b></h4>
                                     </div>
@@ -66,7 +76,7 @@ class Usuario
                                         <p>Rol: '.$fila["rol"].'</p>
                                     </div>
                                 ';
-                                $html .= self::getButton($fila["rol"]); 
+                                $html .= self::getButton($fila["rol"], $fila["id"]);
                                 $html .=
                                 '
                                 </div>
@@ -75,7 +85,7 @@ class Usuario
                 $html.= '
                     </div>
                     </body>
-                    <?php	
+                    <?php
                         include("includes/common/pie.php");
                     ?>
                     </html>';
@@ -88,6 +98,27 @@ class Usuario
         }
         echo $html;
     }
+
+
+    public static function actualizaRol($id, $rol)
+    {
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $query='UPDATE Usuarios U SET rol="'.$rol.'" WHERE U.id='.$id;
+
+        if ( $conn->query($query) ) {
+            if ( $conn->affected_rows != 1) {
+                echo "Algo fue mal... No se ha podido camiar el Rol. :( ";
+                exit();
+            }
+        } else {
+            echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+
+        return true;
+    }
+
 
     public static function login($nombreUsuario, $password)
     {
@@ -119,7 +150,7 @@ class Usuario
         }
         return $result;
     }
-    
+
     public static function crea($nombreUsuario, $nombre, $password, $rol)
     {
         $user = self::buscaUsuario($nombreUsuario);
@@ -129,12 +160,12 @@ class Usuario
         $user = new Usuario($nombreUsuario, $nombre, self::hashPassword($password), $rol);
         return self::guarda($user);
     }
-    
+
     private static function hashPassword($password)
     {
         return password_hash($password, PASSWORD_DEFAULT);
     }
-    
+
     public static function guarda($usuario)
     {
         if ($usuario->id !== null) {
@@ -142,7 +173,7 @@ class Usuario
         }
         return self::inserta($usuario);
     }
-    
+
     private static function inserta($usuario)
     {
         $app = Aplicacion::getSingleton();
@@ -160,7 +191,7 @@ class Usuario
         }
         return $usuario;
     }
-    
+
     private static function actualiza($usuario)
     {
         $app = Aplicacion::getSingleton();
@@ -180,10 +211,10 @@ class Usuario
             echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
             exit();
         }
-        
+
         return $usuario;
     }
-    
+
     private $id;
 
     private $nombreUsuario;
@@ -211,6 +242,7 @@ class Usuario
     {
         return $this->rol;
     }
+
 
     public function nombreUsuario() //nick - correo
     {

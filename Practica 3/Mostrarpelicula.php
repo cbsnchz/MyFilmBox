@@ -31,14 +31,20 @@ include_once('includes/Comentarios.php');
 			$fila = $result->fetch_assoc();
 			echo "<h2>".$fila["nombre"]."<h2>";
 			echo '<img class = "img_peli" src="'.$fila["imagen"].'">';
-			echo "<p> Año: ".$fila["anyo"]."<p>";
-			echo "<p> Duración: ".$fila["duracion"]." min <p>";
-			echo "<p> Director: ".$fila["director"]."<p>";
-			echo "<p> Reparto: ".$fila["reparto"]."<p>";
-			echo "<p> Productora: ".$fila["productora"]."<p>";
-			echo "<p> Genero: ".$fila["genero"]."<p>";
-			echo "<p> Sinopsis: ".$fila["sinopsis"]."<p>";
-			
+			$html ='
+			<body>
+			<table>
+				<tr><td><p>Año</p></td><td>'.$fila["anyo"].'</td></tr>
+				<tr><td><p>Duración</p></td><td>'.$fila["duracion"].'</td></tr>
+				<tr><td><p>Director</p></td><td>'.$fila["director"].'</td></tr>
+				<tr><td><p>Reparto</p></td><td>'.$fila["reparto"].'</td></tr>
+				<tr><td><p>Productora</p></td><td>'.$fila["productora"].'</td></tr>
+				<tr><td><p>Genero</p></td><td>'.$fila["genero"].'</td></tr>
+				<tr><td><p>Sinopsis</p></td><td>'.$fila["sinopsis"].'</td></tr>
+			</table>
+			</body>
+			';
+			echo $html;
 		}
 		?>
 	</div>
@@ -47,14 +53,14 @@ include_once('includes/Comentarios.php');
 		<div class = "contenedor">
 		<h2> Comentarios </h2>
 		
-		<?php 	
-			$form = new es\ucm\fdi\aw\FormularioRegistroComentarios($id); $form->gestiona();
+		<?php 
+			$form = new es\ucm\fdi\aw\FormularioRegistroComentarios($id = $_GET["id"]); $form->gestiona();
 		?>
 		
 		<div class="comments-container">
 		<ul id="comments-list" class="comments-list">
 		<?php
-			$c = new es\ucm\fdi\aw\Comentarios(null,null,null,null, null);
+			$c = new es\ucm\fdi\aw\Comentarios(null,null,null,null,null);
 			$comentarios = $c->imprimeComentarios($id);
 			foreach ($comentarios as &$value) {
 				$html = '
@@ -76,6 +82,9 @@ include_once('includes/Comentarios.php');
 							"'.$value->titulo().'"</span>
 							<i class="fa fa-reply"></i>
 							<i class="fa fa-heart"></i>
+							<fecha>
+							'.$value->fecha().'
+							</fecha>
 						</div>
 						<div class="comment-content">'.$value->texto().'</div>
 					</div>
