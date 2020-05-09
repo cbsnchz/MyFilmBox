@@ -10,25 +10,13 @@ div#contenedor {
 div#contenido {
 	padding: 10px;
 	float: left;
-	min-height: 4000px;
+	min-height: calc(100vh - 13 em);
 	width: 100%;
 	background-color: white;
 	
+
 }
 
-div#contenido a {
-    font-family: OpenSans; 
-    font-size: 20px;
-    font-weight: 400;
-	letter-spacing: 0.4px;
-	word-spacing: 3px;
-	color: blue;
-	font-weight: normal;
-	font-style: normal;
-	font-variant: normal;
-    text-transform: none;
-    text-decoration: none;
-}
 
 legend {
 	color: #fff;
@@ -67,9 +55,80 @@ img{
 
 
 
-
 * {
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
  }
+ 
+ 
+.main {
+  max-width: 800px;
+  margin: auto;
+  font-family:OpenSans;
+}
+.main h3{
+	font-family:OpenSans;
+	font-weight:bold
+	
+}
+
+h3.main{
+	font-family:OpenSans;
+	font-weight:bold;
+}
+
+
+
+
+
+ 
+ .card-peli {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+  border-radius: 5px;
+  height: 415px;
+  width: 200px;
+  margin-bottom: 10px;
+  background-color:white;
+}
+
+.card-peli:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+  width: 200px;
+  height: 300px;
+}
+
+.container-card {
+  padding: 2px 16px;
+  background-color:white;
+  
+}
+
+h4{
+	font-size: 10 px;
+}
+
+.container-card a{
+	color:blue;
+}
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33%;
+  padding: 10px;
+}
+
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
