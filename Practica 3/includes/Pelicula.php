@@ -208,7 +208,7 @@ class Pelicula{
 									<div class = "card-peli">
 										<img src="'.$fila["imagen"].'"style="width:100%">
 										<div class = "container-card">
-											<h4> <a href="Mostrarpelicula.php?id='.$fila["id"].'">"'.$fila["nombre"].'"</a> </h4>
+											<h4> <a href="Mostrarpelicula.php?id='.$fila["id"].'">'.$fila["nombre"].'</a> </h4>
 											<h5> '.$fila["director"].'</h5>
 										</div>
 									</div>
@@ -239,28 +239,13 @@ class Pelicula{
 public static function ultimasPeliculas(){
 	$app = AplicacionPeliculas::getSingleton();
         $conn = $app->conexionBd();
-        $sql = "SELECT id, nombre, genero, imagen FROM pelicula WHERE id >= (SELECT MAX(id) FROM pelicula) - 2";
+        $sql = "SELECT id, nombre, genero, imagen FROM pelicula WHERE id >= (SELECT MAX(id) FROM pelicula) - 4";
         $result = $conn->query($sql);
         if ($result) {
             if ( $result->num_rows > 0) {
                 $html = '
-                    <html>
-                        <head>
-                            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-							<link rel="stylesheet" type="text/css" href="css/index.css" /> 
-							<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-							<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-							<meta charset="utf-8">
-                            
-                        </head>
-						
-						
-                        <body>
-						<div class = "contenedor">
-                            <?php
-                                include("includes/common/cabecera.php");
-                            ?>
-							<h3 class="main"> Añadido recientemente: </h3>
+                    
+							<h3> Añadido recientemente: </h3>
 							
 						
 							<div class="row">
@@ -269,33 +254,25 @@ public static function ultimasPeliculas(){
 
                 while($fila = $result->fetch_assoc()){
                    $html .= '
-							<div id="novedades" class="main">
+							
 
 						<div class="column">
 							<div class = "card-peli" >
 							
 									<img src="'.$fila["imagen"].'"style="width:100%">
 									<div class = "container-card">
-										<h4> <a href="Mostrarpelicula.php?id='.$fila["id"].'">"'.$fila["nombre"].'"</a> </h4>
+										<h4> <a href="Mostrarpelicula.php?id='.$fila["id"].'">'.$fila["nombre"].'</a> </h4>
 										
 									</div>
 								
 								
-							</div>
+							
 							</div>
 							</div>
 						';         
                                 
                 }
-                $html.= '			
-                    
-                    
-					</div>
-					</body>
-					<?php	
-                        include("includes/common/pie.php");
-                    ?>
-                    </html>';
+               
 
             }
             $result->free();

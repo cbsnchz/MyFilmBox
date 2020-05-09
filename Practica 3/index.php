@@ -26,7 +26,7 @@
 		<div class="w3-content w3-display-container" style="max-width:800px">
 			<img class="mySlides w3-animate-right" src="img/BienvenidoCompleto.jpg" style="width:100%">
 			<img class="mySlides w3-animate-right" src="img/EstrenoCompleto.jpg" style="width:100%">
-			<a href= "tienda.php"><img class="mySlides w3-animate-right" src="../img/bannerTienda.jpg" style="width:100%"></a>
+			<a href= "tienda.php"><img class="mySlides w3-animate-right" src="img/bannerTienda.jpg" style="width:100%"></a>
 			<div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
 				<div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
 				<div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
@@ -46,9 +46,12 @@
 			es\ucm\fdi\aw\Pelicula::ultimasPeliculas();
 			
 			?>
+			<div class="boton_plus">
+				<a href="catalogo.php"> <input type="submit" value="Ver más >>" class="button"></a>
+			</div>
 		</div>
 	
-		<div class="main">
+		<div class="ult_comentarios">
 			
 			<?php
 			$conn = new mysqli(BD_HOST, BD_USER, BD_PASS, BD_NAME_PELI);
@@ -59,19 +62,19 @@
 				
 				echo "<h3> Las últimas opiniones de nuestros usuarios: </h3>";
 				$conn->set_charset("utf8");
-				$sql = "SELECT id_post, usuario, titulo, Fecha, texto, id_pelicula FROM comentarios WHERE id_post >= (SELECT MAX(id_post) FROM comentarios) - 2";
+				$sql = "SELECT id_post, usuario, titulo, Fecha, texto, id_pelicula FROM comentarios WHERE id_post >= (SELECT MAX(id_post) FROM comentarios) - 10";
 				$result = $conn->query($sql)
 					   or die ($conn->error. " en la línea ".(LINE-1));
 
 				if($result->num_rows > 0){
-					while($fila = $result->fetch_assoc()){		
+					while($fila = $result->fetch_assoc()){	
 						$sql0 = "SELECT id, nombre, imagen FROM pelicula WHERE id = ".$fila["id_pelicula"];
 						$resultado = $conn->query($sql0)
 									or die ($conn->error. " en la línea ".(LINE-1));
-						echo '<div>';
-							echo $fila["usuario"].' - '.$resultado->fetch_assoc()["nombre"];
+						echo '<div class="comentario">';
+							echo '<p class="user_">'.$fila["usuario"].' - '.$resultado->fetch_assoc()["nombre"].'</p>';
 							echo '<br>';
-							echo $fila["texto"];
+							echo '<p class="text_c">'.$fila["texto"].'</p>';
 						echo '</div>';
 							
 					}
