@@ -1,7 +1,7 @@
 body{
     font-family: Arial, Helvetica, sans-serif; 
     margin:0; 
-    background: #e7e7e7;
+    background: #f1f1f1;
     background-size: cover;
     background-attachment: fixed;
 }
@@ -40,6 +40,7 @@ table, td, th {
 	background:#fff;
     margin-top: 15 px;
     padding: 3px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
  @media(min-width:758px){
      .formulario{
