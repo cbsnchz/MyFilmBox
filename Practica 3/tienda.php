@@ -2,7 +2,7 @@
 <html>
 <?php include_once('includes/config.php'); ?>
 <head>
-		<link rel="stylesheet" type="text/css" href="css/tienda.css" />
+		<link rel="stylesheet" type="text/css" href="css/catalogo.css" />
 		
 </head>
 <body>
