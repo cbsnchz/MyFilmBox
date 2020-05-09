@@ -235,4 +235,165 @@ class Pelicula{
         }
         echo $html;
     }
+	
+public static function ultimasPeliculas(){
+	$app = AplicacionPeliculas::getSingleton();
+        $conn = $app->conexionBd();
+        $sql = "SELECT id, nombre, genero, imagen FROM pelicula WHERE id >= (SELECT MAX(id) FROM pelicula) - 2";
+        $result = $conn->query($sql);
+        if ($result) {
+            if ( $result->num_rows > 0) {
+                $html = '
+                    <html>
+                        <head>
+                            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+							<link rel="stylesheet" type="text/css" href="css/index.css" /> 
+							<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+							<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+							<meta charset="utf-8">
+                            
+                        </head>
+						
+						
+                        <body>
+						<div class = "contenedor">
+                            <?php
+                                include("includes/common/cabecera.php");
+                            ?>
+							<h3 class="main"> Añadido recientemente: </h3>
+							
+						
+							<div class="row">
+							
+							';
+
+                while($fila = $result->fetch_assoc()){
+                   $html .= '
+							<div id="novedades" class="main">
+
+						<div class="column">
+							<div class = "card-peli" >
+							
+									<img src="'.$fila["imagen"].'"style="width:100%">
+									<div class = "container-card">
+										<h4> <a href="Mostrarpelicula.php?id='.$fila["id"].'">"'.$fila["nombre"].'"</a> </h4>
+										
+									</div>
+								
+								
+							</div>
+							</div>
+							</div>
+						';         
+                                
+                }
+                $html.= '			
+                    
+                    
+					</div>
+					</body>
+					<?php	
+                        include("includes/common/pie.php");
+                    ?>
+                    </html>';
+
+            }
+            $result->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        echo $html;
+	}
+	
+public static function buscarPeliculas(){
+		$app = AplicacionPeliculas::getSingleton();
+		$busqueda = $_POST['search'];
+        $conn = $app->conexionBd();
+        $sql = "SELECT id, nombre, imagen, director, genero FROM pelicula WHERE nombre LIKE '%$busqueda%'";
+        $result = $conn->query($sql);
+        if ($result) {
+            if ( $result->num_rows > 0) {
+                $html = '
+                    <html>
+                        <head>
+                            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+							<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+							<link rel="stylesheet" type="text/css" href="css/buscar.css" />
+							<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+							<meta charset="utf-8">
+                            
+                        </head>
+						
+						
+                        <body>
+						<div id = "contenedor">
+                            <?php
+                                include("includes/common/cabecera.php");
+                            ?>
+							<div id="contenido">
+							
+							
+						
+							
+							
+							';
+
+                while($fila = $result->fetch_assoc()){
+                   $html .= '
+							   <div class="column '.$fila["genero"].'">
+									<div class="content">
+										<div class = "card-peli">
+											<img src="'.$fila["imagen"].'"style="width:100%">
+											<div class = "container-card">
+												<h5> <a href="Mostrarpelicula.php?id='.$fila["id"].'">"'.$fila["nombre"].'"</a> </h5>
+												<h6> '.$fila["director"].'</h6>
+											</div>
+										</div>
+									</div>
+								</div>';         
+                                
+                }
+                $html.= '	
+							</div>
+							<?php	
+								include("includes/common/pie.php");
+							?>
+						</div>
+					</body>
+					
+                    </html>';
+
+            }
+			else{
+				$html = '<h3>No se han encontrado resultados para la búsqueda: "'.$busqueda.'"</h3>';
+				while($result->num_rows === 0){
+						$busqueda = substr($busqueda, 0, -1);
+						
+						$sql = "SELECT id, nombre, imagen, director,genero FROM pelicula WHERE nombre LIKE '%$busqueda%'";
+						$result = $conn->query($sql)
+							   or die ($conn->error. " en la línea ".(LINE-1));
+					}
+					$html.='<h3>Resultados relacionados: </h3>';
+					while($fila = $result->fetch_assoc()){
+						$html.='<div class="column '.$fila["genero"].'">
+									<div class="content">
+										<div class = "card-peli">
+											<img src="'.$fila["imagen"].'"style="width:100%">
+											<div class = "container-card">
+												<h5> <a href="Mostrarpelicula.php?id='.$fila["id"].'">"'.$fila["nombre"].'"</a> </h5>
+												<h6> '.$fila["director"].'</h6>
+											</div>
+										</div>
+									</div>
+								</div>';
+					}
+			}
+            $result->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+	echo $html;
+}
 }
