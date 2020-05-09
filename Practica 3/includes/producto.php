@@ -118,11 +118,11 @@ class Producto{
         return $this->categoria;
     }
 	
-	 public static function imprimeListaPeliculas()
+	 public static function imprimeListaProductos()
     {
-        $app = AplicacionPeliculas::getSingleton();
+        $app = AplicacionProductos::getSingleton();
         $conn = $app->conexionBd();
-        $sql = "SELECT * FROM Pelicula p";
+        $sql = "SELECT Id, nombre, imagen, categoria FROM producto";
         $result = $conn->query($sql);
         if ($result) {
             if ( $result->num_rows > 0) {
@@ -130,7 +130,7 @@ class Producto{
                     <html>
                         <head>
                             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-							<link rel="stylesheet" type="text/css" href="css/catalogo.css" />                            <meta charset="utf-8">
+							<link rel="stylesheet" type="text/css" href="css/tienda.css" />                            <meta charset="utf-8">
                             
                         </head>
 						
@@ -140,35 +140,26 @@ class Producto{
                                 include("includes/common/cabecera.php");
                             ?>
                         <div class="contenido" class="main">
-							<div id="myBtnContainer">
-							 <button class="btn active" onclick="filterSelection(\'all \')"> Todos</button>
-							  <button class="btn" onclick="filterSelection(\'Accion \')"> Accion</button>
-							  <button class="btn" onclick="filterSelection(\'Adultas \')"> Adultas</button>
-							  <button class="btn" onclick="filterSelection(\'Aventuras \')"> Aveturas</button>
-							  <button class="btn" onclick="filterSelection(\'Belica \')"> Bélica</button>
-							  <button class="btn" onclick="filterSelection(\'Ciencia Ficcion \')"> Ciencia Ficcion</button>
-							  <button class="btn" onclick="filterSelection(\'Comedia \')"> Comedia</button>
-							  <button class="btn" onclick="filterSelection(\'Drama \')"> Drama</button>
-							  <button class="btn" onclick="filterSelection(\'Infantiles \')"> Infantiles</button>
-							  <button class="btn" onclick="filterSelection(\'Musical \')"> Musical</button>
-							  <button class="btn" onclick="filterSelection(\'Musical \')"> Oeste</button>
-							  <button class="btn" onclick="filterSelection(\'Romance \')"> Romance</button>
-							  <button class="btn" onclick="filterSelection(\'Terror \')"> Terror</button>
-							  <button class="btn" onclick="filterSelection(\'Thiller \')"> Thiller</button>
-		  
+							<div class="myBtnContainer">
+							  <button  class="btn" onclick="filterSelection(\'all\')"> Todos</button>
+							  <button  class="btn"onclick="filterSelection(\'pelicula\')"> Peliculas</button>
+							  <button  class="btn"onclick="filterSelection(\'serie\')"> Serie</button>
+							  <button  class="btn" onclick="filterSelection(\'accesorio\')"> Accesorios</button>
+							  <button  class="btn" onclick="filterSelection(\'merchandicing\')"> Merchandising</button> 
+							  
 							</div>
 							
 							';
 
                 while($fila = $result->fetch_assoc()){
                    $html .= '
-				   <div class="column '.$fila["genero"].'">
+				   <div class="column '.$fila["categoria"].'">
 								<div class="content">
 									<div class = "card-peli">
 										<img src="'.$fila["imagen"].'"style="width:100%">
 										<div class = "container-card">
-											<h4> <a href="Mostrarpelicula.php?id="'.$fila["id"].'">"'.$fila["nombre"].'"</a> </h4>
-											<h5> '.$fila["director"].'</h5>
+											<h4> <a href="viewProducto.php?id="'.$fila["Id"].'">"'.$fila["nombre"].'"</a> </h4>
+	
 										</div>
 									</div>
 								</div>
