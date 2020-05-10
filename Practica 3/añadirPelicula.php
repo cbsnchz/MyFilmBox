@@ -2,6 +2,12 @@
 <?php
 require_once __DIR__.'/includes/config.php';
 
+
+if(!isset($_SESSION['esAdmin']) || !$_SESSION['esAdmin'] ){
+echo "No tienes permisos para acceder a esta página";
+exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html>
