@@ -89,7 +89,7 @@
 
                 <div class ="input-contenedor">
                    
-                    <input type="text" id="sinopsis_pelicula" name="sinopsis" placeholder="Sinopsis: ">
+                    <textarea type="text" id="sinopsis_pelicula" name="sinopsis" placeholder="  Sinopsis: "></textarea>
                     
                     <small> text-here </small>
                 </div>

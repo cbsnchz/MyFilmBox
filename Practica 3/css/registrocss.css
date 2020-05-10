@@ -1,3 +1,8 @@
+@font-face{
+    src: url(font/OpenSans/OpenSans-Light.ttf);
+    font-family: OpenSansLight;
+}
+
 body{
     font-family: Arial, Helvetica, sans-serif; 
     margin:0; 
@@ -15,15 +20,36 @@ body{
     padding: 3px; 
 }
 
+select{
+    width: 100%;
+    font-size:20px;
+    padding:10px;
+    border:none;
+    font-family: OpenSansLight;
+}
+
+textarea{
+    width: 99%;
+    font-size:20px; 
+    border:none;
+    font-family: OpenSansLight;
+    resize: vertical;
+}
+
+.input-contenedor:focus-within{
+    border-color: #F19532;
+}
+
  input{
      font-size:20px; 
      width:75%;
      padding:10px; 
-     border:none; 
+     border:none;
+     font-family: OpenSansLight; 
  }
 
  .tittleForm p{
-    font-family: OpenSans; 
+    font-family: OpenSansLight; 
     font-size: 30px;
     font-weight: 400;
 	letter-spacing: 0.6px;
@@ -40,7 +66,7 @@ body{
  }
 
  .alternative p{
-    font-family: OpenSans; 
+    font-family: OpenSansLight; 
     font-size: 12px;
     font-weight: 400;
 	letter-spacing: 0px;
@@ -52,7 +78,7 @@ body{
 
  }
   .alternative a{
-    font-family: OpenSans; 
+    font-family: OpenSansLight; 
     font-size: 12px;
     font-weight: 400;
 	letter-spacing: 0px;
@@ -74,7 +100,7 @@ body{
 .input-contenedor{
     margin-bottom: 15px; 
     border: 1px solid #aaa; 
-    
+    transition: border 0.2s ease-in;
 }
 
 .i.fa-check-circle, i.fa-exclamation-circle{
@@ -110,6 +136,7 @@ body{
    color: #e74c3c;
    visibility:visible; 
    margin-left: 3%;
+   display: block;
 }
 .input-contenedor-err i.fa-check-circle{
     visibility: hidden;    
