@@ -38,7 +38,7 @@
 				      <option selected="true" disabled="disabled">Seleccione una categoria: </option>
 					  <option value="pelicula">Pelicula</option>
 					  <option value="serie">Serie</option>
-					  <option value="accesorio">Drama</option>
+					  <option value="accesorio">Accesorio</option>
 					  <option value="merchandicing">Merchandising</option>
 					
 					</select>
