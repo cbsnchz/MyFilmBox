@@ -11,12 +11,15 @@
 <body>
  <?php
 	include('includes/common/cabecera.php');
- ?>
 
+
+
+
+?>
 <form class="formularioo">	
 	<div class ="contenedor">
 		<?php
-			$id = $_GET["Id"];
+			$id = $_GET["id"];
 			$conn = new mysqli(BD_HOST, BD_USER, BD_PASS, BD_NAME_PRODUCTO);
 			if ($conn->connect_error) {
 				die("Fallo de conexion con la base de datos: " . $conn->connect_error);

@@ -158,7 +158,7 @@ class Producto{
 									<div class = "card-peli">
 										<img src="'.$fila["imagen"].'"style="width:100%">
 										<div class = "container-card">
-											<h4> <a href="viewProducto.php?id="'.$fila["Id"].'">"'.$fila["nombre"].'"</a> </h4>
+											<h4> <a href="viewProducto.php?id='.$fila["Id"].'">'.$fila["nombre"].'</a> </h4>
 	
 										</div>
 									</div>

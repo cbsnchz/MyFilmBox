@@ -2,6 +2,13 @@
 <?php
 require_once __DIR__.'/includes/config.php';
 
+if(!isset($_SESSION['login']) || !$_SESSION['login'] ){
+	echo "Registrate para acceder";
+	exit;
+
+}
+
+
 ?>
 <!DOCTYPE html>
 <html>

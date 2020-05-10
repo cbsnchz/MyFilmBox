@@ -1,7 +1,7 @@
 <html>
     <head>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-        <link rel="stylesheet" type="text/css" href="css/logincss.css" />
+        <link rel="stylesheet" type="text/css" href="css/registrocss.css" />
         <meta charset="utf-8">
 
 
@@ -15,7 +15,8 @@
                     
         <div class="container">    
 		<div class="panel">
-            <h1> Finalizar pago </h1>
+        <div class="tittleForm"><p> Finalizar pago</p></div>
+            
             
             <div class ="contenedor">
 				<div class ="input-contenedor">	
@@ -44,7 +45,6 @@
 				  <input type="submit" onclick="return validaPago()" value="Pago" class="button">
          
                 
-
             </div>      
         
         </div>
