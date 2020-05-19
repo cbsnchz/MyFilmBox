@@ -1,0 +1,19 @@
+
+#sidebar-left {
+	padding: 10px;
+	float: left;
+	width: 15%;
+	height: 600px;
+	background-color: #dddddd;
+}
+
+div#sidebar-left a, div#sidebar-left a:visited {
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+} 
+
+div#sidebar-left a:hover {
+	color: black;
+	text-decoration: underline;
+} 

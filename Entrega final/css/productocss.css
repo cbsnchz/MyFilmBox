@@ -1,0 +1,61 @@
+p{
+    font-family: Arial, Helvetica, sans-serif; 
+	font: 40px;
+}
+
+
+ h2{
+     text-align:right;
+     color: #4c2b2c; 
+     font: 40px; 
+ }
+ 
+ .contenedor {
+    width: 84%;
+    padding: 35px; 
+	margin-top: 10px;
+    margin-left: 5%;
+	margin-bottom: 10px;
+    overflow: auto;
+}
+.formularioo{
+	background:#fff;
+    margin-top: 15 px;
+    padding: 3px;
+    
+}
+ @media(min-width:758px){
+     .formulario{
+         margin:auto; 
+         width:90%; 
+         margin-top:30px;
+         border-radius:10px;
+         margin-bottom: 30px;
+        
+     }
+ }
+ 
+.tituloo {
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 40px; 
+}
+
+ .img_producto{
+	display: inline-block;
+	width: 20%;
+	height: 20%;
+	border:3px solid #4c2b2c;
+	border-radius:10px;
+	float: left;
+	margin-right: 20px;
+	
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif; 
+    margin:0; 
+    background-size: cover;
+    background-attachment: fixed;
+}
