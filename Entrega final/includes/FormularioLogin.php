@@ -13,14 +13,8 @@ class FormularioLogin extends Form
         if ($datos) {
             $nombreUsuario = isset($datos['nombreUsuario']) ? $datos['nombreUsuario'] : $nombreUsuario;
         }
-
-        if( !isset($_SESSION['badLogin']) or !$_SESSION['badLogin']){
-            $html = file_get_contents("includes/ViewLogin.php");
-        }           
-        else{
-            $html = file_get_contents("includes/ViewLoginFailed.php");
-            unset($_SESSION['badLogin']);
-        }
+        $html = file_get_contents("includes/ViewLogin.php");
+    
         return $html;
     }
 

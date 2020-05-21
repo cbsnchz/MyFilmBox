@@ -19,18 +19,19 @@
                     <input type="text" name="userName" id="userName_login" placeholder="Introduzca e-mail">
                     <i class="fas fa-exclamation-circle" id="lUmal"></i>
                     <i class="fas fa-check-circle" id="lUok"></i>
-                    <small id="lUerr">Mensaje de error </small>
+                   
                 </div>
                       
-                <div class ="input-contenedor">
+                <div class ="input-contenedor" id="prueba">
 					<i class="fas fa-key icon"></i>
                     <input type="password" name="password" id="password_login" placeholder="********">
                     <i class="fas fa-check-circle" id="lPok"></i>
                     <i class="fas fa-exclamation-circle" id="lPmal"></i>
-                    <small id="lPerr">Mensaje de error </small>
+                   
                 </div>
+                <small id="lerr">Usuario o contraseña incorrectos. Revisa los datos. </small>
               
-                <input type="submit" onclick="return validaLogin()" value="Log In" class="button">
+                <input type="submit" onclick="return valida()" value="Log In" class="button">
                 
                 <div class="alternative">
                     <p> ¿No tienes una cuenta? <a class="link" href="registro.php"> Regístrate</a></p>

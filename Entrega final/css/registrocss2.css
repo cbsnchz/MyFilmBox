@@ -182,7 +182,10 @@ textarea{
 
 
 
-
+.input-contenedor-err{
+    margin-bottom: 15px; 
+    border: 2px solid rgb(223, 88, 88); 
+ }
 
  @media(min-width:758px){
      .panel{
