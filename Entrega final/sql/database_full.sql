@@ -77,27 +77,30 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
+
 CREATE TABLE `comentarios` (
   `id_post` int(11) NOT NULL,
   `usuario` varchar(20) NOT NULL,
   `titulo` varchar(50) NOT NULL,
   `Fecha` date NOT NULL DEFAULT current_timestamp(),
   `texto` text NOT NULL,
-  `id_pelicula` int(11) NOT NULL
+  `id_pelicula` int(11) NOT NULL,
+  `valoracion` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `comentarios`
 --
 
-INSERT INTO `comentarios` (`id_post`, `usuario`, `titulo`, `Fecha`, `texto`, `id_pelicula`) VALUES
-(1, 'Eva Verdú', 'Me encanta', '2020-04-22', 'Esta película es muy entretenida e interesante, las canciones son preciosas.\r\nDisney siempre trae lo mejor. ', 4),
-(2, 'Christian', 'Horrenda', '2020-05-01', 'No me gusta nada, la vi muy aburrida.', 4),
-(3, 'Carlos Gonzalez', 'Simple', '2020-05-08', 'Una película simple, pero que merece, en sus modestos términos, recibir un \'bien hecho\' por parte del espectador. \r\n', 2),
-(4, 'David Férnandez', 'Mágica', '2020-05-08', 'Dafoe y un grupo de perros de trineo protagonizan esta conmovedora nueva película de acción basada en una historia real .Las secuencias en las que Togo aparece como un cachorro travieso son pura magia.', 2),
-(5, 'Jose Luis Martínez', 'Fenomenal para los niños', '2020-05-08', 'Impresionantes efectos especiales, una buena interpretación de Dafoe y una increíble cantidad de adorables perritos elevan la película por encima de otras ofertas recientes de Disney+.', 2),
-(6, 'Elisa Garat', 'Fascinante y divertida', '2020-05-08', 'A pesar del paso de los años esta película sigue siendo icónica. Me encanta.', 1),
-(7, 'Eva Verdu', 'Me ha sorprendido', '2020-05-08', 'Sinister me ha sorprendido gratamente, terror psicológico del bueno.', 3);
+INSERT INTO `comentarios` (`id_post`, `usuario`, `titulo`, `Fecha`, `texto`, `id_pelicula`, `valoracion`) VALUES
+(1, 'Eva Verdú', 'Me encanta', '2020-04-22', 'Esta película es muy entretenida e interesante, las canciones son preciosas.\r\nDisney siempre trae lo mejor. ', 4, 5),
+(2, 'Christian', 'Horrenda', '2020-05-01', 'No me gusta nada, la vi muy aburrida.', 4, 2),
+(3, 'Carlos Gonzalez', 'Simple', '2020-05-08', 'Una película simple, pero que merece, en sus modestos términos, recibir un \'bien hecho\' por parte del espectador. \r\n', 2, 3),
+(4, 'David Férnandez', 'Mágica', '2020-05-08', 'Dafoe y un grupo de perros de trineo protagonizan esta conmovedora nueva película de acción basada en una historia real .Las secuencias en las que Togo aparece como un cachorro travieso son pura magia.', 2, 5),
+(5, 'Jose Luis Martínez', 'Fenomenal para los niños', '2020-05-08', 'Impresionantes efectos especiales, una buena interpretación de Dafoe y una increíble cantidad de adorables perritos elevan la película por encima de otras ofertas recientes de Disney+.', 2, 5),
+(6, 'Elisa Garat', 'Fascinante y divertida', '2020-05-08', 'A pesar del paso de los años esta película sigue siendo icónica. Me encanta.', 1, 5),
+(7, 'Eva Verdu', 'Me ha sorprendido', '2020-05-08', 'Sinister me ha sorprendido gratamente, terror psicológico del bueno.', 3, 4),
+(8, 'Eva Verdu', 'Genial', '2020-05-23', 'Otra maravillosa película de Marvel. La recomiendo mucho.', 43, 4);
 
 -- --------------------------------------------------------
 
@@ -194,7 +197,7 @@ ALTER TABLE `pelicula`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `pelicula`

@@ -28,6 +28,7 @@ include_once('includes/Comentarios.php');
 			   or die ($conn->error. " en la línea ".(__LINE__-1));
 
 		if($result->num_rows > 0){
+			$comentarios = new es\ucm\fdi\aw\Comentarios(null,null,null,null,null,null);
 			$fila = $result->fetch_assoc();
 			echo "<h2>".$fila["nombre"]."<h2>";
 			echo '<img class = "img_peli" src="'.$fila["imagen"].'">';
@@ -41,6 +42,7 @@ include_once('includes/Comentarios.php');
 				<tr><td><p>Productora</p></td><td>'.$fila["productora"].'</td></tr>
 				<tr><td><p>Genero</p></td><td>'.$fila["genero"].'</td></tr>
 				<tr><td><p>Sinopsis</p></td><td>'.$fila["sinopsis"].'</td></tr>
+				<tr><td><p>Valoracion</p></td><td>'.$comentarios->imprimeMedia($id).'</td></tr>
 			</table>
 			</body>
 			';
@@ -55,7 +57,7 @@ include_once('includes/Comentarios.php');
 		 
 		<?php 
 			if(!isset($_SESSION["login"])){
-				echo 'Logeate para escribir nuevos comentarios';
+				echo '<log><a id="ini" href = "login.php" >Inicia sesión</a> para escribir nuevos comentarios</log>';
 			}
 			else{
 			$form = new es\ucm\fdi\aw\FormularioRegistroComentarios($id = $_GET["id"],$_SESSION['nombre']); $form->gestiona();
@@ -65,7 +67,7 @@ include_once('includes/Comentarios.php');
 		<div class="comments-container">
 		<ul id="comments-list" class="comments-list">
 		<?php
-			$c = new es\ucm\fdi\aw\Comentarios(null,null,null,null,null);
+			$c = new es\ucm\fdi\aw\Comentarios(null,null,null,null,null,null);
 			$comentarios = $c->imprimeComentarios($id);
 			foreach ($comentarios as &$value) {
 				$html = '
@@ -82,14 +84,16 @@ include_once('includes/Comentarios.php');
 							<div class="comment-avatar"><img src="img/img_avatar.png" alt=""></div>
 							<div class="comment-box">
 						<div class="comment-head">
-							<h6 class="comment-name"><a href="http://creaticode.com/blog">'.$value->usuario().'</a></h6>
+							<h6 class="comment-name"><a>'.$value->usuario().'</a></h6>
 							<span>
 							"'.$value->titulo().'"</span>
-							<i class="fa fa-reply"></i>
-							<i class="fa fa-heart"></i>
+							<i>
+							'.$value->estrellas().'★
+							</i>
 							<fecha>
 							'.$value->fecha().'
 							</fecha>
+							
 						</div>
 						<div class="comment-content">'.$value->texto().'</div>
 					</div>
