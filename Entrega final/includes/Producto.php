@@ -185,4 +185,52 @@ class Producto{
         }
         echo $html;
     }
+	public static function ultimosProductos(){
+	$app = AplicacionProductos::getSingleton();
+        $conn = $app->conexionBd();
+        $sql = "SELECT Id, nombre, imagen FROM producto WHERE id >= (SELECT MAX(id) FROM producto) - 4";
+        $result = $conn->query($sql);
+        if ($result) {
+            if ( $result->num_rows > 0) {
+                $html = '
+                    
+							<h3> Últimos productos: </h3>
+							
+						
+							<div class="row">
+							
+							';
+
+                while($fila = $result->fetch_assoc()){
+                   $html .= '
+							
+
+						<div class="column">
+							<div class = "card-peli" >
+							
+									<img src="'.$fila["imagen"].'"style="width:100%">
+									<div class = "container-card">
+										<h4> <a href="viewProducto.php?id='.$fila["Id"].'">'.$fila["nombre"].'</a> </h4>
+										
+									</div>
+								
+								
+							
+							</div>
+							</div>
+						';         
+                                
+                }
+               
+
+            }
+            $result->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        echo $html;
+	}
+
 }
+
