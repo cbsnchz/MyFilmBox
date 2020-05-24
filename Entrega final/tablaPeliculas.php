@@ -5,15 +5,17 @@
     if(!isset($_SESSION['esAdmin']) || !$_SESSION['esAdmin'] ){
         echo "No tienes permisos para acceder a esta página";
         exit;
-    }
-    require_once __DIR__.'/includes/config.php';
+	}
+
+
+    
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Control de usuarios</title>
+		<title>Administración de películas</title>
 	</head>
 
 	<body>
@@ -23,7 +25,21 @@
 
 			<div id="contenido">
 				<?php 
-					es\ucm\fdi\aw\Usuario::imprimelistaUsuarios();
+					if (isset($_REQUEST["page"]))
+						$page = $_REQUEST["page"];
+					else
+						$page=0;
+
+					if (isset($_REQUEST["numregs"]))
+						$numregs = $_REQUEST["numregs"];
+					else
+						$numregs=20;
+					if (isset($_REQUEST["sort"]))
+						$sort = $_REQUEST["sort"];
+					else
+						$sort="nombre";
+
+					es\ucm\fdi\aw\Pelicula::imprimeTablaPeliculas($page,$numregs, $sort);
 				?>
 			</div>
 
