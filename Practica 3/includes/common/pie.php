@@ -13,7 +13,7 @@
 		<div class="infoParticipantes">
 			<p> Participantes y contacto</p>
 			<p><a href="mailto:elcorreoquequieres@correo.com">Teresa Fernandez</a></p>
-			<p><a href="mailto:jalgua01@ucm.es">Jesús Alguacil </a></p>
+			<p><a href="mailto:jalgua01@ucm.es">Jesús Alguacil</a></p>
 			<p><a href="mailto:elcorreoquequieres@correo.com">Eva Verdú</a></p>
 			<p><a href="mailto:davfer13@ucm.es">David Fernández</a></p>
 			<p><a href="mailto:chbalbas@ucm.es">Christian Balbás</a></p>

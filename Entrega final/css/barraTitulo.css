@@ -39,7 +39,7 @@ div#tittle {
 div#access{
     display: flex;
     align-items: center;
-    margin-left: 10%;
+    margin-left: 25%;
     font-family: OpenSans; 
     font-size: 20px;
 	letter-spacing: 0.4px;
