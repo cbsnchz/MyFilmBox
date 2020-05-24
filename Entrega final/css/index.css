@@ -3,22 +3,19 @@
     font-family: OpenSans;
 }
 div#contenedor {
-	width: 100%;
-	margin: auto;
-	background-color: #ffffff;
-	margin-top: 0px;
+    width: 100%;
+    margin: auto;
+    background-color: #f3f3f3;
+    margin-top: 0px;
 }
 
 
 div#contenido {
 	padding: 10px;
-	float: left;
+	float: right;
 	min-height: calc(100vh - 13 em);
-	width: 100%;
+	width: 80%;
 	background-color:#f3f3f3;
-	
-	
-
 }
 
 a{

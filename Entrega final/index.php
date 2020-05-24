@@ -19,7 +19,8 @@
 
 <div id="contenedor">
 	<?php
-		include('includes/common/cabecera.php');				
+		include('includes/common/cabecera.php');	
+		include('includes/common/sidebarIzq.php');	
 	?>
 	
 	<div id="contenido">
@@ -50,49 +51,26 @@
 				<a href="catalogo.php"> <input type="submit" value="Ver más >>" class="button"></a>
 			</div>
 		</div>
-	
-		<div class="ult_comentarios">
-			
-			<?php
-			$conn = new mysqli(BD_HOST, BD_USER, BD_PASS, BD_NAME_PELI);
-			if ($conn->connect_error) {
-			   die("Fallo de conexion con la base de datos: " . $conn->connect_error);
-			}
-			else{
-				
-				echo "<h3> Las últimas opiniones de nuestros usuarios: </h3>";
-				$conn->set_charset("utf8");
-				$sql = "SELECT id_post, usuario, titulo, Fecha, texto, id_pelicula FROM comentarios WHERE id_post >= (SELECT MAX(id_post) FROM comentarios) - 10";
-				$result = $conn->query($sql)
-					   or die ($conn->error. " en la línea ".(LINE-1));
 
-				if($result->num_rows > 0){
-					while($fila = $result->fetch_assoc()){	
-						$sql0 = "SELECT id, nombre, imagen FROM pelicula WHERE id = ".$fila["id_pelicula"];
-						$resultado = $conn->query($sql0)
-									or die ($conn->error. " en la línea ".(LINE-1));
-						echo '<div class="comentario">';
-							echo '<p class="user_">'.$fila["usuario"].' - '.$resultado->fetch_assoc()["nombre"].'</p>';
-							echo '<br>';
-							echo '<p class="text_c">'.$fila["texto"].'</p>';
-						echo '</div>';
-							
-					}
-				}
-			}
-			$conn -> close(); 
+		<div class="novedades">
+		
+			<?php
+			
+			es\ucm\fdi\aw\Producto::ultimosProductos();
 			
 			?>
-			
-			
-		</div>	
+
+			<div class="boton_plus">
+				<a href="tienda.php"> <input type="submit" value="Ver más >>" class="button"></a>
+			</div>
+		</div>
 		
 	</div>
-
+</div>
 	
 </div> <!-- Fin del contenedor -->
 </body>
 <?php			
 		include('includes/common/pie.php');
-	?>
+?>
 </html>
