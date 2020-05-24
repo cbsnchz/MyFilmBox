@@ -1,7 +1,7 @@
 <html>
     <head> 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-        <link rel="stylesheet" type="text/css" href="css/registrocss.css" />
+        <link rel="stylesheet" type="text/css" href="css/formularioPelicula.css" />
         <title>Sing up</title>
     </head>
 
@@ -74,7 +74,7 @@
 					</select>
 					<small> text-here </small>
                 </div>
-				<div class ="input-contenedor">                 
+				<div class ="input-contenedor" id="calificacion">                 
                     
 					<select name="calificacion" id="calificacion_pelicula" placeholder="Calificacion: ">
 					 <option selected="true" disabled="disabled">Seleccione la calificación: </option>
@@ -87,7 +87,7 @@
 					<small> text-here </small>
                 </div>
 
-                <div class ="input-contenedor">
+                <div class ="input-contenedor" id="sinopsis">
                    
                     <textarea type="text" id="sinopsis_pelicula" name="sinopsis" placeholder="  Sinopsis: "></textarea>
                     
