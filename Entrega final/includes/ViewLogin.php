@@ -4,7 +4,7 @@
         <link rel="stylesheet" type="text/css" href="css/registrocss2.css" />
         <meta charset="utf-8">
         <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-	    <script type="text/javascript" src="js/validaRegistro2.js"></script>
+	    <script type="text/javascript" src="js/validaLogin.js"></script>
         <title>Log In</title>
     </head>
     
@@ -30,6 +30,7 @@
                    
                 </div>
                 <small id="lerr">Usuario o contraseña incorrectos. Revisa los datos. </small>
+                
               
                 <input type="submit" onclick="return valida()" value="Log In" class="button">
                 

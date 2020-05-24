@@ -164,7 +164,7 @@ textarea{
  }
 
 
-#lUmal, #lPmal, #lPerr {
+ #rNmal,#rMailmal,#rP1mal,#rP2mal,#lUmal, #lPmal, #lPerr {
     color: #e74c3c;
     position:relative;
     float:right;
@@ -172,7 +172,7 @@ textarea{
     margin-right: 1%;   
 }
 
-#lUok, #lPok, #lPok{
+#rNok,#rMailok,#rP1ok,#rP2ok,#lUok, #lPok, #lPok{
     color: #2ecc71;
     position:relative;
     float:right;

@@ -1,52 +1,77 @@
-
-          
 const user = document.getElementById('userName_login');
 const password = document.getElementById('password_login');
-var match; 
 
 
+$(document).ready(function(){
+  $("#lUok").hide();  //Login User bien
+  $("#lUmal").hide(); //Login User mal
+  $("#lPok").hide();  //Login password bien
+  $("#lPmal").hide(); //Login password mal
+  $("#lerr").hide();  //Login msg contraseña /
 
-function validaLogin(){
-   
-    var valid = true; 
-    if(user.value.trim()==""){
-        setErrorFor(user, "E-mail no válido.")
-        valid= false; 
+
+  $("#userName_login").keyup(function(){
+
+    if(isEmail($("#userName_login").val())){
+      $("#lUok").show();
+      $("#lUmal").hide();
+      $("#lUerr").hide();
+      setNeutralFor(document.getElementById('userName_login'));
+    } 
+    else{
+      $("#lUmal").show();
+      $("#lUok").hide();
+      setErrorFor(document.getElementById('userName_login'));
+      valid = false; 
     }
+  });
 
-    else if(!isEmail(user.value.trim())){
-        setErrorFor(user, "E-mail no válido.")
-        valid= false; 
-    }
-    
-    
-    if(password.value.trim()==""){
-        setErrorFor(password, "Debes rellenar el campo contraseña")
-        valid= false; 
-    }
+  $("#password_login").change(function(){
 
-    return valid; 
+    var url="loginMatch.php?user=" + $("#userName_login").val() + "&pswd=" + $("#password_login").val() ;
+    $.get(url, match);       
+
+  });
+});
+
+function valida(){
+  return valid;
 }
 
-function setErrorFor(input, message){
-    const formControl = input.parentElement; 
-    const small = formControl.querySelector('small');
 
-    small.innerText =message;
+function isEmail(email) {
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email);
+}
 
-    formControl.className = 'input-contenedor-err';
+function match(data, status) {
+  if (data.trim()=='mal'){
+    $("#lUok").hide();  //Login User bien
+    $("#lUmal").show(); //Login User mal
+    $("#lPok").hide();  //Login password bien
+    $("#lPmal").show(); //Login password mal
+    $("#lerr").show(); 
+    setErrorFor(document.getElementById('userName_login'));
+    setErrorFor(document.getElementById('password_login'));
+    
+  }
+  else{
+    valid=true;
+  }
+
+}
+
+function setErrorFor(input){
+  const formControl = input.parentElement; 
+  formControl.className = 'input-contenedor-err';
 }
 
 function setSuccessFor(input){
-    const formControl = input.parentElement; 
-    formControl.className = 'input-contenedor-ok';
+  const formControl = input.parentElement; 
+  formControl.className = 'input-contenedor-ok';
 }
 
-function isEmail(email){ 
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
+function setNeutralFor(input){
+  const formControl = input.parentElement; 
+  formControl.className = 'input-contenedor';
 }
-
-        
-        
-        
