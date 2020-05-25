@@ -23,7 +23,11 @@
 
 			<div id="contenido">
 				<?php 
-					es\ucm\fdi\aw\Usuario::imprimelistaUsuarios();
+				if (isset($_REQUEST["page"]))
+					$page = $_REQUEST["page"];
+				else
+					$page=0;
+				es\ucm\fdi\aw\Usuario::imprimelistaUsuarios($page);
 				?>
 			</div>
 

@@ -11,7 +11,7 @@ class Usuario
                         <input type="submit" value="Usuario" class="button_users"></a>';
 
         $botonCritico = '<a href="actualizarRol.php?id='.$id.'&rol=critico">
-                      <input type="submit" value="Critico" class="button_users"></a>';
+                      <input type="submit" value="Crítico" class="button_users"></a>';
 
         $botonAdmin= '<a href="actualizarRol.php?id='.$id.'&rol=admin">
                       <input type="submit" value="Admin" class="button_users"></a>';
@@ -37,9 +37,21 @@ class Usuario
         $html .='</div></div>';
         return $html;
     }
+    private static function getButtonPages($numPagsTot){
+        $i=0; 
+        $html='<div id="buttons">';
+        for ($i=0; $i<$numPagsTot; $i++){
+            $j =$i+1;
+            $html .= "<a href='usersControl.php?page=$i'><button class='buttonpage'>$j</button>";
+        }
+        $html.='</div>';
+        return $html;
 
-    public static function imprimelistaUsuarios()
+    }
+
+    public static function imprimelistaUsuarios($page)
     {
+        $numregs =7;
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
         $sql = "SELECT * FROM Usuarios U";
@@ -61,7 +73,11 @@ class Usuario
                             ?>
                         <div class="usersControl_panel">';
 
+                    $conta =0;  //Numero de peliculas que llevas impresas
+                    $i = $numregs * $page;
+                    $j= ($i+$numregs);
                 while($fila = $result->fetch_assoc()){
+                   if ($i<=$conta && $conta<$j){
                    $html .= '<div class="card_user">
 
                                 <div class="container_user_img">
@@ -77,14 +93,20 @@ class Usuario
                                     </div>
                                 ';
                                 $html .= self::getButton($fila["rol"], $fila["id"]);
-                                $html .=
-                                '
+                                $html .='<div class="data4"><a href="eliminaUsuario.php?id='.$fila["id"].'"><i class="far fa-trash-alt"></i></a></div>
                                 </div>
                             </div>';
-                }
-                $html.= '
-                    </div>
-                    </body>
+                            $i++;
+                        }
+                        $conta++;
+                    }
+                    
+                    $numPagsTot = $conta/$numregs;
+                    
+                    $html.= self::getButtonPages($numPagsTot);
+                    $html.= '</div>';
+
+                $html.=' </body>
                     <?php
                         include("includes/common/pie.php");
                     ?>
@@ -172,6 +194,20 @@ class Usuario
             return self::actualiza($usuario);
         }
         return self::inserta($usuario);
+    }
+
+    public static function eliminaUsuario($id){
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+       
+     
+        $sql = "DELETE FROM Usuarios WHERE id = '$id'";
+            
+        $result = $conn->query($sql)
+							   or die ($conn->error. " en la línea ".(LINE-1));
+        return true;
+
+
     }
 
     private static function inserta($usuario)

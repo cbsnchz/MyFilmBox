@@ -15,7 +15,7 @@
 			else{
 				
 				$conn->set_charset("utf8");
-				$sql = "SELECT id_post, usuario, titulo, Fecha, texto, id_pelicula FROM comentarios WHERE id_post >= (SELECT MAX(id_post) FROM comentarios) - 6";
+				$sql = "SELECT id_post, usuario, titulo, Fecha, texto, id_pelicula FROM comentarios ORDER BY id_post DESC LIMIT 7";
 				$result = $conn->query($sql)
 					   or die ($conn->error. " en la línea ".(LINE-1));
 

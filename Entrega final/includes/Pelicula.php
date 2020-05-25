@@ -239,7 +239,7 @@ class Pelicula{
 public static function ultimasPeliculas(){
 	$app = AplicacionPeliculas::getSingleton();
         $conn = $app->conexionBd();
-        $sql = "SELECT id, nombre, genero, imagen FROM pelicula WHERE id >= (SELECT MAX(id) FROM pelicula) - 4";
+        $sql = "SELECT id, nombre, genero, imagen FROM pelicula ORDER BY id DESC LIMIT 10";
         $result = $conn->query($sql);
         if ($result) {
             if ( $result->num_rows > 0) {
