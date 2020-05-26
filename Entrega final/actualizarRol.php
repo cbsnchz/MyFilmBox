@@ -25,9 +25,11 @@
 
 			<div id="contenido">
 				<?php
+          if(isset($_REQUEST["page"]))  $page = ($_REQUEST["page"]);
+          else $page = 0;
 
 					if (es\ucm\fdi\aw\Usuario::actualizaRol($_REQUEST["id"], $_REQUEST["rol"])){
-            es\ucm\fdi\aw\Usuario::imprimelistaUsuarios();
+            es\ucm\fdi\aw\Usuario::imprimelistaUsuarios($page);
           }
           else{
             echo "No se pudo actualizar el usuario.";

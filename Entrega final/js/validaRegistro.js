@@ -21,45 +21,31 @@ $(document).ready(function(){
       $("#rNok").show();      
       $("#rNmal").hide();    
       setNeutralFor(document.getElementById('name_reg'));
-      valid=true;
+      valid1 = true;
     } 
     else{
       $("#rNok").hide();      
       $("#rNmal").show(); 
       setErrorFor(document.getElementById('name_reg'));
-      valid = false; 
+      valid1 = false; 
     }
   });
 
   
-  $("#username_reg").keyup(function(){
-
-    if(isEmail($("#username_reg").val())){
-      $("#rMailok").show();      
-      $("#rMailmal").hide();    
-      setNeutralFor(document.getElementById('username_reg'));
-      valid=true;
-    } 
-    else{
-      $("#rMailok").hide();      
-      $("#rMailmal").show(); 
-      setErrorFor(document.getElementById('username_reg'));
-      valid = false; 
-    }
-  });
+ 
 
   $("#password1_reg").keyup(function(){
     if($("#password1_reg").val().length > 4){
       $("#rP1ok").show();      
       $("#rP1mal").hide();    
       setNeutralFor(document.getElementById('password1_reg'));
-      valid=true;
+      valid2 = true;
     } 
     else{
       $("#rP1ok").hide();      
       $("#rP1mal").show(); 
       setErrorFor(document.getElementById('password1_reg'));
-      valid = false; 
+      valid2 = false; 
     }
   });
 
@@ -70,27 +56,40 @@ $(document).ready(function(){
       $("#rP2mal").hide();  
       $("#rErrp").hide();  
       setNeutralFor(document.getElementById('password2_reg'));
-      valid=true;
+      valid3=true;
     } 
     else{
       $("#rP2ok").hide();      
       $("#rP2mal").show(); 
       $("#rErrp").show();
       setErrorFor(document.getElementById('password2_reg'));
-      valid = false; 
+      valid3 = false; 
     }
   });
 
   $("#username_reg").change(function(){
 
-    var url="usuarioDisponible.php?username=" +  $("#username_reg").val();
-    $.get(url, match);       
+    if(isEmail($("#username_reg").val())){
+      $("#rMailok").show();      
+      $("#rMailmal").hide();    
+      setNeutralFor(document.getElementById('username_reg'));
+      var url="usuarioDisponible.php?username=" +  $("#username_reg").val();
+      $.get(url, match);  
+    } 
+    else{
+      $("#rMailok").hide();      
+      $("#rMailmal").show(); 
+      setErrorFor(document.getElementById('username_reg'));
+      valid4 = false; 
+    }
+
+        
   });
 
 });
 
 function validaRegister(){
-  return valid;
+  return valid1 && valid2 && valid3 && valid4;
 }
 
 
@@ -100,20 +99,19 @@ function isEmail(email) {
 }
 
 function match(data, status) {
-console.log(data);
   if (data.trim()=='mal'){
     $("#rMailok").hide();      
     $("#rMailmal").show(); 
     $("#rErrMail").show(); 
     setErrorFor(document.getElementById('username_reg'));
-    valid = false;     
+    valid4= false;     
   }
   else{
     $("#rMailok").show();      
     $("#rMailmal").hide(); 
     $("#rErrMail").hide(); 
     setNeutralFor(document.getElementById('username_reg'));
-    valid=true;
+    valid4=true;
   }
 
 }

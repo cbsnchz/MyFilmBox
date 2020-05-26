@@ -4,16 +4,16 @@ namespace es\ucm\fdi\aw;
 class Usuario
 {
 
-    private function getButton($rol,$id){
+    private function getButton($rol,$id,$page){
         $html ='<div class="data3">';
         $html .='<div><h4 class="header_button"> Cambiar rol</h4>';
-        $botonUser = '<a href="actualizarRol.php?id='.$id.'&rol=user">
+        $botonUser = '<a href="actualizarRol.php?id='.$id.'&rol=user&page='.$page.'">
                         <input type="submit" value="Usuario" class="button_users"></a>';
 
-        $botonCritico = '<a href="actualizarRol.php?id='.$id.'&rol=critico">
+        $botonCritico = '<a href="actualizarRol.php?id='.$id.'&rol=critico&page='.$page.'">
                       <input type="submit" value="Crítico" class="button_users"></a>';
 
-        $botonAdmin= '<a href="actualizarRol.php?id='.$id.'&rol=admin">
+        $botonAdmin= '<a href="actualizarRol.php?id='.$id.'&rol=admin&page='.$page.'">
                       <input type="submit" value="Admin" class="button_users"></a>';
 
 
@@ -92,7 +92,7 @@ class Usuario
                                         <p>Rol: '.$fila["rol"].'</p>
                                     </div>
                                 ';
-                                $html .= self::getButton($fila["rol"], $fila["id"]);
+                                $html .= self::getButton($fila["rol"], $fila["id"], $page);
                                 $html .='<div class="data4"><a href="eliminaUsuario.php?id='.$fila["id"].'"><i class="far fa-trash-alt"></i></a></div>
                                 </div>
                             </div>';
@@ -179,7 +179,7 @@ class Usuario
         if ($user) {
             return false;
         }
-        $user = new Usuario($nombreUsuario, $nombre, self::hashPassword($password), $rol);
+        $user = new Usuario( $nombreUsuario, $nombre, self::hashPassword($password), $rol);
         return self::guarda($user);
     }
 
@@ -190,10 +190,10 @@ class Usuario
 
     public static function guarda($usuario)
     {
-        if ($usuario->id !== null) {
-            return self::actualiza($usuario);
+        if ($usuario->id == null) {
+            return self::inserta($usuario);
         }
-        return self::inserta($usuario);
+           
     }
 
     public static function eliminaUsuario($id){
