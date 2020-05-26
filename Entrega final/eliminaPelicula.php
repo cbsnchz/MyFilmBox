@@ -12,7 +12,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Cambiar rol</title>
+		<title>Eliminar producto</title>
 	</head>
 
 	<body>
@@ -21,9 +21,23 @@
 
 			<div id="contenido">
 				<?php
+				if (isset($_REQUEST["page"]))
+					$page = $_REQUEST["page"];
+				else
+					$page=0;
+
+				if (isset($_REQUEST["numregs"]))
+					$numregs = $_REQUEST["numregs"];
+				else
+					$numregs=20;
+
+				if (isset($_REQUEST["sort"]))
+					$sort = $_REQUEST["sort"];
+				else
+					$sort="nombre"; 
 
 					if (es\ucm\fdi\aw\Pelicula::eliminaPelicula($_REQUEST["id"])){
-                        es\ucm\fdi\aw\Pelicula::imprimeTablaPeliculas();
+                        es\ucm\fdi\aw\Pelicula::imprimeTablaPeliculas($page,$numregs,$sort);
                     }
                     else{
                         echo "No se pudo eliminar la pelicula.";

@@ -78,10 +78,9 @@ div#tablaPeliculas_panel a{
   color : #f19532;
   margin:1%;
 }
-.fa-sort{
+.fa-sort {
   color : #3f3f3f77;
-  margin-left: 2%;
-  height: 2px;
+  margin-top: 7px;;
 }
 
 .fa-forward {

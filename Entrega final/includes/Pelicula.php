@@ -246,34 +246,21 @@ public static function ultimasPeliculas(){
                 $html = '
                     
 							<h3> Añadido recientemente: </h3>
-							
-						
-							<div class="row">
-							
-							';
+							<div class="row">';
 
                 while($fila = $result->fetch_assoc()){
                    $html .= '
-							
-
 						<div class="column">
 							<div class = "card-peli" >
 							
 									<img src="'.$fila["imagen"].'"style="width:100%">
 									<div class = "container-card">
 										<h4> <a href="Mostrarpelicula.php?id='.$fila["id"].'">'.$fila["nombre"].'</a> </h4>
-										
 									</div>
-								
-								
-							
 							</div>
-							</div>
-						';         
+							</div>';         
                                 
                 }
-               
-
             }
             $result->free();
         } else {
@@ -308,12 +295,7 @@ public static function buscarPeliculas(){
                             <?php
                                 include("includes/common/cabecera.php");
                             ?>
-							<div id="contenido">
-							
-							
-						
-							
-							
+							<div id="contenido">							
 							';
 
                 while($fila = $result->fetch_assoc()){
@@ -402,13 +384,13 @@ public static function buscarPeliculas(){
                         <div id="tablaPeliculas_panel">
                             <table> 
                                 <tr> 
-                                    <th>Nombre <a href="tablaPeliculas.php?page='.$page.'&numregs='.$numregs.'&sort=nombre"><i class="fas fa-sort"></i></a></th>
-                                    <th>Año <a href="tablaPeliculas.php?page='.$page.'&numregs='.$numregs.'&sort=anyo"><i class="fas fa-sort"></i></a></th>
-                                    <th>Duración <a href="tablaPeliculas.php?page='.$page.'&numregs='.$numregs.'&sort=duracion"><i class="fas fa-sort"></a></i></th>
-                                    <th>Director <a href="tablaPeliculas.php?page='.$page.'&numregs='.$numregs.'&sort=director"><i class="fas fa-sort"></i></a></th>
-                                    <th>Origen <a href="tablaPeliculas.php?page='.$page.'&numregs='.$numregs.'&sort=origen"><i class="fas fa-sort"></i></a></th>
-                                    <th>Clasificación <a href="tablaPeliculas.php?page='.$page.'&numregs='.$numregs.'&sort=calificacion"><i class="fas fa-sort"></i></a></th>
-                                    <th>Reparto <a href="tablaPeliculas.php?page='.$page.'&numregs='.$numregs.'&sort=reparto"><i class="fas fa-sort"></i></a></th>
+                                    <th>Nombre <a href="tablaPeliculas.php?page='.$page.'&numregs='.$numregs.'&sort=nombre"><i class="fas fa-sort" style="float:right"></i></a></th>
+                                    <th>Año <a href="tablaPeliculas.php?page='.$page.'&numregs='.$numregs.'&sort=anyo"><i class="fas fa-sort" style="float:right"></i></a></th>
+                                    <th>Duración <a href="tablaPeliculas.php?page='.$page.'&numregs='.$numregs.'&sort=duracion"><i class="fas fa-sort" style="float:right"></a></i></th>
+                                    <th>Director <a href="tablaPeliculas.php?page='.$page.'&numregs='.$numregs.'&sort=director"><i class="fas fa-sort" style="float:right"></i></a></th>
+                                    <th>Origen <a href="tablaPeliculas.php?page='.$page.'&numregs='.$numregs.'&sort=origen"><i class="fas fa-sort" style="float:right"></i></a></th>
+                                    <th>Clasificación <a href="tablaPeliculas.php?page='.$page.'&numregs='.$numregs.'&sort=calificacion"><i class="fas fa-sort" style="float:right"></i></a></th>
+                                    <th>Reparto <a href="tablaPeliculas.php?page='.$page.'&numregs='.$numregs.'&sort=reparto"><i class="fas fa-sort" style="float:right"></i></a></th>
                                     <th>Acciones </h>
                                 </tr>';
                     $conta =0;  //Numero de peliculas que llevas impresas
@@ -426,7 +408,7 @@ public static function buscarPeliculas(){
                                 <td>'.$fila["calificacion"].'</td>
                                 <td>'.substr($fila["reparto"],0,20).'...</td>
                                 <td> <a href="Mostrarpelicula.php?id='.$fila["id"].'"><i class="fas fa-eye"></a></i>
-                                <a href="eliminaPelicula.php?id='.$fila["id"].'"><i class="far fa-trash-alt"></a></i>
+                                <a href="eliminaPelicula.php?id='.$fila["id"].'&page='.$page.'&numregs='.$numregs.'&sort='.$sort.'"><i class="far fa-trash-alt"></a></i>
                                 </td>   
                                 
                             </tr>';

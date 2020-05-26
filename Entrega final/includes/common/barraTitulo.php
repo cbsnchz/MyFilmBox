@@ -29,8 +29,8 @@
 
             if (isset($_SESSION["esAdmin"]) and $_SESSION["esAdmin"]){
                 $html .=  '<a href="usersControl.php">Administrar usuarios</a>';
-                $html .=  '<a href="añadirPelicula.php">Añadir pelicula</a>';
-                $html .=  '<a href="añadirProducto.php">Añadir producto</a>';              
+                $html .=  '<a href="tablaPeliculas.php">Administrar peliculas</a>';
+                $html .=  '<a href="tablaProductos.php">Administrar productos</a>';              
 
             }
             

@@ -188,7 +188,7 @@ class Producto{
 	public static function ultimosProductos(){
 	$app = AplicacionProductos::getSingleton();
         $conn = $app->conexionBd();
-        $sql = "SELECT Id, nombre, imagen FROM producto WHERE id >= (SELECT MAX(id) FROM producto) - 4";
+        $sql = "SELECT Id, nombre, imagen FROM producto ORDER BY id DESC LIMIT 5";
         $result = $conn->query($sql);
         if ($result) {
             if ( $result->num_rows > 0) {
@@ -231,6 +231,163 @@ class Producto{
         }
         echo $html;
 	}
+
+
+    public static function eliminaProducto($id){
+        $app = AplicacionProductos::getSingleton();
+        $conn = $app->conexionBd();
+       
+     
+            $sql = "DELETE FROM producto WHERE Id = '$id'";
+            
+            $result = $conn->query($sql)
+							   or die ($conn->error. " en la línea ".(LINE-1));
+            return true;
+
+
+    }
+
+    public static function imprimeTablaProductos($page,$numregs,$sort)
+    {  
+        if($numregs=="todo") $numregs =10000;
+        $nextPage;
+        $prevPage;
+        $app = AplicacionProductos::getSingleton();
+        $conn = $app->conexionBd();
+        $sql = "SELECT * FROM producto ORDER BY ".$sort;
+        $result = $conn->query($sql);
+        if ($result) {
+            if ( $result->num_rows > 0) {
+                $html = '
+                    <html>
+                        <head>
+                            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+                            <link rel="stylesheet" type="text/css" href="css/tablaPeliculas.css" />
+                            <meta charset="utf-8">
+                            <title>Producto</title>
+                        </head>
+
+                        <body>
+                            <?php
+                                include("includes/common/cabecera.php");
+                            ?>
+                        <div id="tablaPeliculas_panel">
+                            <table> 
+                                <tr> 
+                                    <th>Nombre <a href="tablaProductos.php?page='.$page.'&numregs='.$numregs.'&sort=nombre"><i class="fas fa-sort" style="float:right"></i></a></th>
+                                    <th>Precio <a href="tablaProductos.php?page='.$page.'&numregs='.$numregs.'&sort=precio"><i class="fas fa-sort" style="float:right"></i></a></th>
+                                    <th>Descripción <a href="tablaProductos.php?page='.$page.'&numregs='.$numregs.'&sort=descripcion"><i class="fas fa-sort" style="float:right"></a></i></th>
+                                    <th>Categoría <a href="tablaProductos.php?page='.$page.'&numregs='.$numregs.'&sort=categoria"><i class="fas fa-sort" style="float:right"></i></a></th>
+                                    <th>Acciones</h>
+                                </tr>';
+                    $conta =0;  //Numero de productos que llevas impresas
+                    $i = $numregs * $page;
+                    $j= ($i+$numregs);
+                    while($fila = $result->fetch_assoc()){
+                        if($i<=$conta && $conta<$j){
+                        $html .='
+                            <tr>
+                                <td>'.$fila["nombre"].'</td>
+                                <td>'.$fila["precio"].' €</td>
+                                <td>'.substr($fila["descripcion"],0,100).'....</td>
+                                <td>'.$fila["categoria"].'</td>
+                                <td> <a href="viewProducto.php?id='.$fila["Id"].'"><i class="fas fa-eye"></a></i>
+                                <a href="eliminaProducto.php?id='.$fila["Id"].'&page='.$page.'&numregs='.$numregs.'&sort='.$sort.'"><i class="far fa-trash-alt"></a></i>
+                                </td>   
+                                
+                            </tr>';
+                            $i++;
+                        }
+                        $conta++;
+                        
+                    }
+                    
+                    $numPagsTot = $conta/$numregs;
+                    if ($conta%$numregs==0) $numPagsTot++;
+
+                    if($page+1<$numPagsTot) {
+                        $nextPage = $page+1;
+                        $max=false;
+                    }
+                    else{
+                        $nextPage = $page;
+                        $max=true;
+                    }
+                    if($page>0){
+                        $prevPage=$page-1;
+                        $min=false;
+                    }
+                    else{
+                        $prevPage = $page;
+                        $min=true;
+                    }
+
+
+                $html.= ' </table></div>
+                        <div id="controlTable"> ';
+                
+                
+
+                if(!$min && !$max){
+                    $html.='
+                        <div id="prev"><a href="tablaProductos.php?page='.$prevPage.'&numregs='.$numregs.'"><i class="fas fa-backward"></a></i></div>
+                        <div id="numregs"><a href="tablaProductos.php?page=0&numregs=10">10</a>
+                                          <a href="tablaProductos.php?page=0&numregs=20">20</a> 
+                                          <a href="tablaProductos.php?page=0&numregs=30">30</a> 
+                                          <a href="tablaProductos.php?page=0&numregs=50">50</a> 
+                                          <a href="tablaProductos.php?page=0&numregs=todo">Todo</a></div>
+                        <div id="next"><a href="tablaProductos.php?page='.$nextPage.'&numregs='.$numregs.'"><i class="fas fa-forward"></a></i></div>
+                        ';
+                }                        
+                else if($min && !$max){
+                    $html.='
+                        <div id="numregs"><a href="tablaProductos.php?page=0&numregs=10">10</a>
+                                          <a href="tablaProductos.php?page=0&numregs=20">20</a> 
+                                          <a href="tablaProductos.php?page=0&numregs=30">30</a> 
+                                          <a href="tablaProductos.php?page=0&numregs=50">50</a> 
+                                          <a href="tablaProductos.php?page=0&numregs=todo">Todo</a></div>
+                        <div id="next"><a href="tablaProductos.php?page='.$nextPage.'&numregs='.$numregs.'"><i class="fas fa-forward"></a></i></div>';
+                }
+                else if(!$min && $max){
+                    $html.='
+                        <div id="prev"><a href="tablaProductos.php?page='.$prevPage.'&numregs='.$numregs.'"><i class="fas fa-backward"></a></i></div>
+                        
+                        <div id="numregs"><a href="tablaProductos.php?page=0&numregs=10">10</a>
+                                          <a href="tablaProductos.php?page=0&numregs=20">20</a> 
+                                          <a href="tablaProductos.php?page=0&numregs=30">30</a> 
+                                          <a href="tablaProductos.php?page=0&numregs=50">50</a> 
+                                          <a href=""tablaProductos.php?page=0&numregs=todo">Todo</a></div>';
+                }
+                else{
+                    $html.='
+                    <div id="numregs"><a href="tablaProductos.php?page=0&numregs=10">10</a>
+                    <a href="tablaProductos.php?page=0&numregs=20">20</a> 
+                    <a href="tablaProductos.php?page=0&numregs=30">30</a> 
+                    <a href="tablaProductos.php?page=0&numregs=50">50</a> 
+                    <a href=""tablaProductos.php?page=0&numregs=todo">Todo</a></div>';
+
+                }
+               
+                $html.='
+                    
+                </div>
+                
+                    <div id="contButton">  <input type="submit" value="Añadir producto" class="button"> </div>
+                        
+                    </body>
+                    <?php
+                        include("includes/common/pie.php");
+                    ?>
+                    </html>';
+
+            }
+            $result->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        echo $html;
+    }
 
 }
 
