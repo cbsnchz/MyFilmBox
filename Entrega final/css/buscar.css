@@ -5,6 +5,9 @@
 	padding: 0px;
 }
 
+div#contenedor {
+min-height: 65vh;
+}
 
 body {
   background-color: #f1f1f1;
