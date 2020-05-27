@@ -17,6 +17,7 @@
 		
 		<div id="contenido" class="main">			
 			<?php
+				
 				es\ucm\fdi\aw\Pelicula::buscarPeliculas();
 			?>		
 		</div>
@@ -27,5 +28,5 @@
 	</div> 
 
 </body>
-<script type="text/javascript" src="js/catalogo.js"></script>
+<script type="text/javascript" src="js/search.js"></script>
 </html>
