@@ -18,14 +18,23 @@ class Producto{
 
 				if($result->num_rows > 0){
 					$fila = $result->fetch_assoc();
-					echo "<p class=\"tituloo\">".$fila["nombre"]."<p>";
-					echo '<img class = "img_producto" src="'.$fila["imagen"].'">';
-					echo "<p> Precio: ".$fila["precio"]."<p>";
-					echo "<p> Descripcion: ".$fila["descripcion"]." <p>";
+					echo "<h2>".$fila["nombre"]."<h2>";
+				    echo '<img class = "img_producto" src="'.$fila["imagen"].'">';
+				$html ='
+				    <body>
+				    <table>
+					    <tr><td><p>Precio: </p></td><td>'.$fila["precio"]. ' € </td></tr>
+					    <tr><td><p>Descripción: </p></td><td>' .$fila["descripcion"].'</td></tr>
+				    </table>
+				    </body>
+				';
+				echo $html;
+
+				
 				}
 			}
 		$conn -> close();
-		echo '<button  class="button" onclick=""> <a href="pago.php?precio='.$fila["precio"].'">Comprar</a></button>';
+		echo '<a href="pago.php?precio='.$fila["precio"].'" button class="button button1">Comprar</a>';
 	}
 	
 	public static function buscaProducto($nombre)
