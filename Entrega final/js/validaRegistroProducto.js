@@ -5,7 +5,7 @@ const categoria = document.getElementById('categoria_pelicula');
 
 
 
-function validaRegistroPelicula(){
+function validaRegistroProducto(){
    var valid = true; 
     if( nombre.value.trim() === ""){
         setErrorFor(nombre, "Introduzca el nombre del producto.")
