@@ -444,7 +444,7 @@ class Producto{
                     
                 </div>
                 
-                    <div id="contButton">  <input type="submit" value="Añadir producto" class="button"> </div>
+                    <div id="contButton"> <button class="button" onclick=window.location.href="añadirProducto.php">Añadir Producto</button> </div>
                         
                     </body>
                     <?php

@@ -506,7 +506,7 @@ public static function buscarPeliculas(){
                     
                 </div>
                 
-                    <div id="contButton">  <input type="submit" value="Añadir pelicula" class="button"> </div>
+                    <div id="contButton">  <button class="button" onclick=window.location.href="añadirPelicula.php">Añadir Pelicula</button> </div>
                         
                     </body>
                     <?php
