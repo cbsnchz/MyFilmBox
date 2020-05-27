@@ -16,7 +16,7 @@
 
 
 ?>
-<form class="formularioo">	
+<form class="formulario">	
 	<div class ="contenedor">
 		<?php
 			$id = $_GET["id"];
