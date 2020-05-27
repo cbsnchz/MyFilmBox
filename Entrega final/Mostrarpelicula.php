@@ -35,14 +35,18 @@ include_once('includes/Comentarios.php');
 				echo '<log><a id="ini" href = "login.php" >Inicia sesión</a> para escribir nuevos comentarios</log>';
 			}
 			else{
-			$form = new es\ucm\fdi\aw\FormularioRegistroComentarios($id = $_GET["id"],$_SESSION['nombre']); $form->gestiona();
+				$critico = 0;
+				if(isset($_SESSION["esCritico"])&& $_SESSION["esCritico"]){
+					$critico = 1;
+				}
+				$form = new es\ucm\fdi\aw\FormularioRegistroComentarios($id = $_GET["id"],$_SESSION['nombre'],$critico); $form->gestiona();
 			}
 		?>
 		
 		<div class="comments-container">
 		<ul id="comments-list" class="comments-list">
 		<?php
-			$c = new es\ucm\fdi\aw\Comentarios(null,null,null,null,null,null);
+			$c = new es\ucm\fdi\aw\Comentarios(null,null,null,null,null,null,null);
 			$comentarios = $c->imprimeComentarios($id);
 			foreach ($comentarios as &$value) {
 				$html = '
@@ -68,6 +72,11 @@ include_once('includes/Comentarios.php');
 							<fecha>
 							'.$value->fecha().'
 							</fecha>
+							<span>';
+							if($value->is_critic() == 1){
+								$html .=  '<h6 class="comment-name by-critic"> </h6>';
+							}
+							$html .= '</span>
 							
 						</div>
 						<div class="comment-content">'.$value->texto().'</div>

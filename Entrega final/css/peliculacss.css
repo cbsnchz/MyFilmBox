@@ -123,7 +123,7 @@ input[type="radio"]:checked ~ label {
  .textarea{
 	vertical-align: top;
 	width:102%;
-	height:267px;
+	height:270px;
 	border:solid 1px #F3E9DC;
 	border-radius:3px;
 	background-color:#F3E9DC;			
