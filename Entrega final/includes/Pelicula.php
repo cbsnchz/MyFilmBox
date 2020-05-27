@@ -4,24 +4,32 @@ namespace es\ucm\fdi\aw;
 class Pelicula{
 	
 	public function imprimePelicula($id){
-		$app = AplicacionPeliculas::getSingleton();
-		$conn = $app->conexionBd();
-		$sql = "SELECT * FROM pelicula WHERE id = '$id'";
-		$result = $conn->query($sql)
+			$app = AplicacionPeliculas::getSingleton();
+			$conn = $app->conexionBd();
+			$sql = "SELECT * FROM pelicula WHERE id = '$id'";
+			$result = $conn->query($sql)
 			   or die ($conn->error. " en la línea ".(__LINE__-1));
 
 		if($result->num_rows > 0){
+			$comentarios = new Comentarios(null,null,null,null,null,null);
 			$fila = $result->fetch_assoc();
 			echo "<h2>".$fila["nombre"]."<h2>";
 			echo '<img class = "img_peli" src="'.$fila["imagen"].'">';
-			echo "<p> Año: ".$fila["anyo"]."<p>";
-			echo "<p> Duración: ".$fila["duracion"]." min <p>";
-			echo "<p> Director: ".$fila["director"]."<p>";
-			echo "<p> Reparto: ".$fila["reparto"]."<p>";
-			echo "<p> Productora: ".$fila["productora"]."<p>";
-			echo "<p> Genero: ".$fila["genero"]."<p>";
-			echo "<p> Sinopsis: ".$fila["sinopsis"]."<p>";
-			
+			$html ='
+			<body>
+			<table>
+				<tr><td><p>Año</p></td><td>'.$fila["anyo"].'</td></tr>
+				<tr><td><p>Duración</p></td><td>'.$fila["duracion"].'</td></tr>
+				<tr><td><p>Director</p></td><td>'.$fila["director"].'</td></tr>
+				<tr><td><p>Reparto</p></td><td>'.$fila["reparto"].'</td></tr>
+				<tr><td><p>Productora</p></td><td>'.$fila["productora"].'</td></tr>
+				<tr><td><p>Genero</p></td><td>'.$fila["genero"].'</td></tr>
+				<tr><td><p>Sinopsis</p></td><td>'.$fila["sinopsis"].'</td></tr>
+				<tr><td><p>Valoracion</p></td><td>'.$comentarios->imprimeMedia($id).'</td></tr>
+			</table>
+			</body>
+			';
+			echo $html;
 		}
 	}
 	
@@ -96,7 +104,7 @@ class Pelicula{
 	private $origen;
 	private $imagen;
 
-    private function __construct($titulo, $anyo, $duracion,$director, $origen, $calificacion, $reparto,  $productora, $genero, $sinopsis, $imagen)
+    public function __construct($titulo, $anyo, $duracion,$director, $origen, $calificacion, $reparto,  $productora, $genero, $sinopsis, $imagen)
     {
         $this->titulo= $titulo;
         $this->anyo = $anyo;

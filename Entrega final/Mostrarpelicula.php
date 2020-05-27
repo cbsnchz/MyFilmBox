@@ -21,33 +21,8 @@ include_once('includes/Comentarios.php');
 	<div class ="contenedor">
 		<?php
 			$id = $_GET["id"];
-			$app = es\ucm\fdi\aw\AplicacionPeliculas::getSingleton();
-			$conn = $app->conexionBd();
-			$sql = "SELECT * FROM pelicula WHERE id = '$id'";
-			$result = $conn->query($sql)
-			   or die ($conn->error. " en la línea ".(__LINE__-1));
-
-		if($result->num_rows > 0){
-			$comentarios = new es\ucm\fdi\aw\Comentarios(null,null,null,null,null,null);
-			$fila = $result->fetch_assoc();
-			echo "<h2>".$fila["nombre"]."<h2>";
-			echo '<img class = "img_peli" src="'.$fila["imagen"].'">';
-			$html ='
-			<body>
-			<table>
-				<tr><td><p>Año</p></td><td>'.$fila["anyo"].'</td></tr>
-				<tr><td><p>Duración</p></td><td>'.$fila["duracion"].'</td></tr>
-				<tr><td><p>Director</p></td><td>'.$fila["director"].'</td></tr>
-				<tr><td><p>Reparto</p></td><td>'.$fila["reparto"].'</td></tr>
-				<tr><td><p>Productora</p></td><td>'.$fila["productora"].'</td></tr>
-				<tr><td><p>Genero</p></td><td>'.$fila["genero"].'</td></tr>
-				<tr><td><p>Sinopsis</p></td><td>'.$fila["sinopsis"].'</td></tr>
-				<tr><td><p>Valoracion</p></td><td>'.$comentarios->imprimeMedia($id).'</td></tr>
-			</table>
-			</body>
-			';
-			echo $html;
-		}
+			$c = new es\ucm\fdi\aw\Pelicula(null,null,null,null,null,null, null,null,null,null,null);
+			$c->imprimePelicula($id);
 		?>
 	</div>
 </form>	
