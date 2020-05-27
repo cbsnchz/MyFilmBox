@@ -48,12 +48,12 @@ function validaRegistroPelicula(){
         valid= false; 
     }else setSuccessFor(productora);
 	
-	if( genero.value.trim() === ""){
+	if( genero.value.trim() === "Seleccione el género:"){
         setErrorFor(genero, "Seleccione el genero de la pelicula")
         valid= false; 
     }else setSuccessFor(genero);
 	
-	if( calificacion.value.trim() === ""){
+	if( calificacion.value.trim() === "Seleccione la calificación:"){
         setErrorFor(calificacion, "Introduzca la calificacion de la pelicula")
         valid= false; 
     }else setSuccessFor(calificacion);

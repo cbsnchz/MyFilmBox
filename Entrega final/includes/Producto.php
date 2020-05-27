@@ -375,7 +375,7 @@ class Producto{
                     
                 </div>
                 
-                    <div id="contButton">  <input type="submit" value="Añadir producto" class="button"> </div>
+                    <div id="contButton"><div id="enlace"><a href="añadirProducto.php"><button class="button"> Añadir producto</button></a></div>
                         
                     </body>
                     <?php
