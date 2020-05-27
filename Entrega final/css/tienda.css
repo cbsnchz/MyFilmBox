@@ -78,8 +78,8 @@ h5{
   transition: 0.3s;
   width: 40%;
   border-radius: 5px;
-  height: 315px;
-  width: 200px;
+  height: 345px;
+  width: 205px;
   margin-bottom: 10px;
   background-color:white;
 }
@@ -104,5 +104,6 @@ h4{
 }
 
 .container-card a{
+
 	color:black;
 }
