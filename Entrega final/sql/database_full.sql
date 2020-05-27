@@ -85,7 +85,7 @@ CREATE TABLE `comentarios` (
   `Fecha` date NOT NULL DEFAULT current_timestamp(),
   `texto` text NOT NULL,
   `id_pelicula` int(11) NOT NULL,
-  `valoracion` int(10) UNSIGNED NOT NULL
+  `valoracion` int(10) UNSIGNED NOT NULL,
   `is_critic` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -93,7 +93,7 @@ CREATE TABLE `comentarios` (
 -- Volcado de datos para la tabla `comentarios`
 --
 
-INSERT INTO `comentarios` (`id_post`, `usuario`, `titulo`, `Fecha`, `texto`, `id_pelicula`, `valoracion`) VALUES
+INSERT INTO `comentarios` (`id_post`, `usuario`, `titulo`, `Fecha`, `texto`, `id_pelicula`, `valoracion`, `is_critic` ) VALUES
 (1, 'Eva Verdú', 'Me encanta', '2020-04-22', 'Esta película es muy entretenida e interesante, las canciones son preciosas.\r\nDisney siempre trae lo mejor. ', 4, 5, 0),
 (2, 'Christian', 'Horrenda', '2020-05-01', 'No me gusta nada, la vi muy aburrida.', 4, 2, 0),
 (3, 'Carlos Gonzalez', 'Simple', '2020-05-08', 'Una película simple, pero que merece, en sus modestos términos, recibir un \'bien hecho\' por parte del espectador. \r\n', 2, 3, 0),

@@ -11,7 +11,7 @@ class Pelicula{
 			   or die ($conn->error. " en la línea ".(__LINE__-1));
 
 		if($result->num_rows > 0){
-			$comentarios = new Comentarios(null,null,null,null,null,null);
+			$comentarios = new Comentarios(null,null,null,null,null,null, null);
 			$fila = $result->fetch_assoc();
 			echo "<h2>".$fila["nombre"]."<h2>";
 			echo '<img class = "img_peli" src="'.$fila["imagen"].'">';
