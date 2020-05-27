@@ -31,7 +31,7 @@
 				?>
 			</div>
 
-			<?php require("includes/common/pie.php");?>
 		</div>
 	</body>
+	<?php require("includes/common/pie.php");?>
 </html>
