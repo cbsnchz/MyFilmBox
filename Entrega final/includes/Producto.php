@@ -182,6 +182,7 @@ class Producto{
 
 	 public static function imprimeListaProductos($page, $numregs, $sort)
     {
+        if($numregs =="todo") $numregs =10000;
         $app = AplicacionProductos::getSingleton();
         $conn = $app->conexionBd();
         $sql = "SELECT Id, nombre, imagen, categoria FROM producto ORDER BY ".$sort;
@@ -377,72 +378,17 @@ class Producto{
                     $numPagsTot = $conta/$numregs;
                     if ($conta%$numregs==0) $numPagsTot++;
 
-                    if($page+1<$numPagsTot) {
-                        $nextPage = $page+1;
-                        $max=false;
-                    }
-                    else{
-                        $nextPage = $page;
-                        $max=true;
-                    }
-                    if($page>0){
-                        $prevPage=$page-1;
-                        $min=false;
-                    }
-                    else{
-                        $prevPage = $page;
-                        $min=true;
-                    }
+                   
 
-
-                $html.= ' </table></div>
-                        <div id="controlTable"> ';
+                $html.= ' </table></div>';
                 
                 
-
-                if(!$min && !$max){
-                    $html.='
-                        <div id="prev"><a href="tablaProductos.php?page='.$prevPage.'&numregs='.$numregs.'"><i class="fas fa-backward"></a></i></div>
-                        <div id="numregs"><a href="tablaProductos.php?page=0&numregs=10">10</a>
-                                          <a href="tablaProductos.php?page=0&numregs=20">20</a> 
-                                          <a href="tablaProductos.php?page=0&numregs=30">30</a> 
-                                          <a href="tablaProductos.php?page=0&numregs=50">50</a> 
-                                          <a href="tablaProductos.php?page=0&numregs=todo">Todo</a></div>
-                        <div id="next"><a href="tablaProductos.php?page='.$nextPage.'&numregs='.$numregs.'"><i class="fas fa-forward"></a></i></div>
-                        ';
-                }                        
-                else if($min && !$max){
-                    $html.='
-                        <div id="numregs"><a href="tablaProductos.php?page=0&numregs=10">10</a>
-                                          <a href="tablaProductos.php?page=0&numregs=20">20</a> 
-                                          <a href="tablaProductos.php?page=0&numregs=30">30</a> 
-                                          <a href="tablaProductos.php?page=0&numregs=50">50</a> 
-                                          <a href="tablaProductos.php?page=0&numregs=todo">Todo</a></div>
-                        <div id="next"><a href="tablaProductos.php?page='.$nextPage.'&numregs='.$numregs.'"><i class="fas fa-forward"></a></i></div>';
-                }
-                else if(!$min && $max){
-                    $html.='
-                        <div id="prev"><a href="tablaProductos.php?page='.$prevPage.'&numregs='.$numregs.'"><i class="fas fa-backward"></a></i></div>
                         
-                        <div id="numregs"><a href="tablaProductos.php?page=0&numregs=10">10</a>
-                                          <a href="tablaProductos.php?page=0&numregs=20">20</a> 
-                                          <a href="tablaProductos.php?page=0&numregs=30">30</a> 
-                                          <a href="tablaProductos.php?page=0&numregs=50">50</a> 
-                                          <a href=""tablaProductos.php?page=0&numregs=todo">Todo</a></div>';
-                }
-                else{
-                    $html.='
-                    <div id="numregs"><a href="tablaProductos.php?page=0&numregs=10">10</a>
-                    <a href="tablaProductos.php?page=0&numregs=20">20</a> 
-                    <a href="tablaProductos.php?page=0&numregs=30">30</a> 
-                    <a href="tablaProductos.php?page=0&numregs=50">50</a> 
-                    <a href=""tablaProductos.php?page=0&numregs=todo">Todo</a></div>';
-
-                }
+                $html .= self::getControlButtonPages($page, $numPagsTot, $numregs, $sort,'tablaProductos.php');
                
                 $html.='
                     
-                </div>
+            
                 
                     <div id="contButton"> <button class="button" onclick=window.location.href="añadirProducto.php">Añadir Producto</button> </div>
                         

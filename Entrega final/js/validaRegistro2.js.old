@@ -11,18 +11,18 @@ $(document).ready(function(){
 
 
   $("#userName_login").keyup(function(){
+
     if(isEmail($("#userName_login").val())){
       $("#lUok").show();
       $("#lUmal").hide();
       $("#lUerr").hide();
       setNeutralFor(document.getElementById('userName_login'));
-      u = true;
     } 
     else{
       $("#lUmal").show();
       $("#lUok").hide();
       setErrorFor(document.getElementById('userName_login'));
-      u = false;
+      valid = false; 
     }
   });
 
@@ -35,7 +35,7 @@ $(document).ready(function(){
 });
 
 function valida(){
-  return p && u;
+  return valid;
 }
 
 
@@ -53,12 +53,11 @@ function match(data, status) {
     $("#lerr").show(); 
     setErrorFor(document.getElementById('userName_login'));
     setErrorFor(document.getElementById('password_login'));
-    p = false;
+    
   }
   else{
-    p= true;
+    valid=true;
   }
-  
 
 }
 

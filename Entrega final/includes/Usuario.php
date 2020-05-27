@@ -43,9 +43,9 @@ class Usuario
         for ($i=0; $i<$numPagsTot; $i++){
             $j =$i+1;
             if($page == $i){
-                $html .= "<a href='#'><button class='currentbuttonpage'>$j</button>";
+                $html .= "<a href='#'><button class='currentbuttonpage'>$j</button></a>";
             }else{
-                $html .= "<a href='usersControl.php?page=$i'><button class='buttonpage'>$j</button>";
+                $html .= "<a href='usersControl.php?page=$i'><button class='buttonpage'>$j</button></a>";
             }
         }
         $html.='</div>';

@@ -1,7 +1,7 @@
-const nombre = document.getElementById('nombre_pelicula');
-const precio = document.getElementById('precio_pelicula');
-const descripcion = document.getElementById('descripcion_pelicula');
-const categoria = document.getElementById('categoria_pelicula');
+const nombre = document.getElementById('nombre_producto');
+const precio = document.getElementById('precio_producto');
+const descripcion = document.getElementById('descripcion_producto');
+const categoria = document.getElementById('categoria_producto');
 
 
 
@@ -25,6 +25,11 @@ function validaRegistroProducto(){
 	
 	if( categoria.value.trim() === ""){
         setErrorFor(categoria, "Introduzca la categoria del producto.")
+        valid= false; 
+    }else setSuccessFor(categoria);
+
+    if( categoria.value.trim() === "Seleccione una categoria:"){
+        setErrorFor(categoria, "Seleccione la categoria")
         valid= false; 
     }else setSuccessFor(categoria);
 	
