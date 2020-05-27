@@ -33,7 +33,7 @@
 					if (isset($_REQUEST["numregs"]))
 						$numregs = $_REQUEST["numregs"];
 					else
-						$numregs=20;
+						$numregs=24;
 
 					if (isset($_REQUEST["sort"]))
 						$sort = $_REQUEST["sort"];

@@ -131,8 +131,41 @@ img {
 div#buttons{
 width: 20%;
 margin-left:45%;
-
 }
+
+
+.currentbuttonpage{
+
+	background-color: #f19532;
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	border-radius: 100%;
+    width:27px;
+	height:27px;
+  
+} 
 .buttonpage{
+
+	background-color: #f1953286;
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	border-radius: 100%;
+    width:27px;
+	height:27px;
+  
+}
+.buttonpage:hover{
+	background-color: #f19532;
+	cursor:pointer;
 
 }

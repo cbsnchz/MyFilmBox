@@ -14,7 +14,23 @@
 		
 		<div id="contenido" class="main">
 			<?php 
-				es\ucm\fdi\aw\Pelicula::imprimeListaPeliculas();
+
+			if (isset($_REQUEST["page"]))
+				$page = $_REQUEST["page"];
+			else
+				$page=0;
+
+			if (isset($_REQUEST["numregs"]))
+				$numregs = $_REQUEST["numregs"];
+			else
+				$numregs=12;
+
+			if (isset($_REQUEST["sort"]))
+				$sort = $_REQUEST["sort"];
+			else
+				$sort="nombre";
+
+			es\ucm\fdi\aw\Pelicula::imprimeListaPeliculas($page, $numregs,$sort);
 			?>
 		
 		</div>	

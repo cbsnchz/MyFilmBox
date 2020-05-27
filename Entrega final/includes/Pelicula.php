@@ -166,12 +166,67 @@ class Pelicula{
     {
         return $this->origen;
     }
-	
-	 public static function imprimeListaPeliculas()
+    
+private static function getControlButtonPages($page, $numPagsTot, $numregs, $sort,$url){
+
+    if($page+1<$numPagsTot) {
+        $nextPage = $page+1;
+        $max=false;
+    }
+    else{
+        $nextPage = $page;
+        $max=true;
+    }
+    if($page>0){
+        $prevPage=$page-1;
+        $min=false;
+    }
+    else{
+        $prevPage = $page;
+        $min=true;
+    }
+
+    $html = '<div id="controlTable">';
+    $aux = '<div id="numregs">
+            <a href="'.$url.'?page=0&numregs=12">12</a>
+            <a href="'.$url.'?page=0&numregs=24">24</a> 
+            <a href="'.$url.'?page=0&numregs=36">36</a> 
+            <a href="'.$url.'?page=0&numregs=todo">Todo</a>
+            </div>';
+    if(!$min && !$max){
+        $html.='
+            <div id="prev"><a href="'.$url.'?page='.$prevPage.'&numregs='.$numregs.'&sort='.$sort.'"><i class="fas fa-backward"></a></i></div>';
+        $html.= $aux;            
+        $html.='<div id="next"><a href="'.$url.'?page='.$nextPage.'&numregs='.$numregs.'&sort='.$sort.'"><i class="fas fa-forward"></a></i></div>
+            ';
+    }                        
+    else if($min && !$max){
+        $html .= $aux;
+        $html.=' <div id="next"><a href="'.$url.'?page='.$nextPage.'&numregs='.$numregs.'&sort='.$sort.'"><i class="fas fa-forward"></a></i></div>';
+    }
+    else if(!$min && $max){
+        $html.='
+            <div id="prev"><a href="'.$url.'?page='.$prevPage.'&numregs='.$numregs.'&sort='.$sort.'"><i class="fas fa-backward"></a></i></div>';
+        $html.= $aux;
+    }
+    else{
+        $html.=  $aux;
+
+    }
+
+    $html.='</div>';
+    return $html;
+
+}
+	 public static function imprimeListaPeliculas($page, $numregs, $sort)
     {
+        if($numregs=="todo") $numregs =10000;
+        $nextPage;
+        $prevPage;
+
         $app = AplicacionPeliculas::getSingleton();
         $conn = $app->conexionBd();
-        $sql = "SELECT * FROM pelicula";
+        $sql = "SELECT * FROM pelicula ORDER BY ".$sort;
         $result = $conn->query($sql);
         if ($result) {
             if ( $result->num_rows > 0) {
@@ -208,23 +263,33 @@ class Pelicula{
 							</div>
 							
 							';
-
+                $conta =0;  //Numero de peliculas que llevas impresas
+                $i = $numregs * $page;
+                $j= ($i+$numregs);
                 while($fila = $result->fetch_assoc()){
-                   $html .= '
-				   <div class="column '.$fila["genero"].'">
-								<div class="content">
-									<div class = "card-peli">
-										<img src="'.$fila["imagen"].'"style="width:100%">
-										<div class = "container-card">
-											<h4> <a href="Mostrarpelicula.php?id='.$fila["id"].'">'.$fila["nombre"].'</a> </h4>
-											<h5> '.$fila["director"].'</h5>
-										</div>
-									</div>
-								</div>
-							</div>';
-                                 
-                                
+                    if($i<=$conta && $conta<$j){
+                        $html .= '
+                        <div class="column '.$fila["genero"].'">
+                                        <div class="content">
+                                            <div class = "card-peli">
+                                                <img src="'.$fila["imagen"].'"style="width:100%">
+                                                <div class = "container-card">
+                                                    <h4> <a href="Mostrarpelicula.php?id='.$fila["id"].'">'.$fila["nombre"].'</a> </h4>
+                                                    <h5> '.$fila["director"].'</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                        </div>';
+                        $i++;
+                    }        
+                    $conta++; 
                 }
+
+                $numPagsTot = $conta/$numregs;
+                if ($conta%$numregs==0) $numPagsTot++;
+
+                $html .= self::getControlButtonPages($page, $numPagsTot,$numregs, $sort,'catalogo.php'); 
+
                 $html.= '
                     </div>
                     </body>
@@ -426,77 +491,22 @@ public static function buscarPeliculas(){
                         
                     }
                     
-                    $numPagsTot = $conta/$numregs;
-                    if ($conta%$numregs==0) $numPagsTot++;
-
-                    if($page+1<$numPagsTot) {
-                        $nextPage = $page+1;
-                        $max=false;
-                    }
-                    else{
-                        $nextPage = $page;
-                        $max=true;
-                    }
-                    if($page>0){
-                        $prevPage=$page-1;
-                        $min=false;
-                    }
-                    else{
-                        $prevPage = $page;
-                        $min=true;
-                    }
-
+                    
 
                 $html.= ' </table></div>
                         <div id="controlTable"> ';
                 
+                $numPagsTot = $conta/$numregs;
                 
+                if ($conta%$numregs==0) $numPagsTot++;
 
-                if(!$min && !$max){
-                    $html.='
-                        <div id="prev"><a href="tablaPeliculas.php?page='.$prevPage.'&numregs='.$numregs.'"><i class="fas fa-backward"></a></i></div>
-                        <div id="numregs"><a href="tablaPeliculas.php?page=0&numregs=10">10</a>
-                                          <a href="tablaPeliculas.php?page=0&numregs=20">20</a> 
-                                          <a href="tablaPeliculas.php?page=0&numregs=30">30</a> 
-                                          <a href="tablaPeliculas.php?page=0&numregs=50">50</a> 
-                                          <a href="tablaPeliculas.php?page=0&numregs=todo">Todo</a></div>
-                        <div id="next"><a href="tablaPeliculas.php?page='.$nextPage.'&numregs='.$numregs.'"><i class="fas fa-forward"></a></i></div>
-                        ';
-                }                        
-                else if($min && !$max){
-                    $html.='
-                        <div id="numregs"><a href="tablaPeliculas.php?page=0&numregs=10">10</a>
-                                          <a href="tablaPeliculas.php?page=0&numregs=20">20</a> 
-                                          <a href="tablaPeliculas.php?page=0&numregs=30">30</a> 
-                                          <a href="tablaPeliculas.php?page=0&numregs=50">50</a> 
-                                          <a href="tablaPeliculas.php?page=0&numregs=todo">Todo</a></div>
-                        <div id="next"><a href="tablaPeliculas.php?page='.$nextPage.'&numregs='.$numregs.'"><i class="fas fa-forward"></a></i></div>';
-                }
-                else if(!$min && $max){
-                    $html.='
-                        <div id="prev"><a href="tablaPeliculas.php?page='.$prevPage.'&numregs='.$numregs.'"><i class="fas fa-backward"></a></i></div>
-                        
-                        <div id="numregs"><a href="tablaPeliculas.php?page=0&numregs=10">10</a>
-                                          <a href="tablaPeliculas.php?page=0&numregs=20">20</a> 
-                                          <a href="tablaPeliculas.php?page=0&numregs=30">30</a> 
-                                          <a href="tablaPeliculas.php?page=0&numregs=50">50</a> 
-                                          <a href=""tablaPeliculas.php?page=0&numregs=todo">Todo</a></div>';
-                }
-                else{
-                    $html.='
-                    <div id="numregs"><a href="tablaPeliculas.php?page=0&numregs=10">10</a>
-                    <a href="tablaPeliculas.php?page=0&numregs=20">20</a> 
-                    <a href="tablaPeliculas.php?page=0&numregs=30">30</a> 
-                    <a href="tablaPeliculas.php?page=0&numregs=50">50</a> 
-                    <a href=""tablaPeliculas.php?page=0&numregs=todo">Todo</a></div>';
-
-                }
-               
+                $html .= self::getControlButtonPages($page, $numPagsTot,$numregs, $sort,'tablaPeliculas.php');         
+                
                 $html.='
                     
                 </div>
                 
-                    <div id="contButton"><div id="enlace"><a href="añadirPelicula.php"><button class="button"> Añadir pelicula</button></a></div></div>
+                    <div id="contButton">  <input type="submit" value="Añadir pelicula" class="button"> </div>
                         
                     </body>
                     <?php

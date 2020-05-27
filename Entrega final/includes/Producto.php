@@ -18,23 +18,14 @@ class Producto{
 
 				if($result->num_rows > 0){
 					$fila = $result->fetch_assoc();
-					echo "<h2>".$fila["nombre"]."<h2>";
-				    echo '<img class = "img_producto" src="'.$fila["imagen"].'">';
-				$html ='
-				    <body>
-				    <table>
-					    <tr><td><p>Precio: </p></td><td>'.$fila["precio"]. ' € </td></tr>
-					    <tr><td><p>Descripción: </p></td><td>' .$fila["descripcion"].'</td></tr>
-				    </table>
-				    </body>
-				';
-				echo $html;
-
-				
+					echo "<p class=\"tituloo\">".$fila["nombre"]."<p>";
+					echo '<img class = "img_producto" src="'.$fila["imagen"].'">';
+					echo "<p> Precio: ".$fila["precio"]."<p>";
+					echo "<p> Descripcion: ".$fila["descripcion"]." <p>";
 				}
 			}
 		$conn -> close();
-		echo '<a href="pago.php?precio='.$fila["precio"].'" button class="button button1">Comprar</a>';
+		echo '<button  class="button" onclick=""> <a href="pago.php?precio='.$fila["precio"].'">Comprar</a></button>';
 	}
 	
 	public static function buscaProducto($nombre)
@@ -129,12 +120,64 @@ class Producto{
     {
         return $this->categoria;
     }
-	
-	 public static function imprimeListaProductos()
+    
+    private static function getControlButtonPages($page, $numPagsTot, $numregs, $sort,$url){
+
+        if($page+1<$numPagsTot) {
+            $nextPage = $page+1;
+            $max=false;
+        }
+        else{
+            $nextPage = $page;
+            $max=true;
+        }
+        if($page>0){
+            $prevPage=$page-1;
+            $min=false;
+        }
+        else{
+            $prevPage = $page;
+            $min=true;
+        }
+    
+        $html = '<div id="controlTable">';
+        $aux = '<div id="numregs">
+                <a href="'.$url.'?page=0&numregs=12">12</a>
+                <a href="'.$url.'?page=0&numregs=24">24</a> 
+                <a href="'.$url.'?page=0&numregs=36">36</a> 
+                <a href="'.$url.'?page=0&numregs=todo">Todo</a>
+                </div>';
+        if(!$min && !$max){
+            $html.='
+                <div id="prev"><a href="'.$url.'?page='.$prevPage.'&numregs='.$numregs.'&sort='.$sort.'"><i class="fas fa-backward"></a></i></div>';
+            $html.= $aux;            
+            $html.='<div id="next"><a href="'.$url.'?page='.$nextPage.'&numregs='.$numregs.'&sort='.$sort.'"><i class="fas fa-forward"></a></i></div>
+                ';
+        }                        
+        else if($min && !$max){
+            $html .= $aux;
+            $html.=' <div id="next"><a href="'.$url.'?page='.$nextPage.'&numregs='.$numregs.'&sort='.$sort.'"><i class="fas fa-forward"></a></i></div>';
+        }
+        else if(!$min && $max){
+            $html.='
+                <div id="prev"><a href="'.$url.'?page='.$prevPage.'&numregs='.$numregs.'&sort='.$sort.'"><i class="fas fa-backward"></a></i></div>';
+            $html.= $aux;
+        }
+        else{
+            $html.=  $aux;
+    
+        }
+    
+        $html.='</div>';
+        return $html;
+    
+    }
+
+	 public static function imprimeListaProductos($page, $numregs, $sort)
     {
         $app = AplicacionProductos::getSingleton();
         $conn = $app->conexionBd();
-        $sql = "SELECT Id, nombre, imagen, categoria FROM producto";
+        $sql = "SELECT Id, nombre, imagen, categoria FROM producto ORDER BY ".$sort;
         $result = $conn->query($sql);
         if ($result) {
             if ( $result->num_rows > 0) {
@@ -162,8 +205,11 @@ class Producto{
 							</div>
 							
 							';
-
+                $conta =0;  //Numero de peliculas que llevas impresas
+                $i = $numregs * $page;
+                $j= ($i+$numregs);
                 while($fila = $result->fetch_assoc()){
+                   if($i<=$conta && $conta<$j){
                    $html .= '
 				   <div class="column '.$fila["categoria"].'">
 								<div class="content">
@@ -175,10 +221,17 @@ class Producto{
 										</div>
 									</div>
 								</div>
-							</div>';
-                                 
-                                
+                            </div>';
+                        $i++;
+                    }
+                    $conta++;            
                 }
+
+                $numPagsTot = $conta/$numregs;
+                if ($conta%$numregs==0) $numPagsTot++;
+
+                $html .= self::getControlButtonPages($page, $numPagsTot,$numregs, $sort,'tienda.php'); 
+
                 $html.= '
                     </div>
                     </body>
@@ -384,7 +437,7 @@ class Producto{
                     
                 </div>
                 
-                    <div id="contButton"><div id="enlace"><a href="añadirProducto.php"><button class="button"> Añadir producto</button></a></div>
+                    <div id="contButton">  <input type="submit" value="Añadir producto" class="button"> </div>
                         
                     </body>
                     <?php

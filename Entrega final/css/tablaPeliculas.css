@@ -74,7 +74,7 @@ div#tablaPeliculas_panel a{
 * {
 	box-sizing: border-box;
 }
-.fa-forward, .fa-backward {
+.fa-fast-forward, .fa-forward, .fa-backward {
   color : #f19532;
   margin:1%;
 }
@@ -84,6 +84,9 @@ div#tablaPeliculas_panel a{
 }
 
 .fa-forward {
+  float:right;
+}
+.fa-fast-forward {
   float:right;
 }
 
@@ -119,7 +122,7 @@ div#controlTable{
 
 div#contButton{
   
-  margin-left:15%;
+  margin-top:1%;
   width: 70%;
 }
 
@@ -139,10 +142,10 @@ div#next{
   cursor:pointer;  
   border: 2px solid #F19532;
   transition: background 0.5s ease-in-out;
-  margin: auto;
+  margin: 0 auto;
   display: block;
-  margin-top:5%;
-  margin-bottom: 10px;
+
+  margin-top:9%;
 }
 
 

@@ -37,12 +37,16 @@ class Usuario
         $html .='</div></div>';
         return $html;
     }
-    private static function getButtonPages($numPagsTot){
+    private static function getButtonPages($numPagsTot, $page){
         $i=0; 
         $html='<div id="buttons">';
         for ($i=0; $i<$numPagsTot; $i++){
             $j =$i+1;
-            $html .= "<a href='usersControl.php?page=$i'><button class='buttonpage'>$j</button>";
+            if($page == $i){
+                $html .= "<a href='#'><button class='currentbuttonpage'>$j</button>";
+            }else{
+                $html .= "<a href='usersControl.php?page=$i'><button class='buttonpage'>$j</button>";
+            }
         }
         $html.='</div>';
         return $html;
@@ -103,7 +107,7 @@ class Usuario
                     
                     $numPagsTot = $conta/$numregs;
                     
-                    $html.= self::getButtonPages($numPagsTot);
+                    $html.= self::getButtonPages($numPagsTot,$page);
                     $html.= '</div>';
 
                 $html.=' </body>

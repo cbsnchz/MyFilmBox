@@ -128,3 +128,59 @@ h4{
 .container-card a{
 	color:black;
 }
+
+.fa-fast-forward, .fa-forward, .fa-backward {
+  color : #f19532;
+  margin:1%;
+}
+.fa-sort {
+  color : #3f3f3f77;
+  margin-top: 7px;;
+}
+
+.fa-forward {
+  float:right;
+}
+.fa-fast-forward {
+  float:right;
+}
+
+div#numregs{
+  margin-left:45%;
+  margin-top:1%;
+}
+
+div#prev, div#numregs, div#next{
+  float:left;
+}
+div#prev{
+	margin-left:2%;
+	margin-top:1%;
+}
+div#next{
+	margin-right:2%;
+	margin-top:1%;
+}
+
+div#numregs a{
+  font-size : 14px;
+  text-decoration:none;
+  color: #f19532;
+  overflow:inherit;
+}
+
+div#controlTable{
+
+	  width: 100%;
+
+}
+
+div#contButton{
+  
+  margin-top:1%;
+  width: 70%;
+}
+
+div#next{
+	float:right;
+}
