@@ -6,23 +6,26 @@ class Producto{
 	public function imprimeProducto($id){
 		$app = AplicacionProductos::getSingleton();
 		$conn = $app->conexionBd();
-		$sql = "SELECT * FROM producto WHERE Id = '$id'";
-		$result = $conn->query($sql)
-			   or die ($conn->error. " en la línea ".(__LINE__-1));
+	
+			if ($conn->connect_error) {
+				die("Fallo de conexion con la base de datos: " . $conn->connect_error);
+			}
+			else{
+				$conn->set_charset("utf8");
+				$sql = "SELECT * FROM producto WHERE id = '$id'";
+				$result = $conn->query($sql)
+					   or die ($conn->error. " en la línea ".(LINE-1));
 
-		if($result->num_rows > 0){
-			$fila = $result->fetch_assoc();
-			echo "<h2>".$fila["nombre"]."<h2>";
-			echo '<img class = "img_peli" src="'.$fila["imagen"].'">';
-			echo "<p> Año: ".$fila["anyo"]."<p>";
-			echo "<p> Duración: ".$fila["duracion"]." min <p>";
-			echo "<p> Director: ".$fila["director"]."<p>";
-			echo "<p> Reparto: ".$fila["reparto"]."<p>";
-			echo "<p> Productora: ".$fila["productora"]."<p>";
-			echo "<p> Genero: ".$fila["genero"]."<p>";
-			echo "<p> Sinopsis: ".$fila["sinopsis"]."<p>";
-			
-		}
+				if($result->num_rows > 0){
+					$fila = $result->fetch_assoc();
+					echo "<p class=\"tituloo\">".$fila["nombre"]."<p>";
+					echo '<img class = "img_producto" src="'.$fila["imagen"].'">';
+					echo "<p> Precio: ".$fila["precio"]."<p>";
+					echo "<p> Descripcion: ".$fila["descripcion"]." <p>";
+				}
+			}
+		$conn -> close();
+		echo '<button  class="button" onclick=""> <a href="pago.php?precio='.$fila["precio"].'">Comprar</a></button>';
 	}
 	
 	public static function buscaProducto($nombre)
@@ -85,7 +88,7 @@ class Producto{
 	private $categoria;
 	private $imagen;
 
-    private function __construct($nombre, $precio, $descripcion, $categoria, $imagen)
+    public function __construct($nombre, $precio, $descripcion, $categoria, $imagen)
     {
         $this->nombre= $nombre;
         $this->precio = $precio;
