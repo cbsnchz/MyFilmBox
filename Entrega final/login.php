@@ -7,7 +7,6 @@ require_once __DIR__.'/includes/config.php';
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<link rel="stylesheet" type="text/css" href="css/registrocss.css"/>
 		<title>Login</title>
 	</head>
 
