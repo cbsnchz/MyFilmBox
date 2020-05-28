@@ -147,7 +147,8 @@ h4{
 
 div#numregs{
   margin-left:35%;
-  margin-top:1%;
+  margin-top:10px;
+	margin-bottom:20px;
 }
 
 div#prev, div#numregs, div#next{
@@ -159,7 +160,9 @@ div#prev{
 }
 div#next{
 	margin-right:2%;
-	margin-top:1%;
+	margin-top:10px;
+	margin-bottom:20px;
+	
 }
 
 div#numregs a{
@@ -182,6 +185,8 @@ div#contButton{
 }
 
 div#next{
+	margin-top:10px;
+	margin-bottom:20px;
   float:right;
   margin-right:14%;
 }
