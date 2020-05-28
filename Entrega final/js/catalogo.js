@@ -1,11 +1,18 @@
 filterSelection("all") // Execute the function and show all columns
 function filterSelection(c) {
+  var j = document.getElementById("controlTable");
+
+  
   var x, i;
   
   x = document.getElementsByClassName("column");
-  var j = document.getElementById("controlTable");
+  
   if (c == "all"){
+    j.style.display = "block";
     c = "";
+  }
+  else{
+    j.style.display = "none";
   }
 
 
