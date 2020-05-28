@@ -32,7 +32,7 @@
                 <small id="lerr">Usuario o contraseña incorrectos. Revisa los datos. </small>
                 
               
-                <input type="submit" onclick="return valida()" value="Log In" class="button">
+                <input type="submit" id="buttonLogin" onclick="return valida()" value="Log In" class="button">
                 
                 <div class="alternative">
                     <p> ¿No tienes una cuenta? <a class="link" href="registro.php"> Regístrate</a></p>

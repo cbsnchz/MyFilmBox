@@ -9,6 +9,10 @@ div#contenedor {
 min-height: 65vh;
 }
 
+a{
+	color:white;
+}
+
 body {
   background-color: #f1f1f1;
   color: #000000; 
