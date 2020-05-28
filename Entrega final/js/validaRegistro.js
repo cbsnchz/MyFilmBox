@@ -1,5 +1,9 @@
 const user = document.getElementById('userName_login');
 const password = document.getElementById('password_login');
+var valid1 = false;
+var valid2 = false;
+var valid3 = false;
+var valid4 = false;
 
 
 $(document).ready(function(){
