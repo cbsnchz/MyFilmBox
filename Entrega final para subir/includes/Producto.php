@@ -32,7 +32,13 @@ class Producto{
 				}
 			}
 		$conn -> close();
-		echo '<a href="pago.php?precio='.$fila["precio"].'" button class="button button1">Comprar</a>';
+		if(isset($_SESSION["login"])&& $_SESSION["login"]){
+			echo '<a href="pago.php?precio='.$fila["precio"].'" button class="button button1">Comprar</a>';
+		}
+		else{
+			echo '<a href="login.php" button class="button button1">Login</a>';
+		}
+		
 	}
 	
 	public static function buscaProducto($nombre)
