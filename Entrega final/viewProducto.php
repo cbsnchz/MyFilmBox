@@ -30,5 +30,5 @@
  </body>
  <?php	
 	include('includes/common/pie.php');
-?>
+	?>
  </html>

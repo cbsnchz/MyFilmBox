@@ -12,6 +12,7 @@ body{
 .contenedor {
     width: 84%;
     padding: 35px; 
+    min-height: 40vh;
     
 }
 .panel{

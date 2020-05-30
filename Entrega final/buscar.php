@@ -22,11 +22,10 @@
 			?>		
 		</div>
 		
-		<?php
-			include('includes/common/pie.php');
-		?>
+		
 	</div> 
 
 </body>
+<?php include('includes/common/pie.php');?>
 <script type="text/javascript" src="js/search.js"></script>
 </html>

@@ -63,7 +63,8 @@
       margin-top: 10px;
       margin-left: 5%;
       margin-bottom: 10px;
-      overflow: auto;
+      min-height: 60vh;
+
   }
   .formulario{
       background:#fff;

@@ -25,14 +25,15 @@ class Pelicula{
 				<tr><td><p>Productora</p></td><td>'.$fila["productora"].'</td></tr>
 				<tr><td><p>Genero</p></td><td>'.$fila["genero"].'</td></tr>
 				<tr><td><p>Sinopsis</p></td><td>'.$fila["sinopsis"].'</td></tr>
-				<tr><td><p>Valoracion</p></td><td>'.$comentarios->imprimeMedia($id).'</td></tr>
+				<tr><td><p>Valoracion</p></td><td>';
+				$media = round ($comentarios->imprimeMedia($id), 2, PHP_ROUND_HALF_UP);
+				$html .= $media.'</td></tr>
 			</table>
 			</body>
 			';
 			echo $html;
 		}
 	}
-	
 	public static function buscaPelicula($titulo)
     {
         $app = AplicacionPeliculas::getSingleton();

@@ -1,6 +1,7 @@
 const user = document.getElementById('userName_login');
 const password = document.getElementById('password_login');
-
+var p = false;
+var u;
 
 $(document).ready(function(){
   $("#lUok").hide();  //Login User bien
@@ -26,12 +27,13 @@ $(document).ready(function(){
     }
   });
 
-  $("#password_login").change(function(){
+  $("#buttonLogin").click(function(){
 
     var url="loginMatch.php?user=" + $("#userName_login").val() + "&pswd=" + $("#password_login").val() ;
     $.get(url, match);       
 
   });
+
 });
 
 function valida(){
@@ -50,16 +52,14 @@ function match(data, status) {
     $("#lUmal").show(); //Login User mal
     $("#lPok").hide();  //Login password bien
     $("#lPmal").show(); //Login password mal
-    $("#lerr").show(); 
+    $("#lerr").show();
     setErrorFor(document.getElementById('userName_login'));
     setErrorFor(document.getElementById('password_login'));
-    p = false;
   }
   else{
-    p= true;
+    p = true;
   }
   
-
 }
 
 function setErrorFor(input){
