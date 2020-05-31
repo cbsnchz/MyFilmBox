@@ -75,8 +75,8 @@ abstract class Form
             if ( is_array($result) ) {
                 echo $this->generaFormulario($result, $_POST);
             } else {
-                header('Location: '.$result);
-                exit();
+				$url = "https://vm27.aw.e-ucm.es/".$result;
+                echo "<script>window.open('".$url."','_self');</script>";
             }
         }  
     }
